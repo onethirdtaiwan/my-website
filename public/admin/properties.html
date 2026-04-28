@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>物件管理 | One Third Residence Taiwan後台</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body { background: #F0EEEA; min-height: 100vh; }
+    .admin-layout { display: flex; min-height: 100vh; }
+    .sidebar { width: 240px; background: var(--charcoal); flex-shrink: 0; display: flex; flex-direction: column; }
+    .sidebar__logo { padding: 1.75rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .sidebar__logo-cn { font-family: var(--font-serif); font-size: 1.25rem; color: var(--white); display: block; }
+    .sidebar__logo-en { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); display: block; margin-top: 3px; }
+    .sidebar__label { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); padding: 1.5rem 1.5rem 0.5rem; }
+    .sidebar__nav { display: flex; flex-direction: column; }
+    .sidebar__link { display: flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.6); transition: var(--trans); }
+    .sidebar__link:hover, .sidebar__link.active { color: var(--white); background: rgba(255,255,255,0.06); }
+    .sidebar__link.active { border-left: 2px solid var(--gold); }
+    .sidebar__footer { margin-top: auto; padding: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); }
+    .sidebar__logout { font-size: 0.8rem; color: rgba(255,255,255,0.4); display: flex; align-items: center; gap: 0.5rem; transition: color var(--trans); }
+    .sidebar__logout:hover { color: rgba(255,255,255,0.8); }
+
+    .admin-main { flex: 1; overflow-y: auto; }
+    .admin-header { background: var(--white); border-bottom: 1px solid var(--gray-200); padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .admin-header__title { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 400; }
+    .admin-content { padding: 2rem; }
+
+    .table-wrap { background: var(--white); border: 1px solid var(--gray-200); overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    th { text-align: left; padding: 1rem 1.25rem; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid var(--gray-200); font-weight: 500; white-space: nowrap; }
+    td { padding: 1rem 1.25rem; border-bottom: 1px solid var(--gray-100); vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: var(--ivory); }
+    .badge { display: inline-block; padding: 0.25em 0.7em; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .badge--available { background: #ecfdf5; color: #065f46; }
+    .badge--coming-soon { background: #f9fafb; color: var(--gray-600); border: 1px solid var(--gray-200); }
+    .badge--featured { background: var(--gold-pale); color: #78560a; }
+    .action-btns { display: flex; gap: 0.5rem; }
+    .thumb { width: 56px; height: 42px; object-fit: cover; background: var(--surface); display: block; }
+    .thumb-placeholder { width: 56px; height: 42px; background: var(--surface); display: flex; align-items: center; justify-content: center; }
+
+    /* Confirm modal */
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; }
+    .modal.open { display: flex; }
+    .modal__box { background: var(--white); padding: 2rem; max-width: 400px; width: 100%; }
+    .modal__title { font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 0.75rem; }
+    .modal__text { font-size: 0.9rem; color: var(--gray-600); margin-bottom: 2rem; line-height: 1.6; }
+    .modal__actions { display: flex; gap: 0.75rem; }
+  </style>
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar__logo">
+      <!-- LOGO：同 public/images/logo.png -->
+      <img src="/images/logo.png" alt="One Third Residence Taiwan" class="nav__logo-img nav__logo-img--sidebar">
+      <span class="nav__logo-fallback">
+        <span class="sidebar__logo-cn">ONE THIRD</span>
+        <span class="sidebar__logo-en">RESIDENCE TAIWAN</span>
+      </span>
+    </div>
+    <div class="sidebar__label">管理</div>
+    <nav class="sidebar__nav">
+      <a href="/admin/index.html" class="sidebar__link">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        儀表板
+      </a>
+      <a href="/admin/properties.html" class="sidebar__link active">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        物件管理
+      </a>
+      <a href="/admin/property-form.html" class="sidebar__link">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        新增物件
+      </a>
+      <div class="sidebar__label">網站</div>
+      <a href="/index.html" target="_blank" class="sidebar__link">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        前往前台
+      </a>
+    </nav>
+    <div class="sidebar__footer">
+      <a href="#" class="sidebar__logout" id="logoutBtn">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        登出
+      </a>
+    </div>
+  </aside>
+
+  <div class="admin-main">
+    <header class="admin-header">
+      <h1 class="admin-header__title">物件管理</h1>
+      <a href="/admin/property-form.html" class="btn btn--gold btn--sm">+ 新增物件</a>
+    </header>
+
+    <div class="admin-content">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>縮圖</th>
+              <th>物件名稱</th>
+              <th>中文名</th>
+              <th>狀態</th>
+              <th>類型</th>
+              <th>售價</th>
+              <th>精選</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <tr><td colspan="8" style="text-align:center;padding:3rem;color:var(--gray-400);">載入中…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete confirm modal -->
+<div class="modal" id="deleteModal">
+  <div class="modal__box">
+    <h3 class="modal__title">確認刪除</h3>
+    <p class="modal__text" id="deleteMsg">確定要刪除此物件嗎？此操作無法復原。</p>
+    <div class="modal__actions">
+      <button class="btn btn--sm" style="background:#ef4444;color:#fff;" id="confirmDeleteBtn">確認刪除</button>
+      <button class="btn btn--outline-dark btn--sm" id="cancelDeleteBtn">取消</button>
+    </div>
+  </div>
+</div>
+
+<script>
+fetch('/api/auth/me').then(r => r.json()).then(d => { if (!d.isAdmin) location.href = '/admin/login.html'; });
+
+let deleteTargetId = null;
+
+function loadProperties() {
+  fetch('/api/properties').then(r => r.json()).then(props => {
+    const tbody = document.getElementById('tableBody');
+    if (!props.length) {
+      tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:3rem;color:var(--gray-400);">尚無物件，請點選「新增物件」。</td></tr>';
+      return;
+    }
+    tbody.innerHTML = props.map(p => `
+      <tr>
+        <td>
+          ${p.thumbnail
+            ? `<img src="${p.thumbnail}" class="thumb" alt="">`
+            : `<div class="thumb-placeholder"><svg width="16" height="16" fill="none" stroke="var(--gray-400)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>`}
+        </td>
+        <td style="font-weight:500;">${p.name}</td>
+        <td style="color:var(--gray-600);">${p.nameZh}</td>
+        <td>
+          <span class="badge badge--${p.status}">
+            ${p.status === 'available' ? '可購入' : '即將推出'}
+          </span>
+        </td>
+        <td style="color:var(--gray-600);">${p.type === 'villa' ? '別墅' : '度假村'}</td>
+        <td style="color:var(--gold);font-family:var(--font-serif);">${p.priceDisplay}</td>
+        <td>${p.featured ? '<span class="badge badge--featured">精選</span>' : '<span style="color:var(--gray-400);font-size:0.8rem;">—</span>'}</td>
+        <td>
+          <div class="action-btns">
+            <a href="/property.html?id=${p.id}" target="_blank" class="btn btn--outline-dark btn--sm" title="前台預覽">預覽</a>
+            <a href="/admin/property-form.html?id=${p.id}" class="btn btn--outline-gold btn--sm">編輯</a>
+            <button class="btn btn--sm" style="border:1px solid #fca5a5;color:#ef4444;" onclick="confirmDelete('${p.id}','${p.nameZh}')">刪除</button>
+          </div>
+        </td>
+      </tr>
+    `).join('');
+  });
+}
+
+function confirmDelete(id, name) {
+  deleteTargetId = id;
+  document.getElementById('deleteMsg').textContent = `確定要刪除「${name}」嗎？此操作無法復原。`;
+  document.getElementById('deleteModal').classList.add('open');
+}
+
+document.getElementById('confirmDeleteBtn').addEventListener('click', async () => {
+  if (!deleteTargetId) return;
+  const res = await fetch(`/api/properties/${deleteTargetId}`, { method: 'DELETE' });
+  if (res.ok) { document.getElementById('deleteModal').classList.remove('open'); loadProperties(); }
+  else { alert('刪除失敗，請重試。'); }
+});
+
+document.getElementById('cancelDeleteBtn').addEventListener('click', () => {
+  document.getElementById('deleteModal').classList.remove('open');
+  deleteTargetId = null;
+});
+
+document.getElementById('logoutBtn').addEventListener('click', async (e) => {
+  e.preventDefault();
+  await fetch('/api/auth/logout', { method: 'POST' });
+  location.href = '/admin/login.html';
+});
+
+loadProperties();
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>後台登入 | One Third Residence Taiwan</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body { background: var(--charcoal); display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+    .login-box { width: 100%; max-width: 400px; padding: 2.5rem; background: var(--white); }
+    .login-logo { text-align: center; margin-bottom: 2.5rem; }
+    .login-logo-cn { font-family: var(--font-serif); font-size: 1.8rem; display: block; }
+    .login-logo-en { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; margin-top: 4px; }
+    .login-title { font-family: var(--font-serif); font-size: 1.1rem; text-align: center; color: var(--gray-600); margin-bottom: 2rem; font-weight: 400; }
+    .error-msg { background: #fef2f2; border-left: 2px solid #f44336; padding: 0.75rem 1rem; font-size: 0.85rem; color: #c62828; margin-bottom: 1.25rem; display: none; }
+  </style>
+</head>
+<body>
+<div class="login-box">
+  <div class="login-logo">
+    <!-- Logo: 同 public/images/logo.png -->
+    <img src="/images/logo.png" alt="One Third Residence Taiwan"
+         style="height:48px;width:auto;display:block;margin:0 auto 0.5rem;"
+         onerror="this.style.display='none';document.getElementById('loginTextLogo').style.display='block'">
+    <div id="loginTextLogo" style="display:none;">
+      <span class="login-logo-cn">ONE THIRD</span>
+      <span class="login-logo-en">RESIDENCE TAIWAN</span>
+    </div>
+    <div id="loginTextLogoDefault">
+      <span class="login-logo-cn">ONE THIRD</span>
+      <span class="login-logo-en">RESIDENCE TAIWAN</span>
+    </div>
+  </div>
+  <script>
+    // Show default text; hide when image loads
+    var li = document.querySelector('.login-logo img');
+    li.addEventListener('load', function(){ document.getElementById('loginTextLogoDefault').style.display='none'; li.style.display='block'; });
+    li.addEventListener('error', function(){ document.getElementById('loginTextLogoDefault').style.display='block'; });
+  </script>
+  <p class="login-title">後台管理系統</p>
+  <div class="error-msg" id="errorMsg"></div>
+  <form id="loginForm">
+    <div class="form-group">
+      <label>帳號</label>
+      <input type="text" class="form-control" id="username" value="admin" required autocomplete="username">
+    </div>
+    <div class="form-group">
+      <label>密碼</label>
+      <input type="password" class="form-control" id="password" required autocomplete="current-password" placeholder="••••••••">
+    </div>
+    <button type="submit" class="btn btn--gold" style="width:100%;justify-content:center;padding:0.9em;" id="loginBtn">登入</button>
+  </form>
+  <p style="text-align:center;margin-top:1.5rem;font-size:0.75rem;color:var(--gray-400);">
+    <a href="/index.html" style="color:var(--gray-400);">← 返回前台網站</a>
+  </p>
+</div>
+<script>
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('loginBtn');
+  const err = document.getElementById('errorMsg');
+  btn.disabled = true; btn.textContent = '登入中…';
+  err.style.display = 'none';
+  try {
+    const res = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: document.getElementById('username').value,
+        password: document.getElementById('password').value
+      })
+    });
+    const data = await res.json();
+    if (res.ok) { location.href = '/admin/index.html'; }
+    else { err.textContent = data.error || '登入失敗'; err.style.display = 'block'; btn.disabled = false; btn.textContent = '登入'; }
+  } catch {
+    err.textContent = '連線失敗，請檢查網路連線'; err.style.display = 'block'; btn.disabled = false; btn.textContent = '登入';
+  }
+});
+</script>
+</body>
+</html>
