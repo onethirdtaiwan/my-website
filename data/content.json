@@ -1,0 +1,46 @@
+{
+  "home": {
+    "heroImage": "/images/img_01.webp",
+    "heroVideoUrl": "",
+    "heroTitle": "擁有一片<em>白馬粉雪</em><br>從床到雪坡，只需一步",
+    "heroSubtitle": "日本頂級度假村地產買賣 · 托租代管全方位服務",
+    "aboutImage": "https://images.unsplash.com/photo-1721370336185-d24b8152fd37?w=900&q=80",
+    "aboutTitle": "深耕日本地產<br>連結台日頂級生活",
+    "aboutText1": "萬舍國際有限公司為日本 C.M. Phoenix 集團在台灣的子公司，專注於日本長野縣白馬村高端度假地產的代理銷售及管理服務。",
+    "aboutText2": "我們的團隊橫跨台日兩地，深諳日本地產法規與在地文化，協助台灣買家以最透明、最安心的方式，擁有屬於自己的日本白馬度假物業。",
+    "stat1Value": "3+",
+    "stat1Label": "旗艦物件項目",
+    "stat2Value": "10+",
+    "stat2Label": "年日本地產經驗",
+    "stat3Value": "100%",
+    "stat3Label": "台日雙語服務",
+    "svc1Title": "地產買賣仲介",
+    "svc1Text": "代理日本母集團 C.M. Phoenix 旗下白馬村頂級物件，提供完整的物件資訊、法律諮詢及購屋手續代辦服務。",
+    "svc2Title": "托租代管服務",
+    "svc2Text": "購屋後委託我們進行短租或長租管理，專業團隊負責清潔、維修、入住接待及收益結算，讓您坐享穩定回報。",
+    "svc3Title": "度假訂房體驗",
+    "svc3Text": "尚未購屋？先以旅客身份入住白馬頂級別墅，親身感受「從床到粉雪只需一步」的頂級滑雪假期。",
+    "why1Title": "母集團直接授權",
+    "why1Text": "作為 C.M. Phoenix 在台唯一指定代理，提供第一手物件資訊與最優惠購入條件。",
+    "why2Title": "全程中文服務",
+    "why2Text": "從物件諮詢、合約簽署、銀行往來到完購交屋，全程台日雙語團隊陪伴，無語言障礙。",
+    "why3Title": "透明法規諮詢",
+    "why3Text": "協助理解日本外籍人士置產規定、稅務結構及資金匯出入流程，讓投資決策有所依據。",
+    "why4Title": "購後全方位代管",
+    "why4Text": "入手後可委託我們進行短租管理，由在地專業團隊負責所有運營事務，坐享穩定租金收益。",
+    "ctaTitle": "開始您的白馬置產之旅",
+    "ctaText": "無論您是初次了解日本地產，或已有明確購置意向，我們的專業團隊都歡迎您與我們聯繫。"
+  },
+  "contact": {
+    "phoneTw": "",
+    "phoneJp": "",
+    "email": "",
+    "addressTw": "",
+    "hours": "週一 ～ 週五：09:00 – 18:00",
+    "lineId": "",
+    "wechat": ""
+  },
+  "company": {
+    "footerDescription": "日本白馬村頂級度假地產代理（One Third Residence Taiwan），提供地產買賣、托租代管及度假訂房全方位服務。"
+  }
+}
