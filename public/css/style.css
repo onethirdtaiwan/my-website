@@ -224,6 +224,14 @@ p  { line-height: 1.75; }
   display: block; width: 1px; height: 40px;
   background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.4));
 }
+.hero__video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: none;
+}
+.hero--video .hero__bg { display: none; }
+.hero--video .hero__video { display: block; }
 
 /* Page hero (inner pages) */
 .page-hero {

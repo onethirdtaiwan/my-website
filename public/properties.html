@@ -116,27 +116,25 @@
 <script src="/js/i18n.js"></script>
 <script src="/js/main.js"></script>
 <script>
-// Load properties from API
-async function loadProperties(filter = 'all') {
-  const res = await fetch('/api/properties');
-  const props = await res.json();
+let _allProperties = [];
 
-  const filtered = props.filter(p => {
-    if (filter === 'all') return true;
-    if (filter === 'available') return p.status === 'available';
-    if (filter === 'coming-soon') return p.status === 'coming-soon';
-    if (filter === 'villa') return p.type === 'villa';
-    if (filter === 'resort') return p.type === 'resort';
-    return true;
-  });
+function statusLabel(p) {
+  const t = window.t;
+  return p.status === 'available' ? (t('prop.status.available') || '可購入') : (t('prop.status.coming-soon') || '即將推出');
+}
 
+function renderGrid(props) {
+  const t = window.t;
   const grid = document.getElementById('propertiesGrid');
   const noRes = document.getElementById('noResults');
-
-  if (!filtered.length) { grid.innerHTML = ''; noRes.classList.remove('hidden'); return; }
+  if (!props.length) {
+    grid.innerHTML = '';
+    noRes.classList.remove('hidden');
+    noRes.querySelector('p').textContent = t('props.no-results') || '目前此分類暫無物件，敬請期待。';
+    return;
+  }
   noRes.classList.add('hidden');
-
-  grid.innerHTML = filtered.map(p => `
+  grid.innerHTML = props.map(p => `
     <article class="property-card fade-up">
       <a href="/property.html?id=${p.id}">
         <div class="property-card__image">
@@ -144,21 +142,19 @@ async function loadProperties(filter = 'all') {
             ? `<img src="${p.thumbnail}" alt="${p.nameZh}" loading="lazy">`
             : `<div class="property-card__placeholder">
                 <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-                <span>${p.status === 'coming-soon' ? '即將推出' : '圖片即將更新'}</span>
+                <span>${p.status === 'coming-soon' ? (t('prop.status.img-soon') || '即將推出') : (t('prop.status.img-updating') || '圖片即將更新')}</span>
                </div>`
           }
           ${p.highlight ? `<div class="property-card__badge">${p.highlight}</div>` : ''}
-          <div class="property-card__status property-card__status--${p.status}">
-            ${p.status === 'available' ? '可購入' : '即將推出'}
-          </div>
+          <div class="property-card__status property-card__status--${p.status}">${statusLabel(p)}</div>
         </div>
         <div class="property-card__body">
           <div class="property-card__location">${p.location}</div>
           <h3 class="property-card__name">${p.name}</h3>
           <p class="property-card__name-zh">${p.nameZh}</p>
           <div class="property-card__meta">
-            ${p.bedrooms ? `<span class="property-card__meta-item">${p.bedrooms} 臥室</span>` : ''}
-            ${p.bathrooms ? `<span class="property-card__meta-item">${p.bathrooms} 衛浴</span>` : ''}
+            ${p.bedrooms ? `<span class="property-card__meta-item">${p.bedrooms} ${t('unit.beds') || '臥室'}</span>` : ''}
+            ${p.bathrooms ? `<span class="property-card__meta-item">${p.bathrooms} ${t('unit.baths') || '衛浴'}</span>` : ''}
             ${p.area ? `<span class="property-card__meta-item">${p.area} m²</span>` : ''}
           </div>
           <div class="property-card__price">${p.priceDisplay}</div>
@@ -166,8 +162,6 @@ async function loadProperties(filter = 'all') {
       </a>
     </article>
   `).join('');
-
-  // re-trigger fade-up
   setTimeout(() => {
     grid.querySelectorAll('.fade-up').forEach(el => {
       const io = new IntersectionObserver(entries => {
@@ -178,20 +172,36 @@ async function loadProperties(filter = 'all') {
   }, 50);
 }
 
-// Filter buttons
+let _activeFilter = 'all';
+
+async function loadProperties(filter) {
+  _activeFilter = filter || _activeFilter;
+  if (!_allProperties.length) {
+    const res = await fetch('/api/properties');
+    _allProperties = await res.json();
+  }
+  const filtered = _allProperties.filter(p => {
+    if (_activeFilter === 'all') return true;
+    if (_activeFilter === 'available') return p.status === 'available';
+    if (_activeFilter === 'coming-soon') return p.status === 'coming-soon';
+    if (_activeFilter === 'villa') return p.type === 'villa';
+    if (_activeFilter === 'resort') return p.type === 'resort';
+    return true;
+  });
+  renderGrid(filtered);
+}
+
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => {
-      b.classList.remove('btn--gold');
-      b.classList.add('btn--outline-dark');
-    });
-    btn.classList.add('btn--gold');
-    btn.classList.remove('btn--outline-dark');
+    document.querySelectorAll('.filter-btn').forEach(b => { b.classList.remove('btn--gold'); b.classList.add('btn--outline-dark'); });
+    btn.classList.add('btn--gold'); btn.classList.remove('btn--outline-dark');
     loadProperties(btn.dataset.filter);
   });
 });
 
-loadProperties();
+document.addEventListener('langchange', () => loadProperties());
+
+loadProperties('all');
 </script>
 </body>
 </html>

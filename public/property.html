@@ -133,124 +133,160 @@
 <script src="/js/i18n.js"></script>
 <script src="/js/main.js"></script>
 <script>
-(async () => {
-  const params = new URLSearchParams(location.search);
-  const id = params.get('id');
-  if (!id) { location.href = '/properties.html'; return; }
+(function initPropertyPage() {
+  async function loadProperty() {
+    const params = new URLSearchParams(location.search);
+    const id = params.get('id');
+    if (!id) { location.href = '/properties.html'; return; }
 
-  const res = await fetch(`/api/properties/${id}`);
-  if (!res.ok) { location.href = '/properties.html'; return; }
-  const p = await res.json();
+    const res = await fetch(`/api/properties/${id}`);
+    if (!res.ok) { location.href = '/properties.html'; return; }
+    const p = await res.json();
 
-  document.title = `${p.nameZh} | One Third Residence Taiwan`;
-  document.getElementById('breadcrumbName').textContent = p.nameZh;
-
-  // Gallery
-  if (p.images && p.images.length > 0) {
-    document.getElementById('galleryMain').innerHTML = `<img src="${p.images[0]}" alt="${p.nameZh}">`;
-    if (p.images[1]) document.getElementById('gallerySide1').innerHTML = `<img src="${p.images[1]}" alt="${p.nameZh}">`;
-    if (p.images[2]) document.getElementById('gallerySide2').innerHTML = `<img src="${p.images[2]}" alt="${p.nameZh}">`;
-  } else if (p.thumbnail) {
-    document.getElementById('galleryMain').innerHTML = `<img src="${p.thumbnail}" alt="${p.nameZh}">`;
+    window._currentProperty = p;
+    renderProperty(p);
   }
 
-  // Detail
-  const statusLabel = p.status === 'available' ? '<span style="background:var(--gold);color:#fff;padding:0.3em 0.8em;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;">可購入</span>' : '<span style="background:var(--charcoal);color:#fff;padding:0.3em 0.8em;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;">即將推出</span>';
+  function renderProperty(p) {
+    const t = window.t;
+    document.title = `${p.nameZh} | One Third Residence Taiwan`;
+    document.getElementById('breadcrumbName').textContent = p.nameZh;
 
-  document.getElementById('propertyDetail').innerHTML = `
-    <div>
-      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
-        ${statusLabel}
-        <span style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);">${p.location}</span>
-      </div>
-      <h1 style="font-family:var(--font-serif);font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.1;">${p.name}</h1>
-      <p style="color:var(--gray-600);margin-top:0.3rem;font-size:1.05rem;">${p.nameZh}</p>
-      <div class="divider divider--left" style="margin-top:1.5rem;"></div>
+    // Breadcrumb links
+    const bcHome = document.querySelector('.breadcrumb a[href="/index.html"]');
+    const bcProps = document.querySelector('.breadcrumb a[href="/properties.html"]');
+    if (bcHome) bcHome.textContent = t('prop.breadcrumb.home') || '首頁';
+    if (bcProps) bcProps.textContent = t('prop.breadcrumb.properties') || '白馬村物件';
 
-      <p style="color:var(--gray-600);line-height:1.8;margin-top:1.5rem;">${p.descriptionZh}</p>
-      ${p.descriptionEn ? `<p style="color:var(--gray-400);line-height:1.8;margin-top:0.75rem;font-style:italic;font-size:0.9rem;">${p.descriptionEn}</p>` : ''}
+    // Gallery
+    if (p.images && p.images.length > 0) {
+      document.getElementById('galleryMain').innerHTML = `<img src="${p.images[0]}" alt="${p.nameZh}">`;
+      if (p.images[1]) document.getElementById('gallerySide1').innerHTML = `<img src="${p.images[1]}" alt="${p.nameZh}">`;
+      if (p.images[2]) document.getElementById('gallerySide2').innerHTML = `<img src="${p.images[2]}" alt="${p.nameZh}">`;
+    } else if (p.thumbnail) {
+      document.getElementById('galleryMain').innerHTML = `<img src="${p.thumbnail}" alt="${p.nameZh}">`;
+    }
 
-      <div class="property-detail__specs">
-        ${p.bedrooms != null ? `<div class="property-spec"><span class="property-spec__label">臥室數</span><span class="property-spec__value">${p.bedrooms} 間</span></div>` : ''}
-        ${p.bathrooms != null ? `<div class="property-spec"><span class="property-spec__label">衛浴數</span><span class="property-spec__value">${p.bathrooms} 間</span></div>` : ''}
-        ${p.area != null ? `<div class="property-spec"><span class="property-spec__label">室內面積</span><span class="property-spec__value">${p.area} m²</span></div>` : ''}
-        ${p.floors != null ? `<div class="property-spec"><span class="property-spec__label">樓層數</span><span class="property-spec__value">${p.floors} 層</span></div>` : ''}
-        ${p.yearBuilt != null ? `<div class="property-spec"><span class="property-spec__label">建造年份</span><span class="property-spec__value">${p.yearBuilt} 年</span></div>` : ''}
-        <div class="property-spec"><span class="property-spec__label">地點</span><span class="property-spec__value" style="font-size:1rem;">${p.location}</span></div>
-      </div>
+    const statusLabel = p.status === 'available'
+      ? `<span style="background:var(--gold);color:#fff;padding:0.3em 0.8em;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;">${t('prop.status.available') || '可購入'}</span>`
+      : `<span style="background:var(--charcoal);color:#fff;padding:0.3em 0.8em;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;">${t('prop.status.coming-soon') || '即將推出'}</span>`;
 
-      ${p.features && p.features.length ? `
-        <div class="property-features">
-          <h3>物件特色</h3>
-          <div class="feature-list">
-            ${p.features.map(f => `
-              <span class="feature-tag">
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="var(--gold)" stroke-width="2"><polyline points="2 6 5 9 10 3"/></svg>
-                ${f}
-              </span>
-            `).join('')}
-          </div>
+    document.getElementById('propertyDetail').innerHTML = `
+      <div>
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
+          ${statusLabel}
+          <span style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);">${p.location}</span>
         </div>
-      ` : ''}
-    </div>
-
-    <div class="inquiry-box">
-      <div class="inquiry-form">
-        <h3>詢問此物件</h3>
-        <div class="property-detail__price-tag">${p.priceDisplay}</div>
-        <form id="inquiryForm">
-          <div class="form-group">
-            <label>您的姓名 *</label>
-            <input type="text" class="form-control" required placeholder="請輸入姓名">
+        <h1 style="font-family:var(--font-serif);font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.1;">${p.name}</h1>
+        <p style="color:var(--gray-600);margin-top:0.3rem;font-size:1.05rem;">${p.nameZh}</p>
+        <div class="divider divider--left" style="margin-top:1.5rem;"></div>
+        <p style="color:var(--gray-600);line-height:1.8;margin-top:1.5rem;">${window.i18nCurrent === 'en' && p.descriptionEn ? p.descriptionEn : p.descriptionZh}</p>
+        <div class="property-detail__specs">
+          ${p.bedrooms != null ? `<div class="property-spec"><span class="property-spec__label">${t('prop.spec.beds.label') || '臥室數'}</span><span class="property-spec__value">${p.bedrooms} ${t('unit.beds') || '間'}</span></div>` : ''}
+          ${p.bathrooms != null ? `<div class="property-spec"><span class="property-spec__label">${t('prop.spec.baths.label') || '衛浴數'}</span><span class="property-spec__value">${p.bathrooms} ${t('unit.baths') || '間'}</span></div>` : ''}
+          ${p.area != null ? `<div class="property-spec"><span class="property-spec__label">${t('prop.spec.area.label') || '室內面積'}</span><span class="property-spec__value">${p.area} m²</span></div>` : ''}
+          ${p.floors != null ? `<div class="property-spec"><span class="property-spec__label">${t('prop.spec.floors.label') || '樓層數'}</span><span class="property-spec__value">${p.floors} ${t('unit.beds') || '層'}</span></div>` : ''}
+          ${p.yearBuilt != null ? `<div class="property-spec"><span class="property-spec__label">${t('prop.spec.year.label') || '建造年份'}</span><span class="property-spec__value">${p.yearBuilt}</span></div>` : ''}
+          <div class="property-spec"><span class="property-spec__label">${t('prop.spec.loc.label') || '地點'}</span><span class="property-spec__value" style="font-size:1rem;">${p.location}</span></div>
+        </div>
+        ${p.features && p.features.length ? `
+          <div class="property-features">
+            <h3>${t('prop.features.title') || '物件特色'}</h3>
+            <div class="feature-list">
+              ${p.features.map(f => `<span class="feature-tag"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="var(--gold)" stroke-width="2"><polyline points="2 6 5 9 10 3"/></svg>${f}</span>`).join('')}
+            </div>
           </div>
-          <div class="form-group">
-            <label>聯絡電話 *</label>
-            <input type="tel" class="form-control" required placeholder="請輸入電話">
-          </div>
-          <div class="form-group">
-            <label>電子信箱</label>
-            <input type="email" class="form-control" placeholder="your@email.com">
-          </div>
-          <div class="form-group">
-            <label>詢問內容</label>
-            <textarea class="form-control" rows="4" placeholder="請輸入您想了解的事項，例如：購買流程、投資回報、物件規格等…"></textarea>
-          </div>
-          <input type="hidden" name="propertyId" value="${p.id}">
-          <input type="hidden" name="propertyName" value="${p.nameZh}">
-          <button type="submit" class="btn btn--gold" style="width:100%;justify-content:center;">送出詢問</button>
-        </form>
-        <p style="font-size:0.75rem;color:var(--gray-400);text-align:center;margin-top:1rem;">我們通常於 1 個工作日內回覆</p>
+        ` : ''}
       </div>
-      <div style="margin-top:1.5rem;padding:1.5rem;border:1px solid var(--gray-200);">
-        <div style="font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;">直接聯繫</div>
-        <a href="/contact.html" class="btn btn--outline-dark" style="width:100%;justify-content:center;">前往聯絡頁面</a>
+      <div class="inquiry-box">
+        <div class="inquiry-form">
+          <h3>${t('prop.inq.title') || '詢問此物件'}</h3>
+          <div class="property-detail__price-tag">${p.priceDisplay}</div>
+          <form id="inquiryForm">
+            <div class="form-group">
+              <label>${t('prop.inq.name.label') || '您的姓名 *'}</label>
+              <input type="text" class="form-control" required placeholder="${t('prop.inq.name.ph') || '請輸入姓名'}">
+            </div>
+            <div class="form-group">
+              <label>${t('prop.inq.phone.label') || '聯絡電話 *'}</label>
+              <input type="tel" class="form-control" required placeholder="${t('prop.inq.phone.ph') || '請輸入電話'}">
+            </div>
+            <div class="form-group">
+              <label>${t('prop.inq.email.label') || '電子信箱'}</label>
+              <input type="email" class="form-control" placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+              <label>${t('prop.inq.msg.label') || '詢問內容'}</label>
+              <textarea class="form-control" rows="4" placeholder="${t('prop.inq.msg.ph') || '請輸入您想了解的事項…'}"></textarea>
+            </div>
+            <input type="hidden" name="propertyId" value="${p.id}">
+            <input type="hidden" name="propertyName" value="${p.nameZh}">
+            <button type="submit" class="btn btn--gold" style="width:100%;justify-content:center;">${t('prop.inq.btn') || '送出詢問'}</button>
+          </form>
+          <p style="font-size:0.75rem;color:var(--gray-400);text-align:center;margin-top:1rem;">${t('prop.inq.reply') || '我們通常於 1 個工作日內回覆'}</p>
+        </div>
+        <div style="margin-top:1.5rem;padding:1.5rem;border:1px solid var(--gray-200);">
+          <div style="font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;">${t('prop.inq.direct.title') || '直接聯繫'}</div>
+          <a href="/contact.html" class="btn btn--outline-dark" style="width:100%;justify-content:center;">${t('prop.contact.btn') || '前往聯絡頁面'}</a>
+        </div>
       </div>
-    </div>
-  `;
+    `;
 
-  // Related properties
-  const allRes = await fetch('/api/properties');
-  const allProps = await allRes.json();
-  const related = allProps.filter(rp => rp.id !== p.id).slice(0, 2);
-  if (related.length) {
-    document.getElementById('relatedSection').style.display = '';
-    document.getElementById('relatedGrid').innerHTML = related.map(rp => `
-      <article class="property-card">
-        <a href="/property.html?id=${rp.id}">
-          <div class="property-card__image">
-            ${rp.thumbnail ? `<img src="${rp.thumbnail}" alt="${rp.nameZh}" loading="lazy">` : `<div class="property-card__placeholder"><svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span>${rp.status === 'coming-soon' ? '即將推出' : '圖片更新中'}</span></div>`}
-            <div class="property-card__status property-card__status--${rp.status}">${rp.status === 'available' ? '可購入' : '即將推出'}</div>
-          </div>
-          <div class="property-card__body">
-            <div class="property-card__location">${rp.location}</div>
-            <h3 class="property-card__name">${rp.name}</h3>
-            <p class="property-card__name-zh">${rp.nameZh}</p>
-            <div class="property-card__price">${rp.priceDisplay}</div>
-          </div>
-        </a>
-      </article>
-    `).join('');
+    // Re-bind inquiry form
+    const form = document.getElementById('inquiryForm');
+    if (form) {
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        const btn = form.querySelector('button[type=submit]');
+        btn.disabled = true; btn.textContent = '傳送中…';
+        await new Promise(r => setTimeout(r, 1000));
+        if (typeof showToast === 'function') showToast('詢問已送出，我們將盡快與您聯繫。');
+        form.reset(); btn.disabled = false;
+        btn.textContent = t('prop.inq.btn') || '送出詢問';
+      });
+    }
+
+    // Related
+    loadRelated(p.id);
   }
+
+  async function loadRelated(currentId) {
+    const t = window.t;
+    try {
+      const allRes = await fetch('/api/properties');
+      const allProps = await allRes.json();
+      const related = allProps.filter(rp => rp.id !== currentId).slice(0, 2);
+      if (!related.length) return;
+
+      const sec = document.getElementById('relatedSection');
+      sec.style.display = '';
+      sec.querySelector('.section__eyebrow').textContent = t('prop.related.eyebrow') || '其他物件';
+      sec.querySelector('.section__title').textContent = t('prop.related.title') || '您可能也有興趣';
+
+      document.getElementById('relatedGrid').innerHTML = related.map(rp => `
+        <article class="property-card">
+          <a href="/property.html?id=${rp.id}">
+            <div class="property-card__image">
+              ${rp.thumbnail ? `<img src="${rp.thumbnail}" alt="${rp.nameZh}" loading="lazy">` : `<div class="property-card__placeholder"><svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span>${rp.status === 'coming-soon' ? (t('prop.status.img-soon') || '即將推出') : (t('prop.status.img-updating') || '圖片更新中')}</span></div>`}
+              <div class="property-card__status property-card__status--${rp.status}">${rp.status === 'available' ? (t('prop.status.available') || '可購入') : (t('prop.status.coming-soon') || '即將推出')}</div>
+            </div>
+            <div class="property-card__body">
+              <div class="property-card__location">${rp.location}</div>
+              <h3 class="property-card__name">${rp.name}</h3>
+              <p class="property-card__name-zh">${rp.nameZh}</p>
+              <div class="property-card__price">${rp.priceDisplay}</div>
+            </div>
+          </a>
+        </article>
+      `).join('');
+    } catch {}
+  }
+
+  loadProperty();
+
+  document.addEventListener('langchange', () => {
+    if (window._currentProperty) renderProperty(window._currentProperty);
+  });
 })();
 </script>
 </body>

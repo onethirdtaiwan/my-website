@@ -39,6 +39,7 @@
 <section class="hero">
   <div class="hero__bg"></div>
   <div class="hero__overlay"></div>
+  <video class="hero__video" id="heroVideo" autoplay muted loop playsinline></video>
   <div class="hero__content">
     <span class="hero__eyebrow" data-i18n="home.hero.eyebrow" data-zh="白馬村 · Hakuba Village · Nagano, Japan">白馬村 · Hakuba Village · Nagano, Japan</span>
     <h1 class="hero__title" data-i18n-html="home.hero.title" data-zh="擁有一片<em>白馬粉雪</em><br>從床到雪坡，只需一步">
@@ -93,17 +94,17 @@
   <div class="container">
     <div class="about-grid">
       <div class="about__image fade-up">
-        <img src="https://images.unsplash.com/photo-1551861568-b2a2fae3a6a2?w=900&q=80" alt="白馬村景致" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=900&q=80" alt="白馬村景致" loading="lazy">
         <div class="about__image-accent"></div>
       </div>
       <div class="fade-up">
         <span class="about__eyebrow" data-i18n="home.about.eyebrow" data-zh="關於萬舍國際">關於萬舍國際</span>
         <h2 class="about__title" data-i18n-html="home.about.title" data-zh="深耕日本地產<br>連結台日頂級生活">深耕日本地產<br>連結台日頂級生活</h2>
         <div class="divider divider--left"></div>
-        <p class="about__text">
+        <p class="about__text" data-i18n="home.about.text1" data-zh="萬舍國際有限公司為日本 C.M. Phoenix 集團在台灣的指定合作夥伴，專注於日本長野縣白馬村高端度假地產的代理銷售及管理服務。">
           萬舍國際有限公司為日本 C.M. Phoenix 集團在台灣的指定合作夥伴，專注於日本長野縣白馬村高端度假地產的代理銷售及管理服務。
         </p>
-        <p class="about__text">
+        <p class="about__text" data-i18n="home.about.text2" data-zh="我們的團隊橫跨台日兩地，深諳日本地產法規與在地文化，協助台灣買家以最透明、最安心的方式，擁有屬於自己的日本白馬度假物業。">
           我們的團隊橫跨台日兩地，深諳日本地產法規與在地文化，協助台灣買家以最透明、最安心的方式，擁有屬於自己的日本白馬度假物業。
         </p>
         <div class="about__stats">
@@ -233,22 +234,22 @@
       <div class="why-item fade-up">
         <span class="why-item__number">01</span>
         <h3 class="why-item__title" style="color:var(--white)" data-i18n="home.why1.title" data-zh="母集團直接授權">母集團直接授權</h3>
-        <p class="why-item__text">作為 C.M. Phoenix 在台唯一指定代理，提供第一手物件資訊與最優惠購入條件。</p>
+        <p class="why-item__text" data-i18n="home.why1.text" data-zh="作為 C.M. Phoenix 在台唯一指定代理，提供第一手物件資訊與最優惠購入條件。">作為 C.M. Phoenix 在台唯一指定代理，提供第一手物件資訊與最優惠購入條件。</p>
       </div>
       <div class="why-item fade-up">
         <span class="why-item__number">02</span>
         <h3 class="why-item__title" style="color:var(--white)" data-i18n="home.why2.title" data-zh="全程中文服務">全程中文服務</h3>
-        <p class="why-item__text">從物件諮詢、合約簽署、銀行往來到完購交屋，全程台日雙語團隊陪伴，無語言障礙。</p>
+        <p class="why-item__text" data-i18n="home.why2.text" data-zh="從物件諮詢、合約簽署、銀行往來到完購交屋，全程台日雙語團隊陪伴，無語言障礙。">從物件諮詢、合約簽署、銀行往來到完購交屋，全程台日雙語團隊陪伴，無語言障礙。</p>
       </div>
       <div class="why-item fade-up">
         <span class="why-item__number">03</span>
         <h3 class="why-item__title" style="color:var(--white)" data-i18n="home.why3.title" data-zh="透明法規諮詢">透明法規諮詢</h3>
-        <p class="why-item__text">協助理解日本外籍人士置產規定、稅務結構及資金匯出入流程，讓投資決策有所依據。</p>
+        <p class="why-item__text" data-i18n="home.why3.text" data-zh="協助理解日本外籍人士置產規定、稅務結構及資金匯出入流程，讓投資決策有所依據。">協助理解日本外籍人士置產規定、稅務結構及資金匯出入流程，讓投資決策有所依據。</p>
       </div>
       <div class="why-item fade-up">
         <span class="why-item__number">04</span>
         <h3 class="why-item__title" style="color:var(--white)" data-i18n="home.why4.title" data-zh="購後全方位代管">購後全方位代管</h3>
-        <p class="why-item__text">入手後可委託我們進行短租管理，由在地專業團隊負責所有運營事務，坐享穩定租金收益。</p>
+        <p class="why-item__text" data-i18n="home.why4.text" data-zh="入手後可委託我們進行短租管理，由在地專業團隊負責所有運營事務，坐享穩定租金收益。">入手後可委託我們進行短租管理，由在地專業團隊負責所有運營事務，坐享穩定租金收益。</p>
       </div>
     </div>
   </div>
@@ -261,7 +262,7 @@
     <div style="text-align:center;max-width:600px;margin:auto;">
       <span class="section__eyebrow" style="display:block;margin-bottom:1rem;" data-i18n="home.cta.eyebrow" data-zh="立即諮詢">立即諮詢</span>
       <h2 class="cta__title" data-i18n="home.cta.title" data-zh="開始您的白馬置產之旅">開始您的白馬置產之旅</h2>
-      <p class="cta__text">無論您是初次了解日本地產，或已有明確購置意向，我們的專業團隊都歡迎您與我們聯繫。</p>
+      <p class="cta__text" data-i18n="home.cta.text" data-zh="無論您是初次了解日本地產，或已有明確購置意向，我們的專業團隊都歡迎您與我們聯繫。">無論您是初次了解日本地產，或已有明確購置意向，我們的專業團隊都歡迎您與我們聯繫。</p>
       <a href="/contact.html" class="btn btn--gold" data-i18n="btn.free" data-zh="預約免費諮詢">預約免費諮詢</a>
     </div>
   </div>

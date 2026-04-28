@@ -116,3 +116,18 @@ function showToast(msg, type = 'success') {
     btn.disabled = false; btn.textContent = '送出詢問';
   });
 })();
+
+/* ── Hero video (loads URL from /api/settings if available) ── */
+(function () {
+  const vid = document.getElementById('heroVideo');
+  if (!vid) return;
+  fetch('/api/settings')
+    .then(r => r.ok ? r.json() : null)
+    .then(cfg => {
+      if (cfg && cfg.heroVideoUrl) {
+        vid.src = cfg.heroVideoUrl;
+        vid.closest('.hero').classList.add('hero--video');
+      }
+    })
+    .catch(() => {});
+})();
