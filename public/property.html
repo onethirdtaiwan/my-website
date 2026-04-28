@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>物件詳情 | One Third Residence Taiwan</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .gallery-placeholder {
+      background: linear-gradient(135deg, #2a2825 0%, #1a1715 100%);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 0.5rem;
+      color: var(--gray-600); height: 100%;
+    }
+    .gallery-placeholder span { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.4; }
+  </style>
+</head>
+<body>
+
+<nav class="nav" id="mainNav">
+  <div class="nav__container">
+    <a href="/index.html" class="nav__logo">
+      <!-- LOGO：將您的 Logo 圖片命名為 logo.png 放入 public/images/ 資料夾，即會自動取代下方文字 -->
+      <img src="/images/logo.png" alt="One Third Residence Taiwan" class="nav__logo-img">
+      <span class="nav__logo-fallback">
+        <span class="nav__logo-main">ONE THIRD</span>
+        <span class="nav__logo-sub">RESIDENCE TAIWAN</span>
+      </span>
+    </a>
+    <button class="nav__toggle" id="navToggle" aria-label="開啟選單" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__menu" id="navMenu">
+      <li><a href="/index.html" class="nav__link" data-i18n="nav.home" data-zh="首頁">首頁</a></li>
+      <li><a href="/properties.html" class="nav__link" data-i18n="nav.properties" data-zh="白馬村物件">白馬村物件</a></li>
+      <li><a href="/booking.html" class="nav__link" data-i18n="nav.booking" data-zh="訂房">訂房</a></li>
+      <li><a href="/phoenix.html" class="nav__link">C.M. Phoenix</a></li>
+      <li><a href="/contact.html" class="nav__link" data-i18n="nav.contact" data-zh="聯絡我們">聯絡我們</a></li>
+      <li><a href="/faq.html" class="nav__link">FAQ</a></li>
+      <li><button class="lang-btn" aria-label="Switch to English">EN</button></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Gallery -->
+<div class="property-gallery" id="propertyGallery">
+  <div class="property-gallery__item property-gallery__main" id="galleryMain">
+    <div class="gallery-placeholder">
+      <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+      <span>物件圖片</span>
+    </div>
+  </div>
+  <div class="property-gallery__item property-gallery__side" id="gallerySide1">
+    <div class="gallery-placeholder"><svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg></div>
+  </div>
+  <div class="property-gallery__item property-gallery__side" id="gallerySide2">
+    <div class="gallery-placeholder"><svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg></div>
+  </div>
+</div>
+
+<!-- Breadcrumb -->
+<div style="background:var(--surface);">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="/index.html">首頁</a>
+      <span class="breadcrumb__sep">/</span>
+      <a href="/properties.html">白馬村物件</a>
+      <span class="breadcrumb__sep">/</span>
+      <span id="breadcrumbName">物件詳情</span>
+    </div>
+  </div>
+</div>
+
+<!-- Detail -->
+<section class="section">
+  <div class="container">
+    <div class="property-detail" id="propertyDetail">
+      <!-- Loading state -->
+      <div style="color:var(--gray-400);">載入中…</div>
+      <div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="section section--surface" id="relatedSection" style="display:none;">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__eyebrow">其他物件</span>
+      <h2 class="section__title">您可能也有興趣</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="properties-grid" id="relatedGrid"></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand-name">One Third Residence</div>
+        <div class="footer__brand-en">(TAIWAN) CO., LTD. &nbsp;·&nbsp; 萬舍國際有限公司</div>
+        <p class="footer__brand-text">日本白馬村頂級度假地產代理（One Third Residence Taiwan），提供地產買賣、托租代管及度假訂房全方位服務。</p>
+      </div>
+      <div>
+        <div class="footer__col-title">服務項目</div>
+        <ul class="footer__links">
+          <li><a href="/properties.html" class="footer__link">白馬村物件</a></li>
+          <li><a href="/booking.html" class="footer__link">度假訂房</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">關於我們</div>
+        <ul class="footer__links">
+          <li><a href="/phoenix.html" class="footer__link">C.M. Phoenix</a></li>
+          <li><a href="/faq.html" class="footer__link">常見問題</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">聯絡資訊</div>
+        <ul class="footer__links">
+          <li><a href="/contact.html" class="footer__link">聯絡我們</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 One Third Residence (Taiwan) Co., Ltd · All rights reserved</span>
+      <span>Powered by <span class="footer__gold">C.M. Phoenix Group</span></span>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/i18n.js"></script>
+<script src="/js/main.js"></script>
+<script>
+(async () => {
+  const params = new URLSearchParams(location.search);
+  const id = params.get('id');
+  if (!id) { location.href = '/properties.html'; return; }
+
+  const res = await fetch(`/api/properties/${id}`);
+  if (!res.ok) { location.href = '/properties.html'; return; }
+  const p = await res.json();
+
+  document.title = `${p.nameZh} | One Third Residence Taiwan`;
+  document.getElementById('breadcrumbName').textContent = p.nameZh;
+
+  // Gallery
+  if (p.images && p.images.length > 0) {
+    document.getElementById('galleryMain').innerHTML = `<img src="${p.images[0]}" alt="${p.nameZh}">`;
+    if (p.images[1]) document.getElementById('gallerySide1').innerHTML = `<img src="${p.images[1]}" alt="${p.nameZh}">`;
+    if (p.images[2]) document.getElementById('gallerySide2').innerHTML = `<img src="${p.images[2]}" alt="${p.nameZh}">`;
+  } else if (p.thumbnail) {
+    document.getElementById('galleryMain').innerHTML = `<img src="${p.thumbnail}" alt="${p.nameZh}">`;
+  }
+
+  // Detail
+  const statusLabel = p.status === 'available' ? '<span style="background:var(--gold);color:#fff;padding:0.3em 0.8em;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;">可購入</span>' : '<span style="background:var(--charcoal);color:#fff;padding:0.3em 0.8em;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;">即將推出</span>';
+
+  document.getElementById('propertyDetail').innerHTML = `
+    <div>
+      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
+        ${statusLabel}
+        <span style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);">${p.location}</span>
+      </div>
+      <h1 style="font-family:var(--font-serif);font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.1;">${p.name}</h1>
+      <p style="color:var(--gray-600);margin-top:0.3rem;font-size:1.05rem;">${p.nameZh}</p>
+      <div class="divider divider--left" style="margin-top:1.5rem;"></div>
+
+      <p style="color:var(--gray-600);line-height:1.8;margin-top:1.5rem;">${p.descriptionZh}</p>
+      ${p.descriptionEn ? `<p style="color:var(--gray-400);line-height:1.8;margin-top:0.75rem;font-style:italic;font-size:0.9rem;">${p.descriptionEn}</p>` : ''}
+
+      <div class="property-detail__specs">
+        ${p.bedrooms != null ? `<div class="property-spec"><span class="property-spec__label">臥室數</span><span class="property-spec__value">${p.bedrooms} 間</span></div>` : ''}
+        ${p.bathrooms != null ? `<div class="property-spec"><span class="property-spec__label">衛浴數</span><span class="property-spec__value">${p.bathrooms} 間</span></div>` : ''}
+        ${p.area != null ? `<div class="property-spec"><span class="property-spec__label">室內面積</span><span class="property-spec__value">${p.area} m²</span></div>` : ''}
+        ${p.floors != null ? `<div class="property-spec"><span class="property-spec__label">樓層數</span><span class="property-spec__value">${p.floors} 層</span></div>` : ''}
+        ${p.yearBuilt != null ? `<div class="property-spec"><span class="property-spec__label">建造年份</span><span class="property-spec__value">${p.yearBuilt} 年</span></div>` : ''}
+        <div class="property-spec"><span class="property-spec__label">地點</span><span class="property-spec__value" style="font-size:1rem;">${p.location}</span></div>
+      </div>
+
+      ${p.features && p.features.length ? `
+        <div class="property-features">
+          <h3>物件特色</h3>
+          <div class="feature-list">
+            ${p.features.map(f => `
+              <span class="feature-tag">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="var(--gold)" stroke-width="2"><polyline points="2 6 5 9 10 3"/></svg>
+                ${f}
+              </span>
+            `).join('')}
+          </div>
+        </div>
+      ` : ''}
+    </div>
+
+    <div class="inquiry-box">
+      <div class="inquiry-form">
+        <h3>詢問此物件</h3>
+        <div class="property-detail__price-tag">${p.priceDisplay}</div>
+        <form id="inquiryForm">
+          <div class="form-group">
+            <label>您的姓名 *</label>
+            <input type="text" class="form-control" required placeholder="請輸入姓名">
+          </div>
+          <div class="form-group">
+            <label>聯絡電話 *</label>
+            <input type="tel" class="form-control" required placeholder="請輸入電話">
+          </div>
+          <div class="form-group">
+            <label>電子信箱</label>
+            <input type="email" class="form-control" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label>詢問內容</label>
+            <textarea class="form-control" rows="4" placeholder="請輸入您想了解的事項，例如：購買流程、投資回報、物件規格等…"></textarea>
+          </div>
+          <input type="hidden" name="propertyId" value="${p.id}">
+          <input type="hidden" name="propertyName" value="${p.nameZh}">
+          <button type="submit" class="btn btn--gold" style="width:100%;justify-content:center;">送出詢問</button>
+        </form>
+        <p style="font-size:0.75rem;color:var(--gray-400);text-align:center;margin-top:1rem;">我們通常於 1 個工作日內回覆</p>
+      </div>
+      <div style="margin-top:1.5rem;padding:1.5rem;border:1px solid var(--gray-200);">
+        <div style="font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;">直接聯繫</div>
+        <a href="/contact.html" class="btn btn--outline-dark" style="width:100%;justify-content:center;">前往聯絡頁面</a>
+      </div>
+    </div>
+  `;
+
+  // Related properties
+  const allRes = await fetch('/api/properties');
+  const allProps = await allRes.json();
+  const related = allProps.filter(rp => rp.id !== p.id).slice(0, 2);
+  if (related.length) {
+    document.getElementById('relatedSection').style.display = '';
+    document.getElementById('relatedGrid').innerHTML = related.map(rp => `
+      <article class="property-card">
+        <a href="/property.html?id=${rp.id}">
+          <div class="property-card__image">
+            ${rp.thumbnail ? `<img src="${rp.thumbnail}" alt="${rp.nameZh}" loading="lazy">` : `<div class="property-card__placeholder"><svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span>${rp.status === 'coming-soon' ? '即將推出' : '圖片更新中'}</span></div>`}
+            <div class="property-card__status property-card__status--${rp.status}">${rp.status === 'available' ? '可購入' : '即將推出'}</div>
+          </div>
+          <div class="property-card__body">
+            <div class="property-card__location">${rp.location}</div>
+            <h3 class="property-card__name">${rp.name}</h3>
+            <p class="property-card__name-zh">${rp.nameZh}</p>
+            <div class="property-card__price">${rp.priceDisplay}</div>
+          </div>
+        </a>
+      </article>
+    `).join('');
+  }
+})();
+</script>
+</body>
+</html>

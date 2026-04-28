@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.local
+
+# macOS
+.DS_Store
+
+# Uploads (user-uploaded images — don't commit to git)
+public/uploads/
+
+# Python cache
+__pycache__/
+*.pyc

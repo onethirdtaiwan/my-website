@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>白馬村訂房 | One Third Residence Taiwan</title>
+  <meta name="description" content="在線預訂日本白馬村頂級滑雪度假別墅，體驗從床到粉雪一步的滑雪生活。">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .booking-feature { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 2rem; }
+    .booking-feature__icon { flex-shrink: 0; width: 44px; height: 44px; border: 1px solid var(--gold-pale); display: flex; align-items: center; justify-content: center; color: var(--gold); }
+    .booking-feature__title { font-family: var(--font-serif); font-size: 1.1rem; margin-bottom: 0.3rem; }
+    .booking-feature__text { font-size: 0.88rem; color: var(--gray-600); line-height: 1.65; }
+  </style>
+</head>
+<body>
+
+<nav class="nav nav--light" id="mainNav">
+  <div class="nav__container">
+    <a href="/index.html" class="nav__logo">
+      <!-- LOGO：將您的 Logo 圖片命名為 logo.png 放入 public/images/ 資料夾，即會自動取代下方文字 -->
+      <img src="/images/logo.png" alt="One Third Residence Taiwan" class="nav__logo-img">
+      <span class="nav__logo-fallback">
+        <span class="nav__logo-main">ONE THIRD</span>
+        <span class="nav__logo-sub">RESIDENCE TAIWAN</span>
+      </span>
+    </a>
+    <button class="nav__toggle" id="navToggle" aria-label="開啟選單" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__menu" id="navMenu">
+      <li><a href="/index.html" class="nav__link" data-i18n="nav.home" data-zh="首頁">首頁</a></li>
+      <li><a href="/properties.html" class="nav__link" data-i18n="nav.properties" data-zh="白馬村物件">白馬村物件</a></li>
+      <li><a href="/booking.html" class="nav__link" data-i18n="nav.booking" data-zh="訂房">訂房</a></li>
+      <li><a href="/phoenix.html" class="nav__link">C.M. Phoenix</a></li>
+      <li><a href="/contact.html" class="nav__link" data-i18n="nav.contact" data-zh="聯絡我們">聯絡我們</a></li>
+      <li><a href="/faq.html" class="nav__link">FAQ</a></li>
+      <li><button class="lang-btn" aria-label="Switch to English">EN</button></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" style="height:60vh;min-height:480px;">
+  <div class="hero__bg" style="background-image:url('https://images.unsplash.com/photo-1544918498-9fbed00ca76e?w=1600&q=80');"></div>
+  <div class="hero__overlay"></div>
+  <div class="hero__content">
+    <span class="hero__eyebrow" data-i18n="booking.hero.eyebrow" data-zh="Hakuba Village · Nagano">Hakuba Village · Nagano</span>
+    <h1 class="hero__title" data-i18n-html="booking.hero.title" data-zh="白馬度假村<em>訂房</em>">白馬度假村<em>訂房</em></h1>
+    <p class="hero__subtitle" data-i18n="booking.hero.subtitle" data-zh="預訂頂級滑雪直通別墅，親身體驗粉雪天堂">預訂頂級滑雪直通別墅，親身體驗粉雪天堂</p>
+  </div>
+</section>
+
+<!-- Intro -->
+<section class="section section--surface">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
+      <div class="fade-up">
+        <span class="about__eyebrow" data-i18n="booking.why.eyebrow" data-zh="為何在白馬入住">為何在白馬入住</span>
+        <h2 style="font-family:var(--font-serif);font-size:clamp(1.8rem,3vw,2.5rem);margin-bottom:0.75rem;" data-i18n-html="booking.why.title" data-zh="從床到粉雪<br>只需一步">從床到粉雪<br>只需一步</h2>
+        <div class="divider divider--left"></div>
+        <p style="color:var(--gray-600);margin-top:1.25rem;line-height:1.8;">白馬五竜 Toomi 滑雪道直通別墅，讓您從寢室的暖意直接踏上日本最頂級的粉雪斜坡。不需搭乘接駁車，不需排隊等候，只需幾步，便是那片令人沉醉的白色世界。</p>
+        <div style="margin-top:2.5rem;">
+          <div class="booking-feature">
+            <div class="booking-feature__icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <div>
+              <div class="booking-feature__title" data-i18n="booking.f1.title" data-zh="頂級設備與家具">頂級設備與家具</div>
+              <p class="booking-feature__text">每棟別墅均採用設計師家具、頂級寢具及現代化廚房設備，讓您的度假生活品質不打折。</p>
+            </div>
+          </div>
+          <div class="booking-feature">
+            <div class="booking-feature__icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="booking-feature__title" data-i18n="booking.f2.title" data-zh="專業配套服務">專業配套服務</div>
+              <p class="booking-feature__text">提供滑雪器材配送至門、車站接駁、私人廚師預約及專業滑雪教練安排等尊榮服務。</p>
+            </div>
+          </div>
+          <div class="booking-feature">
+            <div class="booking-feature__icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div>
+              <div class="booking-feature__title" data-i18n="booking.f3.title" data-zh="適合家族及團體">適合家族及團體</div>
+              <p class="booking-feature__text">寬敞的開放式客廳與多臥室設計，是家族旅遊、朋友同行的最佳選擇，共享白馬獨特體驗。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fade-up" style="position:relative;">
+        <img src="https://images.unsplash.com/photo-1601127580826-e1a7c7a51284?w=800&q=80" alt="白馬村雪景" style="width:100%;aspect-ratio:3/4;object-fit:cover;" loading="lazy">
+        <div style="position:absolute;bottom:-1.5rem;left:-1.5rem;width:50%;aspect-ratio:1;border:1px solid var(--gold-pale);z-index:-1;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Booking Widget -->
+<section class="section">
+  <div class="container">
+    <div class="section__header fade-up">
+      <span class="section__eyebrow" data-i18n="booking.widget.eyebrow" data-zh="立即預訂">立即預訂</span>
+      <h2 class="section__title" data-i18n="booking.widget.title" data-zh="選擇您的入住日期">選擇您的入住日期</h2>
+      <div class="divider"></div>
+      <p class="section__subtitle" data-i18n="booking.widget.subtitle" data-zh="透過 1/3rd Hakuba 官方訂房系統，安全快速完成預訂">透過 1/3rd Hakuba 官方訂房系統，安全快速完成預訂</p>
+    </div>
+
+    <div class="fade-up" style="max-width:900px;margin:0 auto;">
+      <div class="booking-iframe-wrapper">
+        <iframe
+          src="https://1-3rd.com/zh/"
+          title="1/3rd Hakuba 訂房系統"
+          loading="lazy"
+          allow="payment"
+        ></iframe>
+      </div>
+      <p style="text-align:center;margin-top:1.5rem;font-size:0.85rem;color:var(--gray-400);">
+        若嵌入式訂房系統無法顯示，請
+        <a href="https://1-3rd.com/zh/" target="_blank" rel="noopener" style="color:var(--gold);border-bottom:1px solid var(--gold-pale);">點此前往訂房官網</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Notice -->
+<section class="section section--ivory">
+  <div class="container" style="max-width:760px;">
+    <div class="fade-up">
+      <span class="section__eyebrow" style="display:block;text-align:center;margin-bottom:1rem;" data-i18n="booking.notice.eyebrow" data-zh="訂房須知">訂房須知</span>
+      <h2 style="text-align:center;font-family:var(--font-serif);font-size:1.8rem;margin-bottom:2rem;" data-i18n="booking.notice.title" data-zh="入住前須知">入住前須知</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;" class="fade-up">
+      <div style="padding:1.5rem;background:var(--white);border:1px solid var(--gray-200);">
+        <div style="font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">Check-in / Check-out</div>
+        <p style="font-size:0.9rem;color:var(--gray-600);line-height:1.7;">入住時間：15:00 以後<br>退房時間：11:00 以前</p>
+      </div>
+      <div style="padding:1.5rem;background:var(--white);border:1px solid var(--gray-200);">
+        <div style="font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">取消政策</div>
+        <p style="font-size:0.9rem;color:var(--gray-600);line-height:1.7;">請以訂房系統顯示的取消條款為準，不同房型與日期可能有所不同。</p>
+      </div>
+      <div style="padding:1.5rem;background:var(--white);border:1px solid var(--gray-200);">
+        <div style="font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">交通資訊</div>
+        <p style="font-size:0.9rem;color:var(--gray-600);line-height:1.7;">可預約白馬車站接駁服務，或自行租車前往。物件位於白馬五竜滑雪場旁。</p>
+      </div>
+      <div style="padding:1.5rem;background:var(--white);border:1px solid var(--gray-200);">
+        <div style="font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">附加服務</div>
+        <p style="font-size:0.9rem;color:var(--gray-600);line-height:1.7;">滑雪器材配送、滑雪教練、私人廚師等附加服務請於訂房後另行預約。</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;" class="fade-up">
+      <p style="color:var(--gray-600);font-size:0.9rem;" data-i18n="booking.notice.q" data-zh="有任何問題？">有任何問題？</p>
+      <a href="/contact.html" class="btn btn--outline-dark" style="margin-top:1rem;" data-i18n="btn.contact" data-zh="聯絡我們">聯絡我們</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand-name">One Third Residence</div>
+        <div class="footer__brand-en">(TAIWAN) CO., LTD. &nbsp;·&nbsp; 萬舍國際有限公司</div>
+        <p class="footer__brand-text">日本白馬村頂級度假地產代理（One Third Residence Taiwan），提供地產買賣、托租代管及度假訂房全方位服務。</p>
+      </div>
+      <div>
+        <div class="footer__col-title">服務項目</div>
+        <ul class="footer__links">
+          <li><a href="/properties.html" class="footer__link">白馬村物件</a></li>
+          <li><a href="/booking.html" class="footer__link">度假訂房</a></li>
+          <li><a href="/contact.html" class="footer__link">托租代管諮詢</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">關於我們</div>
+        <ul class="footer__links">
+          <li><a href="/index.html" class="footer__link">公司介紹</a></li>
+          <li><a href="/phoenix.html" class="footer__link">C.M. Phoenix</a></li>
+          <li><a href="/faq.html" class="footer__link">常見問題</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">聯絡資訊</div>
+        <ul class="footer__links">
+          <li><a href="/contact.html" class="footer__link">聯絡我們</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 One Third Residence (Taiwan) Co., Ltd · All rights reserved</span>
+      <span>Powered by <span class="footer__gold">C.M. Phoenix Group</span></span>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/i18n.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

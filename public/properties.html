@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>白馬村物件 | One Third Residence Taiwan</title>
+  <meta name="description" content="日本長野縣白馬村頂級滑雪度假地產，包含 Slopefront Villa 系列及 1/3rd Village 度假村開發項目。">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav class="nav" id="mainNav">
+  <div class="nav__container">
+    <a href="/index.html" class="nav__logo">
+      <!-- LOGO：將您的 Logo 圖片命名為 logo.png 放入 public/images/ 資料夾，即會自動取代下方文字 -->
+      <img src="/images/logo.png" alt="One Third Residence Taiwan" class="nav__logo-img">
+      <span class="nav__logo-fallback">
+        <span class="nav__logo-main">ONE THIRD</span>
+        <span class="nav__logo-sub">RESIDENCE TAIWAN</span>
+      </span>
+    </a>
+    <button class="nav__toggle" id="navToggle" aria-label="開啟選單" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__menu" id="navMenu">
+      <li><a href="/index.html" class="nav__link" data-i18n="nav.home" data-zh="首頁">首頁</a></li>
+      <li><a href="/properties.html" class="nav__link" data-i18n="nav.properties" data-zh="白馬村物件">白馬村物件</a></li>
+      <li><a href="/booking.html" class="nav__link" data-i18n="nav.booking" data-zh="訂房">訂房</a></li>
+      <li><a href="/phoenix.html" class="nav__link">C.M. Phoenix</a></li>
+      <li><a href="/contact.html" class="nav__link" data-i18n="nav.contact" data-zh="聯絡我們">聯絡我們</a></li>
+      <li><a href="/faq.html" class="nav__link">FAQ</a></li>
+      <li><button class="lang-btn" aria-label="Switch to English">EN</button></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <span class="page-hero__eyebrow" data-i18n="page.props.eyebrow" data-zh="Hakuba Village · Nagano, Japan">Hakuba Village · Nagano, Japan</span>
+    <h1 class="page-hero__title" data-i18n="page.props.title" data-zh="白馬村物件">白馬村物件</h1>
+    <p class="page-hero__subtitle" data-i18n="props.subtitle" data-zh="探索 C.M. Phoenix 旗下頂級滑雪度假地產">探索 C.M. Phoenix 旗下頂級滑雪度假地產</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <!-- Filter bar -->
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;margin-bottom:3rem;" class="fade-up">
+      <button class="btn btn--gold btn--sm filter-btn active" data-filter="all" data-i18n="props.filter.all" data-zh="全部物件">全部物件</button>
+      <button class="btn btn--outline-dark btn--sm filter-btn" data-filter="available" data-i18n="props.filter.avail" data-zh="可購入">可購入</button>
+      <button class="btn btn--outline-dark btn--sm filter-btn" data-filter="coming-soon" data-i18n="props.filter.soon" data-zh="即將推出">即將推出</button>
+      <button class="btn btn--outline-dark btn--sm filter-btn" data-filter="villa" data-i18n="props.filter.villa" data-zh="別墅">別墅</button>
+      <button class="btn btn--outline-dark btn--sm filter-btn" data-filter="resort" data-i18n="props.filter.resort" data-zh="度假村">度假村</button>
+    </div>
+
+    <div class="properties-grid" id="propertiesGrid">
+      <!-- populated by JS -->
+    </div>
+
+    <div id="noResults" class="hidden" style="text-align:center;padding:4rem;color:var(--gray-400);">
+      <p>目前此分類暫無物件，敬請期待。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Interest CTA -->
+<section style="background:var(--surface);padding-block:4rem;">
+  <div class="container" style="text-align:center;">
+    <span class="section__eyebrow" data-i18n="props.cta.eyebrow" data-zh="有意向？">有意向？</span>
+    <h2 style="margin-bottom:1rem;" data-i18n="props.cta.title" data-zh="預約專屬物件說明會">預約專屬物件說明會</h2>
+    <div class="divider"></div>
+    <p style="color:var(--gray-600);max-width:500px;margin:1rem auto 2rem;" data-i18n="props.cta.text" data-zh="我們提供一對一的專屬諮詢，詳細說明物件規格、購置流程及投資回報分析。">我們提供一對一的專屬諮詢，詳細說明物件規格、購置流程及投資回報分析。</p>
+    <a href="/contact.html" class="btn btn--gold" data-i18n="btn.free" data-zh="預約免費諮詢">預約免費諮詢</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand-name">One Third Residence</div>
+        <div class="footer__brand-en">(TAIWAN) CO., LTD. &nbsp;·&nbsp; 萬舍國際有限公司</div>
+        <p class="footer__brand-text">日本白馬村頂級度假地產代理（One Third Residence Taiwan），提供地產買賣、托租代管及度假訂房全方位服務。</p>
+      </div>
+      <div>
+        <div class="footer__col-title">服務項目</div>
+        <ul class="footer__links">
+          <li><a href="/properties.html" class="footer__link">白馬村物件</a></li>
+          <li><a href="/booking.html" class="footer__link">度假訂房</a></li>
+          <li><a href="/contact.html" class="footer__link">托租代管諮詢</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">關於我們</div>
+        <ul class="footer__links">
+          <li><a href="/index.html" class="footer__link">公司介紹</a></li>
+          <li><a href="/phoenix.html" class="footer__link">C.M. Phoenix</a></li>
+          <li><a href="/faq.html" class="footer__link">常見問題</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">聯絡資訊</div>
+        <ul class="footer__links">
+          <li><a href="/contact.html" class="footer__link">聯絡我們</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 One Third Residence (Taiwan) Co., Ltd · All rights reserved</span>
+      <span>Powered by <span class="footer__gold">C.M. Phoenix Group</span></span>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/i18n.js"></script>
+<script src="/js/main.js"></script>
+<script>
+// Load properties from API
+async function loadProperties(filter = 'all') {
+  const res = await fetch('/api/properties');
+  const props = await res.json();
+
+  const filtered = props.filter(p => {
+    if (filter === 'all') return true;
+    if (filter === 'available') return p.status === 'available';
+    if (filter === 'coming-soon') return p.status === 'coming-soon';
+    if (filter === 'villa') return p.type === 'villa';
+    if (filter === 'resort') return p.type === 'resort';
+    return true;
+  });
+
+  const grid = document.getElementById('propertiesGrid');
+  const noRes = document.getElementById('noResults');
+
+  if (!filtered.length) { grid.innerHTML = ''; noRes.classList.remove('hidden'); return; }
+  noRes.classList.add('hidden');
+
+  grid.innerHTML = filtered.map(p => `
+    <article class="property-card fade-up">
+      <a href="/property.html?id=${p.id}">
+        <div class="property-card__image">
+          ${p.thumbnail
+            ? `<img src="${p.thumbnail}" alt="${p.nameZh}" loading="lazy">`
+            : `<div class="property-card__placeholder">
+                <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+                <span>${p.status === 'coming-soon' ? '即將推出' : '圖片即將更新'}</span>
+               </div>`
+          }
+          ${p.highlight ? `<div class="property-card__badge">${p.highlight}</div>` : ''}
+          <div class="property-card__status property-card__status--${p.status}">
+            ${p.status === 'available' ? '可購入' : '即將推出'}
+          </div>
+        </div>
+        <div class="property-card__body">
+          <div class="property-card__location">${p.location}</div>
+          <h3 class="property-card__name">${p.name}</h3>
+          <p class="property-card__name-zh">${p.nameZh}</p>
+          <div class="property-card__meta">
+            ${p.bedrooms ? `<span class="property-card__meta-item">${p.bedrooms} 臥室</span>` : ''}
+            ${p.bathrooms ? `<span class="property-card__meta-item">${p.bathrooms} 衛浴</span>` : ''}
+            ${p.area ? `<span class="property-card__meta-item">${p.area} m²</span>` : ''}
+          </div>
+          <div class="property-card__price">${p.priceDisplay}</div>
+        </div>
+      </a>
+    </article>
+  `).join('');
+
+  // re-trigger fade-up
+  setTimeout(() => {
+    grid.querySelectorAll('.fade-up').forEach(el => {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+      }, { threshold: 0.05 });
+      io.observe(el);
+    });
+  }, 50);
+}
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => {
+      b.classList.remove('btn--gold');
+      b.classList.add('btn--outline-dark');
+    });
+    btn.classList.add('btn--gold');
+    btn.classList.remove('btn--outline-dark');
+    loadProperties(btn.dataset.filter);
+  });
+});
+
+loadProperties();
+</script>
+</body>
+</html>
