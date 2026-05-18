@@ -25,16 +25,24 @@
     <ul class="nav__menu" id="navMenu">
       <li><a href="/index.html" class="nav__link" data-i18n="nav.home" data-zh="首頁">首頁</a></li>
       <li><a href="/properties.html" class="nav__link" data-i18n="nav.properties" data-zh="白馬村物件">白馬村物件</a></li>
+      <li><a href="/tokyo.html" class="nav__link" data-i18n="nav.tokyo" data-zh="東京物件">東京物件</a></li>
+      <li><a href="/dubai.html" class="nav__link" data-i18n="nav.dubai" data-zh="杜拜物件">杜拜物件</a></li>
       <li><a href="/booking.html" class="nav__link" data-i18n="nav.booking" data-zh="訂房">訂房</a></li>
       <li><a href="/phoenix.html" class="nav__link">C.M. Phoenix</a></li>
       <li><a href="/contact.html" class="nav__link" data-i18n="nav.contact" data-zh="聯絡我們">聯絡我們</a></li>
       <li><a href="/faq.html" class="nav__link">FAQ</a></li>
-      <li><button class="lang-btn" aria-label="Switch to English">EN</button></li>
+      <li>
+      <div class="lang-switcher">
+        <button class="lang-btn" data-lang="zh">中</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ja">日</button>
+      </div>
+    </li>
     </ul>
   </div>
 </nav>
 
-<div class="page-hero">
+<div class="page-hero" id="propertiesPageHero">
   <div class="container">
     <span class="page-hero__eyebrow" data-i18n="page.props.eyebrow" data-zh="Hakuba Village · Nagano, Japan">Hakuba Village · Nagano, Japan</span>
     <h1 class="page-hero__title" data-i18n="page.props.title" data-zh="白馬村物件">白馬村物件</h1>
@@ -59,8 +67,101 @@
     </div>
 
     <div id="noResults" class="hidden" style="text-align:center;padding:4rem;color:var(--gray-400);">
-      <p>目前此分類暫無物件，敬請期待。</p>
+      <p data-i18n="props.no-results" data-zh="目前此分類暫無物件，敬請期待。">目前此分類暫無物件，敬請期待。</p>
     </div>
+  </div>
+</section>
+
+<!-- Hakuba Data Section -->
+<section class="section section--dark" id="hakubaData">
+  <div class="container">
+
+    <div class="section__header fade-up">
+      <span class="section__eyebrow" data-i18n="data.eyebrow" data-zh="白馬村投資數據">白馬村投資數據</span>
+      <h2 class="section__title" style="color:var(--white);" data-i18n="data.title" data-zh="數字說明一切">數字說明一切</h2>
+      <div class="divider"></div>
+      <p class="section__subtitle" style="color:rgba(255,255,255,0.55);" data-i18n="data.subtitle" data-zh="白馬村是日本成長最快的滑雪度假投資市場，以下數據反映其長期價值潛力">白馬村是日本成長最快的滑雪度假投資市場，以下數據反映其長期價值潛力</p>
+    </div>
+
+    <!-- 大數字統計列 -->
+    <div class="hakuba-stats fade-up">
+      <div class="hakuba-stat">
+        <span class="hakuba-stat__num" data-i18n-html="data.stat1.num" data-zh="100<em>萬+</em>">100<em>萬+</em></span>
+        <span class="hakuba-stat__label" data-i18n="data.stat1.label" data-zh="年均到訪遊客人次">年均到訪遊客人次</span>
+      </div>
+      <div class="hakuba-stat">
+        <span class="hakuba-stat__num">+35<em>%</em></span>
+        <span class="hakuba-stat__label" data-i18n="data.stat2.label" data-zh="近 5 年地價漲幅">近 5 年地價漲幅</span>
+      </div>
+      <div class="hakuba-stat">
+        <span class="hakuba-stat__num">10<em>m+</em></span>
+        <span class="hakuba-stat__label" data-i18n="data.stat3.label" data-zh="年均降雪量">年均降雪量</span>
+      </div>
+      <div class="hakuba-stat">
+        <span class="hakuba-stat__num" data-i18n-html="data.stat4.num" data-zh="120<em>天+</em>">120<em>天+</em></span>
+        <span class="hakuba-stat__label" data-i18n="data.stat4.label" data-zh="穩定雪季天數">穩定雪季天數</span>
+      </div>
+    </div>
+
+    <!-- 三大詳細說明 -->
+    <div class="hakuba-cards fade-up">
+
+      <!-- 遊客數量 -->
+      <div class="hakuba-card">
+        <div class="hakuba-card__icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+        </div>
+        <h3 class="hakuba-card__title" data-i18n="data.visitors.title" data-zh="旅遊熱度持續攀升">旅遊熱度持續攀升</h3>
+        <ul class="hakuba-card__list">
+          <li data-i18n="data.visitors.p1" data-zh="白馬村每年接待逾 100 萬名旅客，為長野縣訪客最密集的滑雪聚落">白馬村每年接待逾 100 萬名旅客，為長野縣訪客最密集的滑雪聚落</li>
+          <li data-i18n="data.visitors.p2" data-zh="國際旅客占比持續成長，2023 年突破 30%，台灣、澳洲、東南亞為前三大客源市場">國際旅客占比持續成長，2023 年突破 30%，台灣、澳洲、東南亞為前三大客源市場</li>
+          <li data-i18n="data.visitors.p3" data-zh="滑雪旺季（12 月－3 月）住宿長期供不應求，短租收益率穩定">滑雪旺季（12 月－3 月）住宿長期供不應求，短租收益率穩定</li>
+          <li data-i18n="data.visitors.p4" data-zh="白馬奧運遺產加持，持續吸引國際媒體曝光與高端滑雪客群">白馬奧運遺產加持（1998 年長野冬奧），持續吸引國際媒體曝光與高端滑雪客群</li>
+        </ul>
+      </div>
+
+      <!-- 地價增長 -->
+      <div class="hakuba-card">
+        <div class="hakuba-card__icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+            <polyline points="17 6 23 6 23 12"/>
+          </svg>
+        </div>
+        <h3 class="hakuba-card__title" data-i18n="data.price.title" data-zh="地產價值穩健增長">地產價值穩健增長</h3>
+        <ul class="hakuba-card__list">
+          <li data-i18n="data.price.p1" data-zh="近 5 年核心滑雪地段地價平均上漲 25–40%，Ski-in / Ski-out 物件溢價效果尤為顯著">近 5 年核心滑雪地段地價平均上漲 25–40%，Ski-in / Ski-out 物件溢價效果尤為顯著</li>
+          <li data-i18n="data.price.p2" data-zh="外資（澳洲、香港、台灣）持續流入，推高優質地段稀缺物件的長期資本增值">外資（澳洲、香港、台灣）持續流入，推高優質地段稀缺物件的長期資本增值</li>
+          <li data-i18n="data.price.p3" data-zh="日圓匯率處於歷史性低位，現為台灣買家以優惠成本進場的戰略窗口期">日圓匯率處於歷史性低位，現為台灣買家以優惠成本進場的戰略窗口期</li>
+          <li data-i18n="data.price.p4" data-zh="外籍人士在日本置產無特別限制，持有成本透明，法規完善">外籍人士在日本置產無特別限制，持有成本透明，法規完善</li>
+        </ul>
+      </div>
+
+      <!-- 雪況穩定性 -->
+      <div class="hakuba-card">
+        <div class="hakuba-card__icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/>
+            <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/><line x1="19.07" y1="4.93" x2="4.93" y2="19.07"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
+        <h3 class="hakuba-card__title" data-i18n="data.snow.title" data-zh="頂級粉雪 · 亞洲之冠">頂級粉雪 · 亞洲之冠</h3>
+        <ul class="hakuba-card__list">
+          <li data-i18n="data.snow.p1" data-zh="白馬村年均降雪量超過 10 公尺，位居亞洲前列，高海拔地區可達 14 公尺">白馬村年均降雪量超過 10 公尺，位居亞洲前列，高海拔地區可達 14 公尺</li>
+          <li data-i18n="data.snow.p2" data-zh="粉雪含水率僅 7–8%（歐洲阿爾卑斯約 20–30%），輕盈乾燥的「日本粉雪」享譽全球">粉雪含水率僅 7–8%（歐洲阿爾卑斯約 20–30%），輕盈乾燥的「日本粉雪」享譽全球</li>
+          <li data-i18n="data.snow.p3" data-zh="雪季穩定長達 120–150 天，通常 11 月底開板，隔年 5 月底封山">雪季穩定長達 120–150 天，通常 11 月底開板，隔年 5 月底封山</li>
+          <li data-i18n="data.snow.p4" data-zh="冬季均溫 -8°C 至 0°C，日本海氣流帶來穩定降雪，鮮少出現融雪再結冰現象">冬季均溫 -8°C 至 0°C，日本海氣流帶來穩定降雪，鮮少出現融雪再結冰現象</li>
+        </ul>
+      </div>
+
+    </div><!-- /hakuba-cards -->
+
+    <p class="hakuba-source fade-up" data-i18n="data.source" data-zh="數據來源：長野縣觀光部、白馬村役場、日本不動產研究所（2024）">數據來源：長野縣觀光部、白馬村役場、日本不動產研究所（2024）</p>
+
   </div>
 </section>
 
@@ -81,28 +182,30 @@
       <div>
         <div class="footer__brand-name">One Third Residence</div>
         <div class="footer__brand-en">(TAIWAN) CO., LTD. &nbsp;·&nbsp; 萬舍國際有限公司</div>
-        <p class="footer__brand-text">日本白馬村頂級度假地產代理（One Third Residence Taiwan），提供地產買賣、托租代管及度假訂房全方位服務。</p>
+        <p class="footer__brand-text" data-i18n="footer.brand.text" data-zh="日本白馬村頂級度假地產代理（One Third Residence Taiwan），提供地產買賣、托租代管及度假訂房全方位服務。">日本白馬村頂級度假地產代理（One Third Residence Taiwan），提供地產買賣、托租代管及度假訂房全方位服務。</p>
       </div>
       <div>
-        <div class="footer__col-title">服務項目</div>
+        <div class="footer__col-title" data-i18n="footer.col.services" data-zh="服務項目">服務項目</div>
         <ul class="footer__links">
-          <li><a href="/properties.html" class="footer__link">白馬村物件</a></li>
-          <li><a href="/booking.html" class="footer__link">度假訂房</a></li>
-          <li><a href="/contact.html" class="footer__link">托租代管諮詢</a></li>
+          <li><a href="/properties.html" class="footer__link" data-i18n="footer.link.properties" data-zh="白馬村物件">白馬村物件</a></li>
+          <li><a href="/tokyo.html" class="footer__link" data-i18n="footer.link.tokyo" data-zh="東京物件">東京物件</a></li>
+          <li><a href="/dubai.html" class="footer__link" data-i18n="footer.link.dubai" data-zh="杜拜物件">杜拜物件</a></li>
+          <li><a href="/booking.html" class="footer__link" data-i18n="footer.link.booking" data-zh="度假訂房">度假訂房</a></li>
+          <li><a href="/contact.html" class="footer__link" data-i18n="footer.link.rental.cta" data-zh="托租代管諮詢">托租代管諮詢</a></li>
         </ul>
       </div>
       <div>
-        <div class="footer__col-title">關於我們</div>
+        <div class="footer__col-title" data-i18n="footer.col.about" data-zh="關於我們">關於我們</div>
         <ul class="footer__links">
-          <li><a href="/index.html" class="footer__link">公司介紹</a></li>
+          <li><a href="/index.html" class="footer__link" data-i18n="footer.link.about.us" data-zh="公司介紹">公司介紹</a></li>
           <li><a href="/phoenix.html" class="footer__link">C.M. Phoenix</a></li>
-          <li><a href="/faq.html" class="footer__link">常見問題</a></li>
+          <li><a href="/faq.html" class="footer__link" data-i18n="footer.link.faq" data-zh="常見問題">常見問題</a></li>
         </ul>
       </div>
       <div>
-        <div class="footer__col-title">聯絡資訊</div>
+        <div class="footer__col-title" data-i18n="footer.col.contact" data-zh="聯絡資訊">聯絡資訊</div>
         <ul class="footer__links">
-          <li><a href="/contact.html" class="footer__link">聯絡我們</a></li>
+          <li><a href="/contact.html" class="footer__link" data-i18n="footer.link.contact" data-zh="聯絡我們">聯絡我們</a></li>
         </ul>
       </div>
     </div>
@@ -180,7 +283,8 @@ async function loadProperties(filter) {
     const res = await fetch('/api/properties');
     _allProperties = await res.json();
   }
-  const filtered = _allProperties.filter(p => {
+  const hakuba = _allProperties.filter(p => (p.city || 'hakuba') === 'hakuba');
+  const filtered = hakuba.filter(p => {
     if (_activeFilter === 'all') return true;
     if (_activeFilter === 'available') return p.status === 'available';
     if (_activeFilter === 'coming-soon') return p.status === 'coming-soon';
@@ -202,6 +306,13 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 document.addEventListener('langchange', () => loadProperties());
 
 loadProperties('all');
+</script>
+<script>
+fetch('/api/content').then(function(r){return r.ok?r.json():null;}).then(function(c){
+  if(!c||!c.backgrounds) return;
+  var url = c.backgrounds.propertiesHero;
+  if(url) { var el=document.getElementById('propertiesPageHero'); if(el){el.classList.add('page-hero--bg');el.style.backgroundImage="url('"+url+"')";} }
+}).catch(function(){});
 </script>
 </body>
 </html>

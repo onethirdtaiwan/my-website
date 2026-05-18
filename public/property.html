@@ -33,11 +33,19 @@
     <ul class="nav__menu" id="navMenu">
       <li><a href="/index.html" class="nav__link" data-i18n="nav.home" data-zh="首頁">首頁</a></li>
       <li><a href="/properties.html" class="nav__link" data-i18n="nav.properties" data-zh="白馬村物件">白馬村物件</a></li>
+      <li><a href="/tokyo.html" class="nav__link" data-i18n="nav.tokyo" data-zh="東京物件">東京物件</a></li>
+      <li><a href="/dubai.html" class="nav__link" data-i18n="nav.dubai" data-zh="杜拜物件">杜拜物件</a></li>
       <li><a href="/booking.html" class="nav__link" data-i18n="nav.booking" data-zh="訂房">訂房</a></li>
       <li><a href="/phoenix.html" class="nav__link">C.M. Phoenix</a></li>
       <li><a href="/contact.html" class="nav__link" data-i18n="nav.contact" data-zh="聯絡我們">聯絡我們</a></li>
       <li><a href="/faq.html" class="nav__link">FAQ</a></li>
-      <li><button class="lang-btn" aria-label="Switch to English">EN</button></li>
+      <li>
+      <div class="lang-switcher">
+        <button class="lang-btn" data-lang="zh">中</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ja">日</button>
+      </div>
+    </li>
     </ul>
   </div>
 </nav>
@@ -47,7 +55,7 @@
   <div class="property-gallery__item property-gallery__main" id="galleryMain">
     <div class="gallery-placeholder">
       <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-      <span>物件圖片</span>
+      <span data-i18n="prop.gallery.label" data-zh="物件圖片">物件圖片</span>
     </div>
   </div>
   <div class="property-gallery__item property-gallery__side" id="gallerySide1">
@@ -62,9 +70,9 @@
 <div style="background:var(--surface);">
   <div class="container">
     <div class="breadcrumb">
-      <a href="/index.html">首頁</a>
+      <a href="/index.html" data-i18n="prop.breadcrumb.home" data-zh="首頁">首頁</a>
       <span class="breadcrumb__sep">/</span>
-      <a href="/properties.html">白馬村物件</a>
+      <a href="/properties.html" id="bcCityLink">白馬村物件</a>
       <span class="breadcrumb__sep">/</span>
       <span id="breadcrumbName">物件詳情</span>
     </div>
@@ -76,7 +84,7 @@
   <div class="container">
     <div class="property-detail" id="propertyDetail">
       <!-- Loading state -->
-      <div style="color:var(--gray-400);">載入中…</div>
+      <div style="color:var(--gray-400);" data-i18n="prop.loading" data-zh="載入中…">載入中…</div>
       <div></div>
     </div>
   </div>
@@ -86,8 +94,8 @@
 <section class="section section--surface" id="relatedSection" style="display:none;">
   <div class="container">
     <div class="section__header">
-      <span class="section__eyebrow">其他物件</span>
-      <h2 class="section__title">您可能也有興趣</h2>
+      <span class="section__eyebrow" data-i18n="prop.related.eyebrow" data-zh="其他物件">其他物件</span>
+      <h2 class="section__title" data-i18n="prop.related.title" data-zh="您可能也有興趣">您可能也有興趣</h2>
       <div class="divider"></div>
     </div>
     <div class="properties-grid" id="relatedGrid"></div>
@@ -100,26 +108,26 @@
       <div>
         <div class="footer__brand-name">One Third Residence</div>
         <div class="footer__brand-en">(TAIWAN) CO., LTD. &nbsp;·&nbsp; 萬舍國際有限公司</div>
-        <p class="footer__brand-text">日本白馬村頂級度假地產代理（One Third Residence Taiwan），提供地產買賣、托租代管及度假訂房全方位服務。</p>
+        <p class="footer__brand-text" data-i18n="footer.brand.text" data-zh="日本白馬村頂級度假地產代理（One Third Residence Taiwan），提供地產買賣、托租代管及度假訂房全方位服務。">日本白馬村頂級度假地產代理（One Third Residence Taiwan），提供地產買賣、托租代管及度假訂房全方位服務。</p>
       </div>
       <div>
-        <div class="footer__col-title">服務項目</div>
+        <div class="footer__col-title" data-i18n="footer.col.services" data-zh="服務項目">服務項目</div>
         <ul class="footer__links">
-          <li><a href="/properties.html" class="footer__link">白馬村物件</a></li>
-          <li><a href="/booking.html" class="footer__link">度假訂房</a></li>
+          <li><a href="/properties.html" class="footer__link" data-i18n="footer.link.properties" data-zh="白馬村物件">白馬村物件</a></li>
+          <li><a href="/booking.html" class="footer__link" data-i18n="footer.link.booking" data-zh="度假訂房">度假訂房</a></li>
         </ul>
       </div>
       <div>
-        <div class="footer__col-title">關於我們</div>
+        <div class="footer__col-title" data-i18n="footer.col.about" data-zh="關於我們">關於我們</div>
         <ul class="footer__links">
           <li><a href="/phoenix.html" class="footer__link">C.M. Phoenix</a></li>
-          <li><a href="/faq.html" class="footer__link">常見問題</a></li>
+          <li><a href="/faq.html" class="footer__link" data-i18n="footer.link.faq" data-zh="常見問題">常見問題</a></li>
         </ul>
       </div>
       <div>
-        <div class="footer__col-title">聯絡資訊</div>
+        <div class="footer__col-title" data-i18n="footer.col.contact" data-zh="聯絡資訊">聯絡資訊</div>
         <ul class="footer__links">
-          <li><a href="/contact.html" class="footer__link">聯絡我們</a></li>
+          <li><a href="/contact.html" class="footer__link" data-i18n="footer.link.contact" data-zh="聯絡我們">聯絡我們</a></li>
         </ul>
       </div>
     </div>
@@ -154,9 +162,18 @@
 
     // Breadcrumb links
     const bcHome = document.querySelector('.breadcrumb a[href="/index.html"]');
-    const bcProps = document.querySelector('.breadcrumb a[href="/properties.html"]');
     if (bcHome) bcHome.textContent = t('prop.breadcrumb.home') || '首頁';
-    if (bcProps) bcProps.textContent = t('prop.breadcrumb.properties') || '白馬村物件';
+    const bcProps = document.getElementById('bcCityLink');
+    if (bcProps) {
+      const cityHrefs  = { tokyo: '/tokyo.html', dubai: '/dubai.html' };
+      const cityLabels = { tokyo: t('nav.tokyo') || '東京物件', dubai: t('nav.dubai') || '杜拜物件' };
+      if (p.city && cityHrefs[p.city]) {
+        bcProps.href = cityHrefs[p.city];
+        bcProps.textContent = cityLabels[p.city];
+      } else {
+        bcProps.textContent = t('prop.breadcrumb.properties') || '白馬村物件';
+      }
+    }
 
     // Gallery
     if (p.images && p.images.length > 0) {
@@ -180,7 +197,7 @@
         <h1 style="font-family:var(--font-serif);font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.1;">${p.name}</h1>
         <p style="color:var(--gray-600);margin-top:0.3rem;font-size:1.05rem;">${p.nameZh}</p>
         <div class="divider divider--left" style="margin-top:1.5rem;"></div>
-        <p style="color:var(--gray-600);line-height:1.8;margin-top:1.5rem;">${window.i18nCurrent === 'en' && p.descriptionEn ? p.descriptionEn : p.descriptionZh}</p>
+        <p style="color:var(--gray-600);line-height:1.8;margin-top:1.5rem;">${window.i18nCurrent === 'en' && p.descriptionEn ? p.descriptionEn : window.i18nCurrent === 'ja' && p.descriptionJa ? p.descriptionJa : p.descriptionZh}</p>
         <div class="property-detail__specs">
           ${p.bedrooms != null ? `<div class="property-spec"><span class="property-spec__label">${t('prop.spec.beds.label') || '臥室數'}</span><span class="property-spec__value">${p.bedrooms} ${t('unit.beds') || '間'}</span></div>` : ''}
           ${p.bathrooms != null ? `<div class="property-spec"><span class="property-spec__label">${t('prop.spec.baths.label') || '衛浴數'}</span><span class="property-spec__value">${p.bathrooms} ${t('unit.baths') || '間'}</span></div>` : ''}
@@ -255,7 +272,8 @@
     try {
       const allRes = await fetch('/api/properties');
       const allProps = await allRes.json();
-      const related = allProps.filter(rp => rp.id !== currentId).slice(0, 2);
+      const currentCity = (window._currentProperty && window._currentProperty.city) || 'hakuba';
+      const related = allProps.filter(rp => rp.id !== currentId && (rp.city || 'hakuba') === currentCity).slice(0, 2);
       if (!related.length) return;
 
       const sec = document.getElementById('relatedSection');

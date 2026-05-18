@@ -31,18 +31,26 @@
     <ul class="nav__menu" id="navMenu">
       <li><a href="/index.html" class="nav__link" data-i18n="nav.home" data-zh="首頁">首頁</a></li>
       <li><a href="/properties.html" class="nav__link" data-i18n="nav.properties" data-zh="白馬村物件">白馬村物件</a></li>
+      <li><a href="/tokyo.html" class="nav__link" data-i18n="nav.tokyo" data-zh="東京物件">東京物件</a></li>
+      <li><a href="/dubai.html" class="nav__link" data-i18n="nav.dubai" data-zh="杜拜物件">杜拜物件</a></li>
       <li><a href="/booking.html" class="nav__link" data-i18n="nav.booking" data-zh="訂房">訂房</a></li>
       <li><a href="/phoenix.html" class="nav__link">C.M. Phoenix</a></li>
       <li><a href="/contact.html" class="nav__link" data-i18n="nav.contact" data-zh="聯絡我們">聯絡我們</a></li>
       <li><a href="/faq.html" class="nav__link">FAQ</a></li>
-      <li><button class="lang-btn" aria-label="Switch to English">EN</button></li>
+      <li>
+      <div class="lang-switcher">
+        <button class="lang-btn" data-lang="zh">中</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ja">日</button>
+      </div>
+    </li>
     </ul>
   </div>
 </nav>
 
 <!-- Hero -->
 <section class="hero" style="height:60vh;min-height:480px;">
-  <div class="hero__bg" style="background-image:url('https://images.unsplash.com/photo-1544918498-9fbed00ca76e?w=1600&q=80');"></div>
+  <div class="hero__bg" id="bookingHeroBg" style="background-image:url('https://images.unsplash.com/photo-1544918498-9fbed00ca76e?w=1600&q=80');"></div>
   <div class="hero__overlay"></div>
   <div class="hero__content">
     <span class="hero__eyebrow" data-i18n="booking.hero.eyebrow" data-zh="Hakuba Village · Nagano">Hakuba Village · Nagano</span>
@@ -163,28 +171,28 @@
       <div>
         <div class="footer__brand-name">One Third Residence</div>
         <div class="footer__brand-en">(TAIWAN) CO., LTD. &nbsp;·&nbsp; 萬舍國際有限公司</div>
-        <p class="footer__brand-text">日本白馬村頂級度假地產代理（One Third Residence Taiwan），提供地產買賣、托租代管及度假訂房全方位服務。</p>
+        <p class="footer__brand-text" data-i18n="footer.brand.text" data-zh="日本白馬村頂級度假地產代理（One Third Residence Taiwan），提供地產買賣、托租代管及度假訂房全方位服務。">日本白馬村頂級度假地產代理（One Third Residence Taiwan），提供地產買賣、托租代管及度假訂房全方位服務。</p>
       </div>
       <div>
-        <div class="footer__col-title">服務項目</div>
+        <div class="footer__col-title" data-i18n="footer.col.services" data-zh="服務項目">服務項目</div>
         <ul class="footer__links">
-          <li><a href="/properties.html" class="footer__link">白馬村物件</a></li>
-          <li><a href="/booking.html" class="footer__link">度假訂房</a></li>
-          <li><a href="/contact.html" class="footer__link">托租代管諮詢</a></li>
+          <li><a href="/properties.html" class="footer__link" data-i18n="footer.link.properties" data-zh="白馬村物件">白馬村物件</a></li>
+          <li><a href="/booking.html" class="footer__link" data-i18n="footer.link.booking" data-zh="度假訂房">度假訂房</a></li>
+          <li><a href="/contact.html" class="footer__link" data-i18n="footer.link.rental.cta" data-zh="托租代管諮詢">托租代管諮詢</a></li>
         </ul>
       </div>
       <div>
-        <div class="footer__col-title">關於我們</div>
+        <div class="footer__col-title" data-i18n="footer.col.about" data-zh="關於我們">關於我們</div>
         <ul class="footer__links">
-          <li><a href="/index.html" class="footer__link">公司介紹</a></li>
+          <li><a href="/index.html" class="footer__link" data-i18n="footer.link.about.us" data-zh="公司介紹">公司介紹</a></li>
           <li><a href="/phoenix.html" class="footer__link">C.M. Phoenix</a></li>
-          <li><a href="/faq.html" class="footer__link">常見問題</a></li>
+          <li><a href="/faq.html" class="footer__link" data-i18n="footer.link.faq" data-zh="常見問題">常見問題</a></li>
         </ul>
       </div>
       <div>
-        <div class="footer__col-title">聯絡資訊</div>
+        <div class="footer__col-title" data-i18n="footer.col.contact" data-zh="聯絡資訊">聯絡資訊</div>
         <ul class="footer__links">
-          <li><a href="/contact.html" class="footer__link">聯絡我們</a></li>
+          <li><a href="/contact.html" class="footer__link" data-i18n="footer.link.contact" data-zh="聯絡我們">聯絡我們</a></li>
         </ul>
       </div>
     </div>
@@ -197,5 +205,12 @@
 
 <script src="/js/i18n.js"></script>
 <script src="/js/main.js"></script>
+<script>
+fetch('/api/content').then(function(r){return r.ok?r.json():null;}).then(function(c){
+  if(!c||!c.backgrounds) return;
+  var url = c.backgrounds.bookingHero;
+  if(url) { var el=document.getElementById('bookingHeroBg'); if(el) el.style.backgroundImage="url('"+url+"')"; }
+}).catch(function(){});
+</script>
 </body>
 </html>

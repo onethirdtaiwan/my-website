@@ -1,5 +1,5 @@
 /**
- * One Third Residence Taiwan — i18n (zh-TW / en)
+ * One Third Residence Taiwan — i18n (zh-TW / en / ja)
  * Usage: add data-i18n="key" to any element.
  * HTML content (with tags): data-i18n-html="key"
  * Input placeholders: data-i18n-ph="key"
@@ -93,11 +93,44 @@
     'props.filter.all':    'All',
     'props.filter.avail':  'Available',
     'props.filter.soon':   'Coming Soon',
+    'props.filter.apt':    'Apartment',
     'props.filter.villa':  'Villa',
     'props.filter.resort': 'Resort',
     'props.cta.eyebrow':   'Interested?',
     'props.cta.title':     'Schedule a Private Viewing',
     'props.cta.text':      'We offer one-on-one consultations covering property specs, purchase process, and investment return analysis.',
+
+    // ── Weather Widget ───────────────────────────────────────
+    'wx.title':  'Live Weather',
+    'wx.hakuba': 'Hakuba Village · Nagano',
+    'wx.tokyo':  'Central Tokyo',
+
+    // ── Hakuba Data Section ──────────────────────────────────
+    'data.eyebrow':        'Hakuba Village in Numbers',
+    'data.title':          'The Data Speaks for Itself',
+    'data.subtitle':       'Hakuba Village is Japan\'s fastest-growing ski resort investment market. The figures below reflect its long-term value potential.',
+    'data.stat1.label':    'Annual Visitor Arrivals',
+    'data.stat2.label':    'Land Price Growth (5 Years)',
+    'data.stat3.label':    'Annual Snowfall',
+    'data.stat4.label':    'Stable Snow Season Days',
+    'data.stat1.num':      '1M+',
+    'data.stat4.num':      '120+',
+    'data.source':         'Data source: Nagano Prefecture Tourism Dept., Hakuba Village Office, Japan Real Estate Research Institute (2024)',
+    'data.visitors.title': 'Tourism Momentum on the Rise',
+    'data.visitors.p1':    'Hakuba Village receives over 1 million visitors annually, making it the most visited ski destination in Nagano Prefecture.',
+    'data.visitors.p2':    'International visitors have surpassed 30% (2023), with Taiwan, Australia, and Southeast Asia among the top three source markets.',
+    'data.visitors.p3':    'Peak ski season (December–March) sees consistently full occupancy, supporting stable short-term rental yields.',
+    'data.visitors.p4':    'The 1998 Winter Olympics legacy continues to attract global media coverage and premium ski clientele.',
+    'data.price.title':    'Steady Property Value Growth',
+    'data.price.p1':       'Prime ski-access land values have risen 25–40% over five years, with Ski-in / Ski-out properties commanding a significant premium.',
+    'data.price.p2':       'Sustained foreign capital inflows from Australia, Hong Kong, and Taiwan are driving long-term appreciation of scarce prime-location assets.',
+    'data.price.p3':       'The yen remains at historically favourable levels, creating a strategic entry window for Taiwanese buyers.',
+    'data.price.p4':       'No special restrictions on foreign property ownership in Japan — transparent holding costs and well-established legal framework.',
+    'data.snow.title':     'World-Class Powder · Asia\'s Best',
+    'data.snow.p1':        'Hakuba\'s annual snowfall exceeds 10 metres, reaching up to 14 metres at higher elevations — among the highest in Asia.',
+    'data.snow.p2':        'Snow moisture content is just 7–8% (vs. 20–30% in the European Alps), producing the legendary ultralight "Japow" powder.',
+    'data.snow.p3':        'The snow season reliably spans 120–150 days, typically opening late November and closing in late May.',
+    'data.snow.p4':        'Winter temperatures average -8°C to 0°C; the Sea of Japan weather system delivers consistent snowfall with minimal freeze-thaw cycles.',
 
     // ── property.html (detail) ───────────────────────────────
     'prop.breadcrumb.home':       'Home',
@@ -210,6 +243,9 @@
     'contact.japan.base':      'Japan Base: Hakuba Village, Nagano',
     'contact.reply':           'We typically respond within 1 business day',
     'contact.pending':         'To be updated',
+    'contact.form.ph.name':    'Your name',
+    'contact.form.ph.msg':     'Please describe your question or needs. Our team will provide the most appropriate advice…',
+    'contact.subj.select':     'Please select',
 
     // ── faq.html ─────────────────────────────────────────────
     'faq.hero.eyebrow':    'Frequently Asked Questions',
@@ -253,6 +289,7 @@
     // ── Shared unit labels (used in JS-rendered templates) ───
     'unit.beds':  'Bed',
     'unit.baths': 'Bath',
+    'unit.sqm':   'm²',
     'prop.loading': 'Loading…',
     'prop.status.available':   'Available',
     'prop.status.coming-soon': 'Coming Soon',
@@ -279,20 +316,10 @@
     'prop.related.eyebrow':    'Other Properties',
     'prop.related.title':      'You May Also Like',
     'props.no-results':        'No properties in this category yet. Check back soon.',
-    'contact.form.ph.name':    'Your name',
-    'contact.form.ph.msg':     'Please describe your question or needs. Our team will provide the most appropriate advice…',
-    'contact.subj.select':     'Please select',
-    'home.about.text1':        'One Third Residence (Taiwan) Co., Ltd is the exclusive Taiwan partner of Japan\'s C.M. Phoenix Group, specializing in premium Hakuba Village resort property sales and management.',
-    'home.about.text2':        'Our bilingual team spans Taiwan and Japan, guiding buyers through every step — legal compliance, fund transfers, and final handover — all in your language.',
-    'home.why1.text':          'As C.M. Phoenix\'s exclusive Taiwan representative, we offer first-hand access to listings and the most favourable acquisition terms.',
-    'home.why2.text':          'From initial consultation to contract, banking, and handover — our bilingual team is with you at every step.',
-    'home.why3.text':          'We help you understand foreign ownership rules, tax structures, and international fund transfer processes, empowering informed investment decisions.',
-    'home.why4.text':          'After purchase, delegate all rental operations to us. Our local expert team handles everything so you enjoy steady rental income effortlessly.',
-    'home.cta.text':           'Whether you are exploring Japanese real estate for the first time or ready to invest, our experts are here to guide you.',
-    'booking.f1.text':         'Every villa features designer furniture, premium bedding, and a fully-equipped modern kitchen — zero compromise on comfort.',
-    'booking.f2.text':         'Ski equipment delivery to your door, station transfers, private chef reservations, and professional ski instructor arrangements.',
-    'booking.f3.text':         'Spacious open-plan living areas and multiple bedrooms make our villas ideal for family trips and group getaways.',
-    'booking.why.text':        'Our Hakuba Goryu Toomi slope-front villas put you directly on Japan\'s finest powder runs — no shuttle, no queue, just a few steps from the warmth of your living room to the white world beyond.',
+    'prop.gallery.label':      'Property Images',
+    'prop.breadcrumb.detail':  'Property Detail',
+    'prop.price.poa':          'Price on Application',
+    'prop.meta.mixed-types':   'Multiple Unit Types',
     'settings.hero.video.label': 'Hero Video URL',
     'settings.hero.video.ph':    'https://example.com/hakuba-promo.mp4',
 
@@ -303,7 +330,528 @@
     'page.faq.title':        'FAQ',
     'page.props.eyebrow':    'Hakuba Village · Nagano, Japan',
     'page.props.title':      'Properties',
+
+    // ── Navigation (city pages) ───────────────────────────────
+    'nav.tokyo':             'Tokyo Properties',
+    'nav.dubai':             'Dubai Properties',
+
+    // ── Footer ───────────────────────────────────────────────
+    'footer.brand.text':     'One Third Residence Taiwan — premium resort real estate agency, offering property sales, rental management and vacation booking.',
+    'footer.col.properties': 'Property Regions',
+    'footer.link.tokyo':     'Tokyo Properties',
+    'footer.link.dubai':     'Dubai Properties',
+    'footer.link.rental.cta':'Rental Management',
+    'footer.link.about.us':  'About Us',
+    'footer.link.hakuba':    'Hakuba Village',
+    'footer.tw-jp':          'Taiwan · Japan — Dual Offices',
+
+    // ── Hero carousel slides 1 & 2 (index.html) ──────────────
+    'home.hero2.eyebrow':    'Tokyo · Japan',
+    'home.hero2.title':      'Prime Capital <em>Premium Residences</em><br>Steady Growth in Tokyo\'s Core',
+    'home.hero2.subtitle':   'Premium Tokyo Residences · Prime Investment Locations',
+    'home.hero2.btn1':       'Explore Tokyo Properties',
+    'home.hero3.eyebrow':    'Dubai · UAE',
+    'home.hero3.title':      'Tax-Free Haven <em>Premier Properties</em><br>Middle East Investment Opportunity',
+    'home.hero3.subtitle':   'Luxury Dubai Residences · 6–10%+ Rental Yield',
+    'home.hero3.btn1':       'Explore Dubai Properties',
+    'btn.consult.now':       'Schedule a Consultation',
+
+    // ── Tokyo page ────────────────────────────────────────────
+    'tokyo.hero.title':      'Tokyo Properties',
+    'tokyo.hero.subtitle':   'Premium Tokyo Residences · Prime Investment Locations',
+    'tokyo.inv.eyebrow':     'Tokyo Investment Data',
+    'tokyo.inv.title':       'Capital Core · Steady Growth',
+    'tokyo.inv.subtitle':    'Tokyo is one of the world\'s most mature real estate markets. The data below reflects its long-term investment value.',
+    'tokyo.stat1.num':       '14M+',
+    'tokyo.stat1.label':     'Greater Tokyo Population',
+    'tokyo.stat2.label':     'Stable Annual Rental Yield',
+    'tokyo.stat3.num':       '#1',
+    'tokyo.stat3.label':     'Global City GDP Ranking',
+    'tokyo.stat4.label':     'Residential Vacancy Rate (Ultra-Low)',
+    'tokyo.card1.title':     'Steady Capital Appreciation in the Core',
+    'tokyo.card1.list':      '<li>Inflation and yen weakness drove prime Tokyo property values up 25%+ over 5 years</li><li>Sustained foreign capital inflows fuel demand for premium residences in scarce prime locations</li><li>Properties in Minato, Shibuya, and Shinjuku deliver dual value — personal use and investment</li><li>Japan\'s transparent, well-regulated real estate market is ideal for long-term overseas buyers</li>',
+    'tokyo.card2.title':     'Vibrant Rental Market',
+    'tokyo.card2.list':      '<li>Tokyo\'s residential vacancy rate holds at 2–3%, far below other major Asian cities</li><li>Steady demand from multinational expats and high-income professionals forms a reliable tenant base</li><li>Explosive tourism growth drives strong short-term rental yields in peak season</li><li>Concentration of global HQs sustains robust long-term rental demand</li>',
+    'tokyo.card3.title':     'Friendly Property Regulations',
+    'tokyo.card3.list':      '<li>No restrictions on foreign nationals purchasing Japanese real estate; no minimum investment required</li><li>Japanese bank financing available — flexible leverage options</li><li>Free capital movement and no FX controls — easy income repatriation</li><li>One Third Residence Taiwan provides full-service from property selection to final handover</li>',
+    'tokyo.source':          'Data source: Tokyo Metropolitan Government, Japan Real Estate Research Institute, Statistics Bureau of Japan (2024)',
+    'tokyo.cta.eyebrow':     'Interested?',
+    'tokyo.cta.title':       'Book a Private Tokyo Property Consultation',
+    'tokyo.cta.text':        'We offer one-on-one consultations covering Tokyo property specs, purchase process, and investment return analysis.',
+    'tokyo.no-results':      'No properties in this category yet. Stay tuned.',
+
+    // ── Dubai page ────────────────────────────────────────────
+    'dubai.hero.title':      'Dubai Properties',
+    'dubai.hero.subtitle':   'Zero-Tax Advantage · High Rental Yield · Golden Residency Visa',
+    'dubai.inv.eyebrow':     'Dubai Investment Data',
+    'dubai.inv.title':       'Tax-Free Haven · High-Yield Middle East Core',
+    'dubai.inv.subtitle':    'Dubai is one of the world\'s fastest-growing real estate investment markets. The data below reflects its unparalleled investment advantages.',
+    'dubai.stat1.label':     'Personal Income & Capital Gains Tax',
+    'dubai.stat2.label':     'Average Annual Rental Yield',
+    'dubai.stat3.num':       '17M+',
+    'dubai.stat3.label':     'Annual Tourist Arrivals',
+    'dubai.stat4.num':       '10 Yrs',
+    'dubai.stat4.label':     'Golden Residency Visa Eligibility',
+    'dubai.card1.title':     'Global Zero-Tax Advantage',
+    'dubai.card1.list':      '<li>Dubai (UAE) has zero personal income tax, capital gains tax, and inheritance tax</li><li>Rental income fully retained; asset appreciation untaxed — maximising returns</li><li>UAE double taxation treaties effectively reduce overall tax burden</li><li>Offshore holding structures offer greater flexibility for asset protection and succession planning</li>',
+    'dubai.card2.title':     'High Rental Yields',
+    'dubai.card2.list':      '<li>Prime locations like Dubai Marina and Downtown Dubai deliver annual yields of 6–10%+</li><li>Thriving tourism drives the short-term rental market — peak Airbnb revenue can be 2–3× long-term rates</li><li>Dubai property prices rose 20%+ in 2023, driven by dual capital and rental growth</li><li>Robust corporate demand keeps the premium residential long-term market stable</li>',
+    'dubai.card3.title':     'Golden Visa Programme',
+    'dubai.card3.list':      '<li>Investing AED 2 million in Dubai property qualifies for a 10-year Golden Residency Visa</li><li>The Golden Visa extends to the whole family — spouses and children receive residency status</li><li>No minimum residence days required — ideal as an offshore asset base and global mobility hub</li><li>One Third Residence Taiwan provides full-service support including visa applications and administration</li>',
+    'dubai.source':          'Data source: Dubai Land Department (DLD), UAE Statistics Centre, Property Monitor Dubai (2024)',
+    'dubai.cta.eyebrow':     'Interested?',
+    'dubai.cta.title':       'Book a Private Dubai Property Consultation',
+    'dubai.cta.text':        'We offer one-on-one consultations covering Dubai property specs, purchase process, golden visa application, and investment return analysis.',
+    'dubai.no-results':      'No properties in this category yet. Stay tuned.',
+
+    // ── Phoenix page ──────────────────────────────────────────
+    'phoenix.about.text1':   'C.M. Phoenix is a boutique resort property developer headquartered in Nagano Prefecture, Japan, specializing in the design, development, and operation of premier Hakuba Village ski resort properties.',
+    'phoenix.about.text2':   'Their flagship brand "1/3rd Hakuba" is built around the philosophy: "From bed to powder snow, mere steps away" — creating an unparalleled alpine living experience for guests and owners alike.',
+    'phoenix.about.text3':   'All C.M. Phoenix properties are positioned directly alongside the Hakuba Goryu Toomi ski run, letting ski enthusiasts immerse themselves in Hakuba\'s landscape in the most direct, luxurious way possible.',
+    'phoenix.c1.text':       'Every property is crafted by professional interior designers, with each material and furniture choice pursuing excellence and aesthetic consistency.',
+    'phoenix.c2.text':       'All properties sit adjacent to Hakuba Goryu ski resort — steps from the slopes, letting every day begin with the most beautiful mountain views.',
+    'phoenix.c3.text':       'C.M. Phoenix provides comprehensive property management, giving owners peace of mind while delivering stable rental income and asset appreciation.',
+    'phoenix.tl1.year':      '2024 · Now Open',
+    'phoenix.tl1.title':     'Slopefront Villa — Ski-In/Ski-Out Villa',
+    'phoenix.tl1.text':      'The flagship villa of 1/3rd Hakuba, located alongside the Hakuba Goryu Toomi slope, offering 3 bedrooms and 180m² of luxurious living space. Now open for vacation bookings and purchase enquiries.',
+    'phoenix.tl2.year':      '2025 · Coming Soon',
+    'phoenix.tl2.title':     'Slopefront Villa 2 — Ski-In/Ski-Out Villa 2',
+    'phoenix.tl2.text':      'The second villa — fully upgraded with a private onsen and a more spacious 4-bedroom layout. Pre-purchase registrations now open.',
+    'phoenix.tl3.year':      '2026 · In Planning',
+    'phoenix.tl3.title':     '1/3rd Village — Sanbunoichi Village',
+    'phoenix.tl3.text':      'The first boutique resort development in Hakuba Village, offering diverse unit types combining boutique hotel facilities with private residence flexibility. Now in the design and planning phase.',
+    'phoenix.stat1.title':   'Japan\'s Premier Ski Destination',
+    'phoenix.stat1.text':    'Hakuba Village in Nagano Prefecture boasts Japan\'s finest powder snow, attracting ski enthusiasts from around the globe every year.',
+    'phoenix.stat2.title':   'Peak Season Owner Discount',
+    'phoenix.stat2.text':    'Owners who purchased through One Third Residence Taiwan enjoy exclusive stay discounts during the vacation season.',
+    'phoenix.stat3.title':   'Development Projects',
+    'phoenix.stat3.text':    'C.M. Phoenix currently has 3 Hakuba Village property projects, continuously expanding the Hakuba lifestyle community.',
+    'phoenix.cta.text':      'A Hakuba property is not just a real estate investment — it is a statement of lifestyle. Let One Third Residence Taiwan help you claim your own piece of Hakuba.',
+
+    // ── Weather widget ────────────────────────────────────────
+    'wx.feels':    'Feels ',
+    'wx.snow.lbl': 'Snow ',
+    'wx.rain.lbl': 'Rain ',
+    'wx.updated':  'Updated ',
+    'wx.refresh':  ' · auto-refresh every 30 min',
+    'wx.error':    'Unable to load weather',
+    'wx.week':     '',
   };
+
+  /* ── Japanese translation dictionary ──────────────────── */
+  const JA = {
+    // ── Navigation ──────────────────────────────────────────
+    'nav.home':       'ホーム',
+    'nav.properties': '白馬村物件',
+    'nav.booking':    '宿泊予約',
+    'nav.contact':    'お問い合わせ',
+    'nav.faq':        'よくある質問',
+
+    // ── Shared buttons / labels ──────────────────────────────
+    'btn.consult':    'ご相談のご予約',
+    'btn.free':       '無料相談のご予約',
+    'btn.view-all':   '全物件を見る',
+    'btn.contact':    'お問い合わせ',
+    'btn.explore':    '物件を探す',
+    'btn.book':       '滞在予約',
+    'btn.submit':     '送信する',
+    'btn.inquiry':    '問い合わせる',
+    'btn.back':       '← 一覧に戻る',
+
+    // ── Status badges ────────────────────────────────────────
+    'status.available':   '購入可能',
+    'status.coming-soon': '近日公開',
+    'status.sold':        '売却済',
+
+    // ── index.html ───────────────────────────────────────────
+    'home.hero.eyebrow':   '白馬村 · Hakuba Village · 長野県',
+    'home.hero.title':     '<em>白馬の粉雪</em>を手に入れる<br>ベッドからゲレンデまで、たった一歩',
+    'home.hero.subtitle':  '日本最高峰のリゾート不動産 · 総合管理サービス',
+
+    'home.svc.eyebrow':    'サービス内容',
+    'home.svc.title':      '投資から滞在まで、<br>すべてお任せください',
+    'home.svc.subtitle':   'ワンサードリゾートは、白馬村の不動産に特化したワンストップソリューションを提供します。',
+    'home.svc1.title':     '不動産売買仲介',
+    'home.svc1.text':      'C.M. Phoenixが手がける白馬村の厳選物件を代理販売。物件情報の提供から法律相談、購入手続きまで全面サポートします。',
+    'home.svc2.title':     '賃貸管理サービス',
+    'home.svc2.text':      'ご購入後は短期・長期賃貸の管理をお任せください。清掃・メンテナンス・チェックイン対応・収益報告まで、プロチームが担当します。',
+    'home.svc3.title':     '滞在予約',
+    'home.svc3.text':      '購入前に実際に体験したい方へ。白馬の高級ヴィラに宿泊して、「ベッドから粉雪へ一歩」の贅沢な体験をお楽しみください。',
+
+    'home.about.eyebrow':  'One Third Residence Taiwanについて',
+    'home.about.title':    '日本不動産に特化した<br>台日の架け橋',
+    'home.about.text1':    'One Third Residence（台湾）有限公司は、C.M. Phoenixグループの台湾正規パートナーとして、白馬村の高級リゾート物件の販売・管理に特化しています。',
+    'home.about.text2':    '台湾と日本にまたがるバイリンガルチームが、法的手続き・資金送金・引き渡しまで、すべてのステップをサポートします。',
+    'home.about.stat1':    'フラッグシップ物件',
+    'home.about.stat2':    '年の日本不動産経験',
+    'home.about.stat3':    'バイリンガル対応',
+    'home.about.btn':      '相談を予約する',
+
+    'home.feat.eyebrow':   '注目物件',
+    'home.feat.title':     '白馬村プレミアム物件',
+    'home.feat.subtitle':  '各物件は精心設計され、最高のスキーイン/スキーアウト体験と安定した投資価値を提供します。',
+
+    'home.why.eyebrow':    '選ばれる理由',
+    'home.why.title':      '信頼できる日本不動産パートナー',
+    'home.why1.title':     '親会社直接認定',
+    'home.why1.text':      'C.M. Phoenix唯一の台湾代理店として、最新物件情報と最優遇条件でご提供します。',
+    'home.why2.title':     '多言語対応サービス',
+    'home.why2.text':      '相談から契約・銀行手続き・引き渡しまで、バイリンガルチームが全工程に伴走します。',
+    'home.why3.title':     '透明な法律・税務サポート',
+    'home.why3.text':      '外国人の不動産取得ルール・税務構造・国際送金の流れを丁寧にご説明し、安心した投資判断をサポートします。',
+    'home.why4.title':     '購入後の総合管理',
+    'home.why4.text':      '購入後の賃貸運営はすべてお任せください。現地の専門チームが運営を担い、安定した賃料収入をお届けします。',
+
+    'home.cta.eyebrow':    'お問い合わせ',
+    'home.cta.title':      '白馬不動産の旅を始めましょう',
+    'home.cta.text':       '日本の不動産に初めて興味をお持ちの方も、投資を検討されている方も、専門チームが丁寧にご案内します。',
+
+    // ── properties.html ──────────────────────────────────────
+    'props.eyebrow':       '白馬村 · 長野県',
+    'props.title':         '物件一覧',
+    'props.subtitle':      'C.M. Phoenixが手がける最高峰のスキーリゾート物件',
+    'props.filter.all':    'すべて',
+    'props.filter.avail':  '購入可能',
+    'props.filter.soon':   '近日公開',
+    'props.filter.apt':    'アパートメント',
+    'props.filter.villa':  'ヴィラ',
+    'props.filter.resort': 'リゾート',
+    'props.cta.eyebrow':   'ご興味をお持ちの方へ',
+    'props.cta.title':     '個別内覧会のご予約',
+    'props.cta.text':      '物件スペック・購入プロセス・投資収益分析など、一対一の専属コンサルティングを提供しています。',
+
+    // ── Weather Widget ───────────────────────────────────────
+    'wx.title':  'リアルタイム気象',
+    'wx.hakuba': '白馬村・長野県',
+    'wx.tokyo':  '東京都心',
+
+    // ── Hakuba Data Section ──────────────────────────────────
+    'data.eyebrow':        '白馬村データ',
+    'data.title':          'データが語る投資価値',
+    'data.subtitle':       '白馬村は日本で最も成長著しいスキーリゾート投資市場です。以下のデータがその長期的な価値を示しています。',
+    'data.stat1.label':    '年間来訪者数',
+    'data.stat2.label':    '地価上昇率（5年間）',
+    'data.stat3.label':    '年間降雪量',
+    'data.stat4.label':    '安定した積雪日数',
+    'data.stat1.num':      '100<em>万+</em>',
+    'data.stat4.num':      '120<em>日+</em>',
+    'data.source':         'データ出典：長野県観光部、白馬村役場、日本不動産研究所（2024年）',
+    'data.visitors.title': '急増するインバウンド需要',
+    'data.visitors.p1':    '白馬村は年間100万人以上の来訪者を誇り、長野県で最も人気のスキーリゾートです。',
+    'data.visitors.p2':    '国際訪問者は30%を超え（2023年）、台湾・オーストラリア・東南アジアがトップ3の市場です。',
+    'data.visitors.p3':    'スキーシーズン（12月〜3月）は常に満室に近く、短期賃貸収益が安定しています。',
+    'data.visitors.p4':    '1998年冬季オリンピックのレガシーが今も世界中のメディアと優良スキーヤーを惹きつけています。',
+    'data.price.title':    '安定した不動産価値の上昇',
+    'data.price.p1':       'スキー直結の土地価格は5年で25〜40%上昇。スキーイン/スキーアウト物件はさらに高いプレミアムがつきます。',
+    'data.price.p2':       'オーストラリア・香港・台湾からの継続的な海外資本流入が、希少な好立地物件の長期的な価格上昇を支えています。',
+    'data.price.p3':       '円安が歴史的水準にあり、海外バイヤーにとって戦略的な購入タイミングとなっています。',
+    'data.price.p4':       '日本の外国人不動産取得に特別な制限はなく、透明な維持費用と整備された法的枠組みが整っています。',
+    'data.snow.title':     'アジア最高峰のパウダースノー',
+    'data.snow.p1':        '白馬の年間降雪量は10メートルを超え、標高の高い場所では14メートルに達し、アジアトップクラスです。',
+    'data.snow.p2':        '雪の水分含有量はわずか7〜8%（ヨーロッパアルプスの20〜30%と比較）、伝説的な軽さの「ジャパウ」を生み出します。',
+    'data.snow.p3':        'スノーシーズンは安定して120〜150日間続き、通常11月下旬に開幕し5月下旬まで続きます。',
+    'data.snow.p4':        '冬の気温は平均-8℃〜0℃で、日本海側の気候系が安定した降雪をもたらし、雨氷サイクルが少ないのが特徴です。',
+
+    // ── property.html (detail) ───────────────────────────────
+    'prop.breadcrumb.home':       'ホーム',
+    'prop.breadcrumb.properties': '物件一覧',
+    'prop.spec.beds':    '寝室',
+    'prop.spec.baths':   'バスルーム',
+    'prop.spec.area':    '床面積',
+    'prop.spec.floors':  '階数',
+    'prop.spec.year':    '築年',
+    'prop.spec.loc':     '所在地',
+    'prop.features':     '物件のハイライト',
+    'prop.inq.title':    'この物件についてお問い合わせ',
+    'prop.inq.name':     'お名前 *',
+    'prop.inq.phone':    '電話番号 *',
+    'prop.inq.email':    'メールアドレス',
+    'prop.inq.msg':      'メッセージ',
+    'prop.inq.ph':       '購入プロセス・投資収益・物件スペックなど、お気軽にご記入ください。',
+    'prop.inq.btn':      '問い合わせる',
+    'prop.inq.reply':    '通常1営業日以内にご返答いたします',
+    'prop.inq.direct':   '直接お問い合わせ',
+    'prop.related.eyebrow': 'その他の物件',
+    'prop.related.title':   'こちらもおすすめ',
+
+    // ── booking.html ─────────────────────────────────────────
+    'booking.hero.eyebrow':  '白馬村 · 長野県',
+    'booking.hero.title':    '白馬<em>宿泊予約</em>',
+    'booking.hero.subtitle': '最高のスキーイン/スキーアウトヴィラで、パウダースノーの楽園を体験',
+    'booking.why.eyebrow':   '白馬に泊まる理由',
+    'booking.why.title':     'ベッドから粉雪へ<br>たった一歩',
+    'booking.why.text':      '白馬五竜Toomiゲレンデ直結のヴィラで、日本最高峰のパウダーランを思う存分楽しめます。送迎不要、行列なし。リビングから一歩で、白銀の世界へ。',
+    'booking.f1.title':      'プレミアム家具と設備',
+    'booking.f1.text':       'デザイナー家具・高品質ベッドリネン・フル装備の近代的キッチンを完備。快適さは一切妥協しません。',
+    'booking.f2.title':      'コンシェルジュサービス',
+    'booking.f2.text':       'スキー用具のデリバリー・駅送迎・プライベートシェフの手配・スキーレッスン予約など、至れり尽くせりのサービス。',
+    'booking.f3.title':      'ファミリー・グループに最適',
+    'booking.f3.text':       '広々としたリビングと複数の寝室を備え、家族旅行やグループ滞在に最適な空間です。',
+    'booking.widget.eyebrow':  '今すぐ予約',
+    'booking.widget.title':    '日程を選択',
+    'booking.widget.subtitle': '公式1/3rd Hakuba予約システムから安全にご予約ください。',
+    'booking.widget.fallback': '予約システムが表示されない場合は',
+    'booking.widget.link':     '予約サイトを直接開く',
+    'booking.notice.eyebrow':  'ご予約に関するご案内',
+    'booking.notice.title':    'ご到着前に',
+    'booking.checkin.label':   'チェックイン/チェックアウト',
+    'booking.checkin.text':    'チェックイン：15:00より<br>チェックアウト：11:00まで',
+    'booking.cancel.label':    'キャンセルポリシー',
+    'booking.cancel.text':     '予約システムに表示されるキャンセル条件をご参照ください（客室タイプ・日程により異なります）。',
+    'booking.transport.label': 'アクセス',
+    'booking.transport.text':  '事前予約で駅送迎サービスをご利用いただけます。または自家用車でのアクセスも可能です。ヴィラは白馬五竜スキーリゾートに隣接しています。',
+    'booking.extras.label':    'オプションサービス',
+    'booking.extras.text':     'スキー用具のデリバリー・スキーレッスン・プライベートシェフディナーなどは、ご予約後にお手配します。',
+    'booking.notice.q':        'ご質問はございますか？',
+
+    // ── phoenix.html ─────────────────────────────────────────
+    'phoenix.hero.eyebrow':    '親会社 · 日本',
+    'phoenix.hero.subtitle':   '白馬村の高級リゾートライフを再定義する',
+    'phoenix.about.eyebrow':   'C.M. Phoenixについて',
+    'phoenix.about.title':     '白馬の生活を<br>再定義する',
+    'phoenix.about.text1':     'C.M. Phoenixは長野県に本社を置くブティック型リゾート不動産デベロッパーで、白馬村の最高峰スキーリゾート物件の設計・開発・運営に特化しています。',
+    'phoenix.about.text2':     'フラッグシップブランド「1/3rd Hakuba」は「ベッドから粉雪へ、たった数歩」という哲学のもと、ゲストとオーナー双方に比類なきアルパイン体験を提供します。',
+    'phoenix.about.text3':     'C.M. Phoenixの全物件は白馬五竜Toomiゲレンデに直接隣接しており、スキー愛好家が白馬の自然を最も直接的かつ贅沢な形で満喫できます。',
+    'phoenix.about.btn':       '公式サイトを訪問する',
+    'phoenix.brand.eyebrow':   'ブランド哲学',
+    'phoenix.brand.title':     '1/3rdの哲学',
+    'phoenix.brand.subtitle':  '「1/3rd」はスキーヤーの夢を象徴します：人生の3分の1を雪の上で過ごすことを想像してください。',
+    'phoenix.c1.title':        '職人的デザイン',
+    'phoenix.c1.text':         'すべての物件はプロのインテリアデザイナーが手がけ、素材や家具の一つひとつにこだわり抜いています。',
+    'phoenix.c2.title':        '絶好のロケーション',
+    'phoenix.c2.text':         'すべての物件は白馬五竜スキーリゾートに隣接。ゲレンデまで数歩、毎日最高の山の景色から始まります。',
+    'phoenix.c3.title':        'プロフェッショナルな管理',
+    'phoenix.c3.text':         'C.M. Phoenixが総合的な不動産管理を提供し、オーナーに安心と安定した賃料収入・資産価値の向上をお約束します。',
+    'phoenix.timeline.eyebrow':'開発ロードマップ',
+    'phoenix.timeline.title':  '1/3rd Hakuba物件シリーズ',
+    'phoenix.cta.eyebrow':     'オーナーになる',
+    'phoenix.cta.title':       '白馬に投資し、ライフスタイル資産を手に入れる',
+    'phoenix.cta.text':        '白馬の物件は単なる不動産投資ではなく、ライフスタイルへの投資です。One Third Residence Taiwanがあなたの白馬ライフを実現するお手伝いをします。',
+    'phoenix.cta.btn1':        '物件を見る',
+    'phoenix.cta.btn2':        '相談を予約する',
+
+    // ── contact.html ─────────────────────────────────────────
+    'contact.hero.eyebrow':    'お問い合わせ',
+    'contact.hero.title':      'お問い合わせ',
+    'contact.hero.subtitle':   '物件のご相談・宿泊予約・その他のご質問、お気軽にどうぞ。',
+    'contact.info.eyebrow':    'ご連絡ください',
+    'contact.info.title':      'いつでもお問い合わせをお待ちしています',
+    'contact.info.text':       '日本の不動産所有について疑問のある方も、白馬での滞在を検討されている方も、専門チームが迅速にお答えします。',
+    'contact.label.phone':     '電話番号',
+    'contact.label.email':     'メール',
+    'contact.label.location':  '事務所所在地',
+    'contact.label.hours':     '営業時間',
+    'contact.label.line':      'Line / WeChat',
+    'contact.hours.text':      '月〜金：09:00〜18:00<br>土日祝：予約制',
+    'contact.line.text':       '公式Lineアカウントをフォローして、最新物件情報をお受け取りください。',
+    'contact.form.title':      'メッセージを送る',
+    'contact.form.subtitle':   '以下のフォームにご記入ください。折り返しご連絡いたします。',
+    'contact.form.name':       'お名前 *',
+    'contact.form.phone':      '電話番号 *',
+    'contact.form.email':      'メールアドレス',
+    'contact.form.subject':    '件名',
+    'contact.form.message':    'メッセージ *',
+    'contact.form.privacy':    'プライバシーポリシーに基づき、One Third Residence Taiwanが個人情報を処理することに同意します。',
+    'contact.subj.purchase':   '物件購入のご相談',
+    'contact.subj.rental':     '賃貸管理',
+    'contact.subj.booking':    '宿泊予約',
+    'contact.subj.phoenix':    'C.M. Phoenixへのお問い合わせ',
+    'contact.subj.other':      'その他',
+    'contact.taiwan':          '台湾：',
+    'contact.japan':           '日本：',
+    'contact.taiwan.office':   '台湾事務所：',
+    'contact.japan.base':      '日本拠点：長野県白馬村',
+    'contact.reply':           '通常1営業日以内にご返答いたします',
+    'contact.pending':         '更新予定',
+    'contact.form.ph.name':    'お名前',
+    'contact.form.ph.msg':     'ご質問やご要望をご記入ください…',
+    'contact.subj.select':     '選択してください',
+
+    // ── faq.html ─────────────────────────────────────────────
+    'faq.hero.eyebrow':    'よくある質問',
+    'faq.hero.title':      'よくある質問',
+    'faq.hero.subtitle':   '答えが見つからない場合は、専門コンサルタントにお問い合わせください。',
+    'faq.cat.all':         'すべて',
+    'faq.cat.purchase':    '購入',
+    'faq.cat.rental':      '賃貸',
+    'faq.cat.booking':     '予約',
+    'faq.cat.legal':       '法律・税務',
+    'faq.cta.text':        'まだご不明な点がありますか？コンサルタントが丁寧にお答えします。',
+    'faq.cta.btn':         '専門家に相談する',
+
+    'faq.q1':  '外国人（台湾人）は日本で不動産を購入できますか？',
+    'faq.a1':  '<p>はい。日本の不動産市場は外国人にほぼ完全に開かれています。台湾在住者は日本国籍者と同条件で不動産（土地・建物）を購入できます。長期滞在や特別なビザは必要ありません。</p><p>One Third Residence Taiwanが書類準備から法律相談・国際送金まで全プロセスをサポートします。</p>',
+    'faq.q2':  '白馬の不動産購入の全プロセスは？',
+    'faq.a2':  '<p>購入の流れは以下のとおりです：</p><p><strong>1. 相談・物件選定</strong>：アドバイザーと対象物件を確認。</p><p><strong>2. 買付証明書の提出</strong>：正式な購入意思表示を行います。</p><p><strong>3. 資金準備・送金</strong>：購入資金を手配・送金します。</p><p><strong>4. 売買契約</strong>：契約締結と手付金支払い（通常、購入価格の10%）。</p><p><strong>5. 決済・引渡し</strong>：残金支払いと所有権移転登記。</p><p><strong>6. 鍵の引き渡し</strong>：正式にオーナーになります。</p><p>通常1〜3ヶ月のプロセスで、全工程にバイリンガルサポートが付きます。</p>',
+    'faq.q3':  '購入時にかかる諸費用は？',
+    'faq.a3':  '<p>購入価格のほかに、以下の費用が通常かかります：</p><p>• <strong>仲介手数料</strong>：日本法令により上限は3%＋6万円（税込）。</p><p>• <strong>登記費用</strong>：司法書士費用および登録免許税。</p><p>• <strong>不動産取得税</strong>：購入時の一回限りの税金（評価額に基づく）。</p><p>• <strong>固定資産税</strong>：評価額に基づく年次税。</p><p>• <strong>管理・維持費</strong>：物件タイプにより異なります。</p><p>具体的な費用はアドバイザーにご相談ください。</p>',
+    'faq.q4':  '日本の銀行ローンは利用できますか？',
+    'faq.a4':  '<p>一般的に、外国籍の方が日本の銀行ローンを利用するのは難しいとされています。ほとんどの日本の金融機関は永住権または長期滞在資格を必要とします。</p><p>最も一般的な方法は全額現金購入か、台湾の金融機関を通じた融資です。最適な資金調達方法についてアドバイザーがご提案します。</p>',
+    'faq.q5':  '賃貸管理サービスの内容は？',
+    'faq.a5':  '<p>賃貸管理サービスには以下が含まれます：</p><p>• <strong>短期賃貸運営</strong>：Airbnbなどのプラットフォーム管理。</p><p>• <strong>ゲスト対応</strong>：チェックイン/チェックアウト手配とゲストサポート。</p><p>• <strong>清掃サービス</strong>：チェックアウト後のプロ清掃と補充。</p><p>• <strong>設備メンテナンス</strong>：日常的な修繕と定期点検。</p><p>• <strong>収益精算</strong>：月次収益レポートと送金。</p><p>• <strong>緊急対応</strong>：24時間緊急連絡と対応。</p>',
+    'faq.q6':  '賃貸管理費の計算方法は？',
+    'faq.a6':  '<p>費用は通常、賃料収入の一定割合（歩合制）で計算されます。具体的な料率はサービス内容と物件条件によって異なります。</p><p>詳細な試算はアドバイザーとの個別相談でご提供します。</p>',
+    'faq.q7':  '賃貸管理中も個人利用のために日程をブロックできますか？',
+    'faq.a7':  '<p>もちろん可能です。オーナーは事前にご連絡いただければ、特定の日程を個人利用のためにブロックできます。その期間中は予約を受け付けません。</p><p>ピークシーズン（12月〜3月のスキーシーズン）は少なくとも3ヶ月前にご連絡ください。</p>',
+    'faq.q8':  '現在予約できるヴィラは？',
+    'faq.a8':  '<p>現在、白馬五竜Toomiゲレンデに直接隣接したSlopefront Villaのご予約が可能です。</p><p>Slopefront Villa 2と1/3rd Villageは建設中または計画段階にあり、完成後に予約受付を開始します。最新情報はお問い合わせください。</p>',
+    'faq.q9':  '白馬のスキーシーズンはいつ？',
+    'faq.a9':  '<p>白馬村のスキーシーズンは通常<strong>12月下旬〜3月下旬</strong>で、4月初旬まで延長することもあります。最良の雪質は1月と2月です。</p><p>夏（6月〜9月）もハイキングやマウンテンバイクなどのアクティビティが楽しめ、一年を通じた目的地です。</p>',
+    'faq.q10': '台湾から白馬へのアクセス方法は？',
+    'faq.a10': '<p>おすすめのルート：</p><p><strong>桃園空港 → 名古屋/東京成田/東京羽田</strong> → 新幹線または特急で長野駅 → バスまたはシャトルで白馬村（約50分）。</p><p>長野駅からの所要時間は約50〜60分。滞在中の駅送迎手配も可能です。</p>',
+    'faq.q11': '不動産オーナーとして払う税金は？',
+    'faq.a11': '<p>年次税には以下が含まれます：</p><p>• <strong>固定資産税</strong>：評価額の約1.4%。</p><p>• <strong>都市計画税</strong>：対象地域で約0.3%（白馬村については確認要）。</p><p>• <strong>賃貸収入税</strong>：非居住者向け約20.42%。</p><p>• <strong>台湾所得税</strong>：台湾の税法に従い海外所得の申告が必要です。</p><p>税務状況は個人により異なりますので、専門家にご相談ください。</p>',
+    'faq.q12': '日本の民泊規制について',
+    'faq.a12': '<p>日本の住宅宿泊事業法（2018年）により、年間180泊を上限とした民泊が認められています（一部自治体はより厳しい制限を設けています）。</p><p>白馬村の民泊規制は比較的緩やかです。C.M. Phoenixの全物件は適切にライセンスを取得しており、管理サービスで完全な法令遵守を確保しています。</p>',
+    'faq.q13': '売却時にかかる税金は？',
+    'faq.a13': '<p>日本の不動産を売却する際：</p><p>• <strong>譲渡所得税</strong>：5年以内（短期）は約39.63%、5年超（長期）は約20.315%。</p><p>• <strong>台湾所得税</strong>：台湾の税法に従い海外譲渡益の申告が必要です。</p><p>詳細な計算は日本の税理士にご相談することをお勧めします。</p>',
+
+    // ── Shared unit labels ───────────────────────────────────
+    'unit.beds':  '寝室',
+    'unit.baths': 'バス',
+    'unit.sqm':   'm²',
+    'prop.loading': '読み込み中…',
+    'prop.status.available':   '購入可能',
+    'prop.status.coming-soon': '近日公開',
+    'prop.status.img-soon':    '近日公開',
+    'prop.status.img-updating':'画像更新中',
+    'prop.spec.beds.label':    '寝室',
+    'prop.spec.baths.label':   'バスルーム',
+    'prop.spec.area.label':    '床面積',
+    'prop.spec.floors.label':  '階数',
+    'prop.spec.year.label':    '築年',
+    'prop.spec.loc.label':     '所在地',
+    'prop.features.title':     '物件のハイライト',
+    'prop.inq.title':          'この物件についてお問い合わせ',
+    'prop.inq.name.label':     'お名前 *',
+    'prop.inq.phone.label':    '電話番号 *',
+    'prop.inq.email.label':    'メールアドレス',
+    'prop.inq.msg.label':      'メッセージ',
+    'prop.inq.name.ph':        'お名前を入力してください',
+    'prop.inq.phone.ph':       '電話番号を入力してください',
+    'prop.inq.msg.ph':         '購入プロセス・投資収益・物件スペックなど…',
+    'prop.inq.reply':          '通常1営業日以内にご返答いたします',
+    'prop.inq.direct.title':   '直接お問い合わせ',
+    'prop.contact.btn':        'お問い合わせページへ',
+    'prop.related.eyebrow':    'その他の物件',
+    'prop.related.title':      'こちらもおすすめ',
+    'props.no-results':        'このカテゴリの物件はまだありません。お楽しみに。',
+    'prop.gallery.label':      '物件写真',
+    'prop.breadcrumb.detail':  '物件詳細',
+    'prop.price.poa':          'お問い合わせください',
+    'prop.meta.mixed-types':   '複数のタイプ',
+    'settings.hero.video.label': 'ヒーロー動画URL',
+    'settings.hero.video.ph':    'https://example.com/hakuba-promo.mp4',
+
+    // ── page-hero for inner pages ─────────────────────────────
+    'page.contact.eyebrow':  'お問い合わせ',
+    'page.contact.title':    'お問い合わせ',
+    'page.faq.eyebrow':      'よくある質問',
+    'page.faq.title':        'よくある質問',
+    'page.props.eyebrow':    '白馬村 · 長野県',
+    'page.props.title':      '物件一覧',
+
+    // ── Navigation (city pages) ───────────────────────────────
+    'nav.tokyo':             '東京物件',
+    'nav.dubai':             'ドバイ物件',
+
+    // ── Footer ───────────────────────────────────────────────
+    'footer.brand.text':     'One Third Residence Taiwan — プレミアムリゾート不動産代理店。物件売買・賃貸管理・宿泊予約の総合サービスを提供します。',
+    'footer.col.properties': '物件エリア',
+    'footer.link.tokyo':     '東京物件',
+    'footer.link.dubai':     'ドバイ物件',
+    'footer.link.rental.cta':'賃貸管理',
+    'footer.link.about.us':  '会社紹介',
+    'footer.link.hakuba':    '白馬村',
+    'footer.tw-jp':          '台湾・日本 — 二拠点体制',
+
+    // ── Hero carousel slides 1 & 2 (index.html) ──────────────
+    'home.hero2.eyebrow':    '東京 · 日本',
+    'home.hero2.title':      '首都圏中心 <em>プレミアム住居</em><br>東京コアで安定成長',
+    'home.hero2.subtitle':   '東京高級レジデンス · 好立地の投資物件',
+    'home.hero2.btn1':       '東京物件を見る',
+    'home.hero3.eyebrow':    'ドバイ · UAE',
+    'home.hero3.title':      '非課税の楽園 <em>プレミアム物件</em><br>中東投資の好機',
+    'home.hero3.subtitle':   'ドバイ高級レジデンス · 年間利回り6〜10%以上',
+    'home.hero3.btn1':       'ドバイ物件を見る',
+    'btn.consult.now':       '相談を予約する',
+
+    // ── Tokyo page ────────────────────────────────────────────
+    'tokyo.hero.title':      '東京物件',
+    'tokyo.hero.subtitle':   '東京高級レジデンス · 好立地の投資物件',
+    'tokyo.inv.eyebrow':     '東京投資データ',
+    'tokyo.inv.title':       '首都圏コア · 安定成長',
+    'tokyo.inv.subtitle':    '東京は世界で最も成熟した不動産市場の一つです。以下のデータがその長期的な投資価値を示しています。',
+    'tokyo.stat1.num':       '1,400<em>万+</em>',
+    'tokyo.stat1.label':     '首都圏総人口',
+    'tokyo.stat2.label':     '安定した年間賃貸利回り',
+    'tokyo.stat3.num':       '第1位',
+    'tokyo.stat3.label':     '世界都市GDPランキング',
+    'tokyo.stat4.label':     '住宅空室率（超低水準）',
+    'tokyo.card1.title':     'コアエリアの安定した価格上昇',
+    'tokyo.card1.list':      '<li>インフレと円安により、東京都心の不動産価格は5年で25%以上上昇</li><li>海外資本の継続的流入が、希少な好立地プレミアム住居への需要を押し上げている</li><li>港区・渋谷区・新宿区の物件は自己使用と投資の双方で高い価値を発揮</li><li>日本の透明性の高い不動産市場は、海外長期投資家にとって理想的な環境</li>',
+    'tokyo.card2.title':     '活況な賃貸市場',
+    'tokyo.card2.list':      '<li>東京の住宅空室率は2〜3%と他のアジア主要都市を大きく下回る水準</li><li>多国籍企業の駐在員や高所得専門職からの安定した需要が信頼性の高い借主基盤を形成</li><li>爆発的な訪日需要がピーク時の短期賃貸利回りを押し上げている</li><li>世界的企業の集積がプレミアム住宅の長期賃貸需要を支えている</li>',
+    'tokyo.card3.title':     '友好的な不動産規制',
+    'tokyo.card3.list':      '<li>外国人の日本不動産取得に制限なし、最低投資額の定めもない</li><li>日本の銀行融資も利用可能 — 柔軟なレバレッジオプションを提供</li><li>資本移動は自由でFX規制もなく、収益の本国送金が容易</li><li>One Third Residence Taiwanが物件選定から引き渡しまでフルサポートを提供</li>',
+    'tokyo.source':          'データ出典：東京都庁、日本不動産研究所、総務省統計局（2024年）',
+    'tokyo.cta.eyebrow':     'ご興味をお持ちの方へ',
+    'tokyo.cta.title':       '東京物件の個別コンサルティングを予約',
+    'tokyo.cta.text':        '東京物件のスペック・購入プロセス・投資収益分析など、一対一の専属コンサルティングを提供しています。',
+    'tokyo.no-results':      'このカテゴリの物件はまだありません。お楽しみに。',
+
+    // ── Dubai page ────────────────────────────────────────────
+    'dubai.hero.title':      'ドバイ物件',
+    'dubai.hero.subtitle':   '非課税メリット · 高利回り · ゴールデンビザ',
+    'dubai.inv.eyebrow':     'ドバイ投資データ',
+    'dubai.inv.title':       '非課税の楽園 · 高利回りの中東コア',
+    'dubai.inv.subtitle':    'ドバイは世界で最も成長著しい不動産投資市場の一つです。以下のデータがその比類なき投資優位性を示しています。',
+    'dubai.stat1.label':     '個人所得税・キャピタルゲイン税',
+    'dubai.stat2.label':     '平均年間賃貸利回り',
+    'dubai.stat3.num':       '1,700<em>万+</em>',
+    'dubai.stat3.label':     '年間観光客数',
+    'dubai.stat4.num':       '10<em>年</em>',
+    'dubai.stat4.label':     'ゴールデンビザ取得資格',
+    'dubai.card1.title':     'グローバルな非課税メリット',
+    'dubai.card1.list':      '<li>ドバイ（UAE）は個人所得税・キャピタルゲイン税・相続税がゼロ</li><li>賃料収入は全額手元に残り、資産価値上昇も非課税 — 最大限のリターンを実現</li><li>UAEの二重課税防止条約が総税負担を効果的に軽減</li><li>オフショア保有ストラクチャーにより、資産保護と相続計画の柔軟性がさらに向上</li>',
+    'dubai.card2.title':     '高い賃貸利回り',
+    'dubai.card2.list':      '<li>ドバイマリーナやダウンタウンドバイなど好立地で年間利回り6〜10%以上</li><li>観光業の急成長が短期賃貸市場を活性化 — ピーク時のAirbnb収益は長期賃貸の2〜3倍も</li><li>2023年のドバイ不動産価格は20%以上上昇（資本・賃料の両輪で成長）</li><li>旺盛な法人需要がプレミアム住宅の長期賃貸市場を安定させている</li>',
+    'dubai.card3.title':     'ゴールデンビザプログラム',
+    'dubai.card3.list':      '<li>200万AED相当のドバイ不動産投資で10年ゴールデンビザ取得資格を得られる</li><li>ゴールデンビザは家族全員に適用 — 配偶者・子供も居住権を取得</li><li>最低滞在日数の定めなし — 海外資産拠点かつグローバル移動ハブとして最適</li><li>One Third Residence Taiwanがビザ申請・手続きを含むフルサポートを提供</li>',
+    'dubai.source':          'データ出典：ドバイ土地局（DLD）、UAE統計センター、Property Monitor Dubai（2024年）',
+    'dubai.cta.eyebrow':     'ご興味をお持ちの方へ',
+    'dubai.cta.title':       'ドバイ物件の個別コンサルティングを予約',
+    'dubai.cta.text':        'ドバイ物件のスペック・購入プロセス・ゴールデンビザ申請・投資収益分析など、一対一のコンサルティングを提供しています。',
+    'dubai.no-results':      'このカテゴリの物件はまだありません。お楽しみに。',
+
+    // ── Phoenix page (timeline & stats) ──────────────────────
+    'phoenix.tl1.year':      '2024年 · 正式オープン',
+    'phoenix.tl1.title':     'Slopefront Villa — スキーイン/スキーアウトヴィラ',
+    'phoenix.tl1.text':      '1/3rd Hakubaのフラッグシップヴィラ。白馬五竜Toomiゲレンデに隣接し、3寝室・180m²の贅沢な居住空間を提供。現在、宿泊予約と購入相談を受け付けています。',
+    'phoenix.tl2.year':      '2025年 · 近日公開',
+    'phoenix.tl2.title':     'Slopefront Villa 2 — スキーイン/スキーアウトヴィラ 2',
+    'phoenix.tl2.text':      '第2棟ヴィラ — プライベート温泉と広々とした4寝室を追加した全面アップグレード版。現在、事前購入登録を受け付けています。',
+    'phoenix.tl3.year':      '2026年 · 計画中',
+    'phoenix.tl3.title':     '1/3rd Village — 三分の一ヴィレッジ',
+    'phoenix.tl3.text':      '白馬村初のブティックリゾート型開発プロジェクト。ブティックホテル設備と個人住宅の柔軟性を兼ね備えた多様な住戸タイプを提供。現在、設計・計画段階です。',
+    'phoenix.stat1.title':   '日本最高峰のスキーリゾート',
+    'phoenix.stat1.text':    '長野県白馬村は日本最高品質のパウダースノーを誇り、毎年世界中のスキー愛好家を惹きつけています。',
+    'phoenix.stat2.title':   'ピークシーズンオーナー割引',
+    'phoenix.stat2.text':    'One Third Residence Taiwan経由でご購入いただいたオーナー様は、バケーションシーズンの専属割引をお楽しみいただけます。',
+    'phoenix.stat3.title':   '開発プロジェクト数',
+    'phoenix.stat3.text':    'C.M. Phoenixは現在3つの白馬村地産プロジェクトを展開し、白馬ライフスタイルコミュニティを拡大し続けています。',
+
+    // ── Weather widget ────────────────────────────────────────
+    'wx.feels':    '体感 ',
+    'wx.snow.lbl': '降雪 ',
+    'wx.rain.lbl': '降雨 ',
+    'wx.updated':  '更新 ',
+    'wx.refresh':  ' · 30分ごとに自動更新',
+    'wx.error':    '天気情報を読み込めません',
+    'wx.week':     '',
+  };
+
+  const DICTS = { en: EN, ja: JA };
 
   /* ── Core apply function ───────────────────────────────── */
   window.i18nCurrent = localStorage.getItem('otr-lang') || 'zh';
@@ -311,31 +859,32 @@
   function applyLang(lang) {
     window.i18nCurrent = lang;
     localStorage.setItem('otr-lang', lang);
-    document.documentElement.lang = lang === 'en' ? 'en' : 'zh-TW';
+    document.documentElement.lang = lang === 'ja' ? 'ja' : lang === 'en' ? 'en' : 'zh-TW';
+
+    const dict = DICTS[lang] || null;
 
     // Text nodes
     document.querySelectorAll('[data-i18n]').forEach(el => {
       if (!el._zhText) el._zhText = el.textContent;
-      const val = lang === 'en' ? EN[el.dataset.i18n] : (el.dataset.zh || el._zhText);
+      const val = dict ? dict[el.dataset.i18n] : (el.dataset.zh || el._zhText);
       if (val !== undefined) el.textContent = val;
     });
     // HTML nodes (allow tags like <em>, <br>, <p>)
     document.querySelectorAll('[data-i18n-html]').forEach(el => {
       if (!el._zhHtml) el._zhHtml = el.innerHTML;
-      const val = lang === 'en' ? EN[el.dataset.i18nHtml] : (el.dataset.zh || el._zhHtml);
+      const val = dict ? dict[el.dataset.i18nHtml] : (el.dataset.zh || el._zhHtml);
       if (val !== undefined) el.innerHTML = val;
     });
     // Placeholders
     document.querySelectorAll('[data-i18n-ph]').forEach(el => {
       if (!el._zhPh) el._zhPh = el.placeholder;
-      const val = lang === 'en' ? EN[el.dataset.i18nPh] : (el.dataset.zh || el._zhPh);
+      const val = dict ? dict[el.dataset.i18nPh] : (el.dataset.zh || el._zhPh);
       if (val !== undefined) el.placeholder = val;
     });
 
-    // Update lang button
+    // Update active state on lang buttons
     document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.textContent = lang === 'en' ? '中文' : 'EN';
-      btn.setAttribute('aria-label', lang === 'en' ? '切換至中文' : 'Switch to English');
+      btn.classList.toggle('active', btn.dataset.lang === lang);
     });
 
     // Fire event so other scripts can react (e.g. property card renderer)
@@ -347,13 +896,11 @@
     const lang = window.i18nCurrent;
 
     document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.textContent = lang === 'en' ? '中文' : 'EN';
-      btn.addEventListener('click', () => {
-        applyLang(window.i18nCurrent === 'zh' ? 'en' : 'zh');
-      });
+      if (btn.dataset.lang === lang) btn.classList.add('active');
+      btn.addEventListener('click', () => applyLang(btn.dataset.lang));
     });
 
-    if (lang === 'en') applyLang('en');
+    if (lang !== 'zh') applyLang(lang);
   }
 
   if (document.readyState === 'loading') {
@@ -364,8 +911,16 @@
 
   // Expose helper for JS-rendered content
   window.t = function (key) {
-    if (window.i18nCurrent === 'en' && EN[key]) return EN[key];
-    return null; // caller uses default Chinese
+    const dict = DICTS[window.i18nCurrent];
+    return (dict && dict[key]) ? dict[key] : null;
   };
+
+  // Patch a dict value at runtime (used by content loader to apply admin-overridden EN/JA text)
+  window.i18nPatch = function (lang, key, val) {
+    if (val && DICTS[lang]) DICTS[lang][key] = val;
+  };
+
+  // Expose applyLang so external scripts can trigger a re-render after patching
+  window.applyLang = applyLang;
 
 })();

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>帳號設定 | One Third Residence Taiwan</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body { background: #F0EEEA; min-height: 100vh; }
+    .admin-layout { display: flex; min-height: 100vh; }
+    .sidebar { width: 240px; background: var(--charcoal); flex-shrink: 0; display: flex; flex-direction: column; }
+    .sidebar__logo { padding: 1.75rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .sidebar__logo-cn { font-family: var(--font-serif); font-size: 1.25rem; color: var(--white); display: block; }
+    .sidebar__logo-en { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); display: block; margin-top: 3px; }
+    .sidebar__label { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); padding: 1.5rem 1.5rem 0.5rem; }
+    .sidebar__nav { display: flex; flex-direction: column; }
+    .sidebar__link { display: flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.6); transition: var(--trans); }
+    .sidebar__link:hover, .sidebar__link.active { color: var(--white); background: rgba(255,255,255,0.06); }
+    .sidebar__link.active { border-left: 2px solid var(--gold); }
+    .sidebar__link svg { flex-shrink: 0; opacity: 0.7; }
+    .sidebar__link.active svg, .sidebar__link:hover svg { opacity: 1; }
+    .sidebar__footer { margin-top: auto; padding: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); }
+    .sidebar__logout { font-size: 0.8rem; color: rgba(255,255,255,0.4); display: flex; align-items: center; gap: 0.5rem; transition: color var(--trans); cursor: pointer; }
+    .sidebar__logout:hover { color: rgba(255,255,255,0.8); }
+
+    .admin-main { flex: 1; overflow-y: auto; }
+    .admin-header { background: var(--white); border-bottom: 1px solid var(--gray-200); padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    .admin-header__title { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 400; }
+    .admin-header__user { font-size: 0.82rem; color: var(--gray-600); }
+    .admin-content { padding: 2rem; max-width: 640px; }
+
+    .settings-card { background: var(--white); border: 1px solid var(--gray-200); padding: 2rem; margin-bottom: 1.5rem; }
+    .settings-card__title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 400; margin-bottom: 0.4rem; }
+    .settings-card__subtitle { font-size: 0.82rem; color: var(--gray-400); margin-bottom: 1.75rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--gray-200); }
+    .current-user { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; background: var(--surface); margin-bottom: 1.75rem; }
+    .current-user__avatar { width: 40px; height: 40px; background: var(--charcoal); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .current-user__avatar svg { color: var(--gold); }
+    .current-user__label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 0.2rem; }
+    .current-user__name { font-size: 1rem; font-weight: 500; color: var(--charcoal); }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-size: 0.8rem; color: var(--gray-600); margin-bottom: 0.4rem; }
+    .form-actions { display: flex; gap: 0.75rem; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--gray-200); }
+    .alert { padding: 0.75rem 1rem; font-size: 0.85rem; margin-bottom: 1rem; display: none; }
+    .alert--error { background: #fef2f2; border-left: 2px solid #f44336; color: #c62828; }
+    .alert--success { background: #f0faf4; border-left: 2px solid #2e7d52; color: #1b5e34; }
+  </style>
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar__logo">
+      <img src="/images/logo.png" alt="One Third Residence Taiwan" class="nav__logo-img nav__logo-img--sidebar">
+      <span class="nav__logo-fallback">
+        <span class="sidebar__logo-cn">ONE THIRD</span>
+        <span class="sidebar__logo-en">RESIDENCE TAIWAN</span>
+      </span>
+    </div>
+    <div class="sidebar__label">管理</div>
+    <nav class="sidebar__nav">
+      <a href="/admin/index.html" class="sidebar__link">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        儀表板
+      </a>
+      <a href="/admin/properties.html" class="sidebar__link">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        物件管理
+      </a>
+      <a href="/admin/property-form.html" class="sidebar__link">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        新增物件
+      </a>
+      <a href="/admin/site-content.html" class="sidebar__link">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        前台內容
+      </a>
+      <a href="/admin/account.html" class="sidebar__link active">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        帳號設定
+      </a>
+      <div class="sidebar__label">網站</div>
+      <a href="/index.html" target="_blank" class="sidebar__link">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        前往前台
+      </a>
+    </nav>
+    <div class="sidebar__footer">
+      <a href="#" class="sidebar__logout" id="logoutBtn">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        登出
+      </a>
+    </div>
+  </aside>
+
+  <div class="admin-main">
+    <header class="admin-header">
+      <h1 class="admin-header__title">帳號設定</h1>
+      <span class="admin-header__user" id="headerUser">One Third Residence Taiwan &nbsp;·&nbsp; 管理員</span>
+    </header>
+
+    <div class="admin-content">
+
+      <!-- Current account info -->
+      <div class="current-user">
+        <div class="current-user__avatar">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div>
+          <div class="current-user__label">目前登入帳號</div>
+          <div class="current-user__name" id="currentUsername">—</div>
+        </div>
+      </div>
+
+      <!-- Change username -->
+      <div class="settings-card">
+        <h2 class="settings-card__title">更改帳號名稱</h2>
+        <p class="settings-card__subtitle">更改後請使用新帳號名稱重新登入。</p>
+        <div class="alert alert--error" id="unameError"></div>
+        <div class="alert alert--success" id="unameSuccess"></div>
+        <form id="unameForm">
+          <div class="form-group">
+            <label>新帳號名稱</label>
+            <input type="text" class="form-control" id="newUsername" required minlength="3" pattern="[a-zA-Z0-9_\-]+" placeholder="英文、數字、底線或連字號">
+          </div>
+          <div class="form-group">
+            <label>目前密碼（驗證身份）</label>
+            <input type="password" class="form-control" id="unamePassword" required placeholder="輸入目前密碼以確認">
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn--gold btn--sm">儲存帳號名稱</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Change password -->
+      <div class="settings-card">
+        <h2 class="settings-card__title">更改密碼</h2>
+        <p class="settings-card__subtitle">新密碼至少需要 8 個字元。更改後請重新登入。</p>
+        <div class="alert alert--error" id="pwError"></div>
+        <div class="alert alert--success" id="pwSuccess"></div>
+        <form id="pwForm">
+          <div class="form-group">
+            <label>目前密碼</label>
+            <input type="password" class="form-control" id="curPw" required>
+          </div>
+          <div class="form-group">
+            <label>新密碼（至少 8 個字元）</label>
+            <input type="password" class="form-control" id="newPw" required minlength="8">
+          </div>
+          <div class="form-group">
+            <label>確認新密碼</label>
+            <input type="password" class="form-control" id="confirmPw" required>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn--gold btn--sm">儲存新密碼</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+fetch('/api/auth/me').then(r => r.json()).then(d => {
+  if (!d.isAdmin) { location.href = '/admin/login.html'; return; }
+  const name = d.username || d.user || 'admin';
+  document.getElementById('currentUsername').textContent = name;
+  document.getElementById('headerUser').textContent = 'One Third Residence Taiwan · ' + name;
+});
+
+document.getElementById('logoutBtn').addEventListener('click', async (e) => {
+  e.preventDefault();
+  await fetch('/api/auth/logout', { method: 'POST' });
+  location.href = '/admin/login.html';
+});
+
+function showMsg(errEl, okEl, isOk, msg) {
+  errEl.style.display = 'none'; okEl.style.display = 'none';
+  if (isOk) { okEl.textContent = msg; okEl.style.display = 'block'; }
+  else { errEl.textContent = msg; errEl.style.display = 'block'; }
+}
+
+// Change username
+document.getElementById('unameForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const errEl = document.getElementById('unameError');
+  const okEl  = document.getElementById('unameSuccess');
+  const newUsername = document.getElementById('newUsername').value.trim();
+  const confirmPassword = document.getElementById('unamePassword').value;
+  const res = await fetch('/api/auth/account', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ newUsername, confirmPassword })
+  });
+  const data = await res.json();
+  if (res.ok) {
+    showMsg(errEl, okEl, true, '帳號名稱已更新，請重新登入。');
+    document.getElementById('currentUsername').textContent = newUsername;
+    document.getElementById('unameForm').reset();
+    setTimeout(() => { location.href = '/admin/login.html'; }, 1800);
+  } else {
+    showMsg(errEl, okEl, false, data.error || '更新失敗，請重試。');
+  }
+});
+
+// Change password
+document.getElementById('pwForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const errEl = document.getElementById('pwError');
+  const okEl  = document.getElementById('pwSuccess');
+  if (document.getElementById('newPw').value !== document.getElementById('confirmPw').value) {
+    showMsg(errEl, okEl, false, '兩次輸入的新密碼不一致'); return;
+  }
+  const res = await fetch('/api/auth/change-password', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      currentPassword: document.getElementById('curPw').value,
+      newPassword: document.getElementById('newPw').value
+    })
+  });
+  const data = await res.json();
+  if (res.ok) {
+    showMsg(errEl, okEl, true, '密碼已成功更新，請重新登入。');
+    document.getElementById('pwForm').reset();
+    setTimeout(() => { location.href = '/admin/login.html'; }, 1800);
+  } else {
+    showMsg(errEl, okEl, false, data.error || '修改失敗，請重試。');
+  }
+});
+</script>
+</body>
+</html>

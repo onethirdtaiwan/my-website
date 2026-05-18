@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>前台內容管理 | One Third Residence Taiwan</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body { background: #F0EEEA; min-height: 100vh; }
+    .admin-layout { display: flex; min-height: 100vh; }
+    .sidebar { width: 240px; background: var(--charcoal); flex-shrink: 0; display: flex; flex-direction: column; }
+    .sidebar__logo { padding: 1.75rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .sidebar__logo-cn { font-family: var(--font-serif); font-size: 1.25rem; color: var(--white); display: block; }
+    .sidebar__logo-en { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); display: block; margin-top: 3px; }
+    .sidebar__label { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); padding: 1.5rem 1.5rem 0.5rem; }
+    .sidebar__nav { display: flex; flex-direction: column; }
+    .sidebar__link { display: flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.6); transition: var(--trans); }
+    .sidebar__link:hover, .sidebar__link.active { color: var(--white); background: rgba(255,255,255,0.06); }
+    .sidebar__link.active { border-left: 2px solid var(--gold); }
+    .sidebar__link svg { flex-shrink: 0; opacity: 0.7; }
+    .sidebar__link.active svg, .sidebar__link:hover svg { opacity: 1; }
+    .sidebar__footer { margin-top: auto; padding: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); }
+    .sidebar__logout { font-size: 0.8rem; color: rgba(255,255,255,0.4); display: flex; align-items: center; gap: 0.5rem; transition: color var(--trans); cursor: pointer; }
+    .sidebar__logout:hover { color: rgba(255,255,255,0.8); }
+
+    .admin-main { flex: 1; overflow-y: auto; }
+    .admin-header { background: var(--white); border-bottom: 1px solid var(--gray-200); padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    .admin-header__title { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 400; }
+    .admin-header__user { font-size: 0.82rem; color: var(--gray-600); }
+    .admin-content { padding: 2rem; }
+
+    /* Tabs */
+    .cms-tabs { display: flex; gap: 0; margin-bottom: 1.5rem; border-bottom: 2px solid var(--gray-200); overflow-x: auto; }
+    .cms-tab { padding: 0.75rem 1.25rem; font-size: 0.85rem; color: var(--gray-600); background: none; border: none; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; white-space: nowrap; transition: color 0.2s; }
+    .cms-tab:hover { color: var(--charcoal); }
+    .cms-tab.active { color: var(--charcoal); border-bottom-color: var(--gold); font-weight: 500; }
+    /* Language switcher within cards */
+    .lang-switcher-cms { display: flex; gap: 4px; margin-bottom: 1.25rem; padding-bottom: 1rem; border-bottom: 1px solid var(--gray-200); }
+    .lang-switcher-cms__btn { font-size: 0.72rem; padding: 0.3rem 0.7rem; border: 1px solid var(--gray-300); background: none; cursor: pointer; border-radius: 2px; color: var(--gray-600); transition: all 0.15s; }
+    .lang-switcher-cms__btn:hover { border-color: var(--charcoal); color: var(--charcoal); }
+    .lang-switcher-cms__btn.active { background: var(--charcoal); color: #fff; border-color: var(--charcoal); }
+    .lang-fields-cms { display: none; }
+    .lang-fields-cms.active { display: block; }
+    .lang-badge { display: inline-block; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; background: var(--gray-100); color: var(--gray-500); padding: 0.15em 0.45em; border-radius: 2px; margin-right: 0.4rem; }
+
+    /* Panels */
+    .cms-panel { display: none; }
+    .cms-panel.active { display: block; }
+    .cms-card { background: var(--white); border: 1px solid var(--gray-200); padding: 2rem; margin-bottom: 1.5rem; }
+    .cms-card h3 { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 400; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--gray-200); }
+    .cms-card h4 { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin: 1.75rem 0 1rem; }
+    .cms-actions { margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--gray-200); display: flex; align-items: center; gap: 1rem; }
+
+    /* Image field */
+    .img-field { display: flex; gap: 1rem; align-items: flex-start; }
+    .img-preview { width: 160px; height: 110px; flex-shrink: 0; background: var(--gray-100); border: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .img-preview img { width: 100%; height: 100%; object-fit: cover; display: none; }
+    .img-placeholder { font-size: 0.72rem; color: var(--gray-400); }
+    .img-controls { flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+    .img-upload-btn { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; }
+
+    /* Stats grid */
+    .stats-grid { display: grid; grid-template-columns: 120px 1fr 120px 1fr 120px 1fr; gap: 0.75rem; align-items: end; }
+
+    /* Services / Why grid */
+    .section-item { padding: 1.25rem; background: var(--surface); border-left: 2px solid var(--gold); margin-bottom: 1rem; }
+    .section-item__label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+
+    /* Status bar */
+    .status-bar { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 999; max-width: 380px; }
+    .status-msg { padding: 0.9rem 1.25rem; font-size: 0.85rem; display: flex; align-items: center; gap: 0.6rem; animation: slideUp 0.2s ease; }
+    .status-msg--success { background: #1a5c38; color: #fff; }
+    .status-msg--error { background: #7c1f1f; color: #fff; }
+    .status-msg--info { background: var(--charcoal); color: rgba(255,255,255,0.85); }
+    @keyframes slideUp { from { transform: translateY(10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; font-size: 0.8rem; color: var(--gray-600); margin-bottom: 0.4rem; }
+
+    @media (max-width: 900px) {
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .img-field { flex-direction: column; }
+      .img-preview { width: 100%; height: 160px; }
+    }
+  </style>
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar__logo">
+      <img src="/images/logo.png" alt="One Third Residence Taiwan" class="nav__logo-img nav__logo-img--sidebar">
+      <span class="nav__logo-fallback">
+        <span class="sidebar__logo-cn">ONE THIRD</span>
+        <span class="sidebar__logo-en">RESIDENCE TAIWAN</span>
+      </span>
+    </div>
+    <div class="sidebar__label">管理</div>
+    <nav class="sidebar__nav">
+      <a href="/admin/index.html" class="sidebar__link">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        儀表板
+      </a>
+      <a href="/admin/properties.html" class="sidebar__link">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        物件管理
+      </a>
+      <a href="/admin/property-form.html" class="sidebar__link">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        新增物件
+      </a>
+      <a href="/admin/site-content.html" class="sidebar__link active">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        前台內容
+      </a>
+      <a href="/admin/account.html" class="sidebar__link">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        帳號設定
+      </a>
+      <div class="sidebar__label">網站</div>
+      <a href="/index.html" target="_blank" class="sidebar__link">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        前往前台
+      </a>
+    </nav>
+    <div class="sidebar__footer">
+      <a href="#" class="sidebar__logout" id="logoutBtn">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        登出
+      </a>
+    </div>
+  </aside>
+
+  <div class="admin-main">
+    <header class="admin-header">
+      <h1 class="admin-header__title">前台內容管理</h1>
+      <span class="admin-header__user">One Third Residence Taiwan &nbsp;·&nbsp; 管理員</span>
+    </header>
+
+    <div class="admin-content">
+
+      <!-- Tab nav -->
+      <div class="cms-tabs">
+        <button class="cms-tab active" data-tab="hero">首頁 Banner</button>
+        <button class="cms-tab" data-tab="about">關於萬舍</button>
+        <button class="cms-tab" data-tab="services">服務項目</button>
+        <button class="cms-tab" data-tab="why">選擇理由</button>
+        <button class="cms-tab" data-tab="contact">聯絡資訊</button>
+        <button class="cms-tab" data-tab="backgrounds">背景圖管理</button>
+      </div>
+
+      <!-- ─── TAB: 首頁 Banner ─── -->
+      <div id="panel-hero" class="cms-panel active">
+        <div class="cms-card">
+          <h3>首頁主視覺圖片 &amp; 影片</h3>
+
+          <div class="form-group">
+            <label>背景圖片</label>
+            <div class="img-field">
+              <div class="img-preview" id="heroImgBox">
+                <img id="heroImgPreview" alt="預覽">
+                <span class="img-placeholder" id="heroImgPlaceholder">無圖片</span>
+              </div>
+              <div class="img-controls">
+                <input type="text" id="heroImage" class="form-control" placeholder="/images/img_01.webp 或 https://...">
+                <label class="btn btn--outline-dark btn--sm img-upload-btn">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  從電腦上傳圖片
+                  <input type="file" accept="image/*" style="display:none" onchange="uploadImage(this,'heroImage','heroImgPreview','heroImgPlaceholder')">
+                </label>
+                <p style="font-size:0.75rem;color:var(--gray-400);">支援 JPG、PNG、WebP。上傳後需重新部署才會生效。</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>背景影片 URL（設定後影片將蓋過圖片）</label>
+            <input type="text" id="heroVideoUrl" class="form-control" placeholder="https://example.com/video.mp4">
+          </div>
+        </div>
+
+        <div class="cms-card">
+          <h3>首頁標語文字</h3>
+
+          <div class="lang-switcher-cms">
+            <button class="lang-switcher-cms__btn active" data-lang-cms="zh" data-target="heroText">中文</button>
+            <button class="lang-switcher-cms__btn" data-lang-cms="en" data-target="heroText">English</button>
+            <button class="lang-switcher-cms__btn" data-lang-cms="ja" data-target="heroText">日本語</button>
+          </div>
+
+          <div class="lang-fields-cms active" id="heroText-zh">
+            <div class="form-group">
+              <label><span class="lang-badge">中</span>主標題（支援 HTML：<code>&lt;em&gt;斜體&lt;/em&gt;</code>、<code>&lt;br&gt;</code> 換行）</label>
+              <input type="text" id="heroTitle" class="form-control">
+            </div>
+            <div class="form-group">
+              <label><span class="lang-badge">中</span>副標題</label>
+              <input type="text" id="heroSubtitle" class="form-control">
+            </div>
+          </div>
+
+          <div class="lang-fields-cms" id="heroText-en">
+            <div class="form-group">
+              <label><span class="lang-badge">EN</span>Hero Title (HTML ok: <code>&lt;em&gt;</code>, <code>&lt;br&gt;</code>)</label>
+              <input type="text" id="heroTitleEn" class="form-control">
+            </div>
+            <div class="form-group">
+              <label><span class="lang-badge">EN</span>Hero Subtitle</label>
+              <input type="text" id="heroSubtitleEn" class="form-control">
+            </div>
+          </div>
+
+          <div class="lang-fields-cms" id="heroText-ja">
+            <div class="form-group">
+              <label><span class="lang-badge">日</span>メインキャッチコピー（HTML可：<code>&lt;em&gt;</code>、<code>&lt;br&gt;</code>）</label>
+              <input type="text" id="heroTitleJa" class="form-control">
+            </div>
+            <div class="form-group">
+              <label><span class="lang-badge">日</span>サブタイトル</label>
+              <input type="text" id="heroSubtitleJa" class="form-control">
+            </div>
+          </div>
+
+          <div class="cms-actions">
+            <button class="btn btn--gold btn--sm" onclick="saveSection('hero')">儲存 Banner 設定</button>
+            <span class="save-hint">儲存後需重新部署才會更新前台</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── TAB: 關於萬舍 ─── -->
+      <div id="panel-about" class="cms-panel">
+        <div class="cms-card">
+          <h3>關於我們區塊</h3>
+
+          <div class="form-group">
+            <label>區塊圖片</label>
+            <div class="img-field">
+              <div class="img-preview" id="aboutImgBox">
+                <img id="aboutImgPreview" alt="預覽">
+                <span class="img-placeholder" id="aboutImgPlaceholder">無圖片</span>
+              </div>
+              <div class="img-controls">
+                <input type="text" id="aboutImage" class="form-control" placeholder="/images/... 或 https://...">
+                <label class="btn btn--outline-dark btn--sm img-upload-btn">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  從電腦上傳圖片
+                  <input type="file" accept="image/*" style="display:none" onchange="uploadImage(this,'aboutImage','aboutImgPreview','aboutImgPlaceholder')">
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="lang-switcher-cms">
+            <button class="lang-switcher-cms__btn active" data-lang-cms="zh" data-target="aboutText">中文</button>
+            <button class="lang-switcher-cms__btn" data-lang-cms="en" data-target="aboutText">English</button>
+            <button class="lang-switcher-cms__btn" data-lang-cms="ja" data-target="aboutText">日本語</button>
+          </div>
+
+          <div class="lang-fields-cms active" id="aboutText-zh">
+            <div class="form-group">
+              <label><span class="lang-badge">中</span>標題（支援 <code>&lt;br&gt;</code> 換行）</label>
+              <input type="text" id="aboutTitle" class="form-control">
+            </div>
+            <div class="form-group">
+              <label><span class="lang-badge">中</span>段落一</label>
+              <textarea id="aboutText1" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+              <label><span class="lang-badge">中</span>段落二</label>
+              <textarea id="aboutText2" class="form-control" rows="3"></textarea>
+            </div>
+          </div>
+
+          <div class="lang-fields-cms" id="aboutText-en">
+            <div class="form-group">
+              <label><span class="lang-badge">EN</span>Section Title (<code>&lt;br&gt;</code> ok)</label>
+              <input type="text" id="aboutTitleEn" class="form-control">
+            </div>
+            <div class="form-group">
+              <label><span class="lang-badge">EN</span>Paragraph 1</label>
+              <textarea id="aboutText1En" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+              <label><span class="lang-badge">EN</span>Paragraph 2</label>
+              <textarea id="aboutText2En" class="form-control" rows="3"></textarea>
+            </div>
+          </div>
+
+          <div class="lang-fields-cms" id="aboutText-ja">
+            <div class="form-group">
+              <label><span class="lang-badge">日</span>セクションタイトル（<code>&lt;br&gt;</code>可）</label>
+              <input type="text" id="aboutTitleJa" class="form-control">
+            </div>
+            <div class="form-group">
+              <label><span class="lang-badge">日</span>段落 1</label>
+              <textarea id="aboutText1Ja" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+              <label><span class="lang-badge">日</span>段落 2</label>
+              <textarea id="aboutText2Ja" class="form-control" rows="3"></textarea>
+            </div>
+          </div>
+
+          <h4>數據統計</h4>
+          <div class="stats-grid">
+            <div class="form-group"><label>數值 1</label><input type="text" id="stat1Value" class="form-control" placeholder="3+"></div>
+            <div class="form-group"><label>說明 1</label><input type="text" id="stat1Label" class="form-control" placeholder="旗艦物件項目"></div>
+            <div class="form-group"><label>數值 2</label><input type="text" id="stat2Value" class="form-control" placeholder="10+"></div>
+            <div class="form-group"><label>說明 2</label><input type="text" id="stat2Label" class="form-control" placeholder="年日本地產經驗"></div>
+            <div class="form-group"><label>數值 3</label><input type="text" id="stat3Value" class="form-control" placeholder="100%"></div>
+            <div class="form-group"><label>說明 3</label><input type="text" id="stat3Label" class="form-control" placeholder="台日雙語服務"></div>
+          </div>
+
+          <div class="cms-actions">
+            <button class="btn btn--gold btn--sm" onclick="saveSection('about')">儲存關於我們</button>
+            <span class="save-hint">儲存後需重新部署才會更新前台</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── TAB: 服務項目 ─── -->
+      <div id="panel-services" class="cms-panel">
+        <div class="cms-card">
+          <h3>首頁服務項目</h3>
+
+          <div class="lang-switcher-cms">
+            <button class="lang-switcher-cms__btn active" data-lang-cms="zh" data-target="svcBlock">中文</button>
+            <button class="lang-switcher-cms__btn" data-lang-cms="en" data-target="svcBlock">English</button>
+            <button class="lang-switcher-cms__btn" data-lang-cms="ja" data-target="svcBlock">日本語</button>
+          </div>
+
+          <div class="lang-fields-cms active" id="svcBlock-zh">
+            <div class="section-item"><div class="section-item__label">服務一</div>
+              <div class="form-group"><label><span class="lang-badge">中</span>標題</label><input type="text" id="svc1Title" class="form-control"></div>
+              <div class="form-group"><label><span class="lang-badge">中</span>說明文字</label><textarea id="svc1Text" class="form-control" rows="3"></textarea></div>
+            </div>
+            <div class="section-item"><div class="section-item__label">服務二</div>
+              <div class="form-group"><label><span class="lang-badge">中</span>標題</label><input type="text" id="svc2Title" class="form-control"></div>
+              <div class="form-group"><label><span class="lang-badge">中</span>說明文字</label><textarea id="svc2Text" class="form-control" rows="3"></textarea></div>
+            </div>
+            <div class="section-item"><div class="section-item__label">服務三</div>
+              <div class="form-group"><label><span class="lang-badge">中</span>標題</label><input type="text" id="svc3Title" class="form-control"></div>
+              <div class="form-group"><label><span class="lang-badge">中</span>說明文字</label><textarea id="svc3Text" class="form-control" rows="3"></textarea></div>
+            </div>
+          </div>
+
+          <div class="lang-fields-cms" id="svcBlock-en">
+            <div class="section-item"><div class="section-item__label">Service 1</div>
+              <div class="form-group"><label><span class="lang-badge">EN</span>Title</label><input type="text" id="svc1TitleEn" class="form-control"></div>
+              <div class="form-group"><label><span class="lang-badge">EN</span>Description</label><textarea id="svc1TextEn" class="form-control" rows="3"></textarea></div>
+            </div>
+            <div class="section-item"><div class="section-item__label">Service 2</div>
+              <div class="form-group"><label><span class="lang-badge">EN</span>Title</label><input type="text" id="svc2TitleEn" class="form-control"></div>
+              <div class="form-group"><label><span class="lang-badge">EN</span>Description</label><textarea id="svc2TextEn" class="form-control" rows="3"></textarea></div>
+            </div>
+            <div class="section-item"><div class="section-item__label">Service 3</div>
+              <div class="form-group"><label><span class="lang-badge">EN</span>Title</label><input type="text" id="svc3TitleEn" class="form-control"></div>
+              <div class="form-group"><label><span class="lang-badge">EN</span>Description</label><textarea id="svc3TextEn" class="form-control" rows="3"></textarea></div>
+            </div>
+          </div>
+
+          <div class="lang-fields-cms" id="svcBlock-ja">
+            <div class="section-item"><div class="section-item__label">サービス 1</div>
+              <div class="form-group"><label><span class="lang-badge">日</span>タイトル</label><input type="text" id="svc1TitleJa" class="form-control"></div>
+              <div class="form-group"><label><span class="lang-badge">日</span>説明文</label><textarea id="svc1TextJa" class="form-control" rows="3"></textarea></div>
+            </div>
+            <div class="section-item"><div class="section-item__label">サービス 2</div>
+              <div class="form-group"><label><span class="lang-badge">日</span>タイトル</label><input type="text" id="svc2TitleJa" class="form-control"></div>
+              <div class="form-group"><label><span class="lang-badge">日</span>説明文</label><textarea id="svc2TextJa" class="form-control" rows="3"></textarea></div>
+            </div>
+            <div class="section-item"><div class="section-item__label">サービス 3</div>
+              <div class="form-group"><label><span class="lang-badge">日</span>タイトル</label><input type="text" id="svc3TitleJa" class="form-control"></div>
+              <div class="form-group"><label><span class="lang-badge">日</span>説明文</label><textarea id="svc3TextJa" class="form-control" rows="3"></textarea></div>
+            </div>
+          </div>
+
+          <div class="cms-actions">
+            <button class="btn btn--gold btn--sm" onclick="saveSection('services')">儲存服務項目</button>
+            <span class="save-hint">儲存後需重新部署才會更新前台</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── TAB: 選擇理由 ─── -->
+      <div id="panel-why" class="cms-panel">
+        <div class="cms-card">
+          <h3>為何選擇我們（四大理由）</h3>
+
+          <div class="lang-switcher-cms">
+            <button class="lang-switcher-cms__btn active" data-lang-cms="zh" data-target="whyBlock">中文</button>
+            <button class="lang-switcher-cms__btn" data-lang-cms="en" data-target="whyBlock">English</button>
+            <button class="lang-switcher-cms__btn" data-lang-cms="ja" data-target="whyBlock">日本語</button>
+          </div>
+
+          <div class="lang-fields-cms active" id="whyBlock-zh">
+            <div class="section-item"><div class="section-item__label">理由 01</div>
+              <div class="form-group"><label><span class="lang-badge">中</span>標題</label><input type="text" id="why1Title" class="form-control"></div>
+              <div class="form-group"><label><span class="lang-badge">中</span>說明文字</label><textarea id="why1Text" class="form-control" rows="2"></textarea></div>
+            </div>
+            <div class="section-item"><div class="section-item__label">理由 02</div>
+              <div class="form-group"><label><span class="lang-badge">中</span>標題</label><input type="text" id="why2Title" class="form-control"></div>
+              <div class="form-group"><label><span class="lang-badge">中</span>說明文字</label><textarea id="why2Text" class="form-control" rows="2"></textarea></div>
+            </div>
+            <div class="section-item"><div class="section-item__label">理由 03</div>
+              <div class="form-group"><label><span class="lang-badge">中</span>標題</label><input type="text" id="why3Title" class="form-control"></div>
+              <div class="form-group"><label><span class="lang-badge">中</span>說明文字</label><textarea id="why3Text" class="form-control" rows="2"></textarea></div>
+            </div>
+            <div class="section-item"><div class="section-item__label">理由 04</div>
+              <div class="form-group"><label><span class="lang-badge">中</span>標題</label><input type="text" id="why4Title" class="form-control"></div>
+              <div class="form-group"><label><span class="lang-badge">中</span>說明文字</label><textarea id="why4Text" class="form-control" rows="2"></textarea></div>
+            </div>
+          </div>
+
+          <div class="lang-fields-cms" id="whyBlock-en">
+            <div class="section-item"><div class="section-item__label">Reason 01</div>
+              <div class="form-group"><label><span class="lang-badge">EN</span>Title</label><input type="text" id="why1TitleEn" class="form-control"></div>
+              <div class="form-group"><label><span class="lang-badge">EN</span>Description</label><textarea id="why1TextEn" class="form-control" rows="2"></textarea></div>
+            </div>
+            <div class="section-item"><div class="section-item__label">Reason 02</div>
+              <div class="form-group"><label><span class="lang-badge">EN</span>Title</label><input type="text" id="why2TitleEn" class="form-control"></div>
+              <div class="form-group"><label><span class="lang-badge">EN</span>Description</label><textarea id="why2TextEn" class="form-control" rows="2"></textarea></div>
+            </div>
+            <div class="section-item"><div class="section-item__label">Reason 03</div>
+              <div class="form-group"><label><span class="lang-badge">EN</span>Title</label><input type="text" id="why3TitleEn" class="form-control"></div>
+              <div class="form-group"><label><span class="lang-badge">EN</span>Description</label><textarea id="why3TextEn" class="form-control" rows="2"></textarea></div>
+            </div>
+            <div class="section-item"><div class="section-item__label">Reason 04</div>
+              <div class="form-group"><label><span class="lang-badge">EN</span>Title</label><input type="text" id="why4TitleEn" class="form-control"></div>
+              <div class="form-group"><label><span class="lang-badge">EN</span>Description</label><textarea id="why4TextEn" class="form-control" rows="2"></textarea></div>
+            </div>
+          </div>
+
+          <div class="lang-fields-cms" id="whyBlock-ja">
+            <div class="section-item"><div class="section-item__label">理由 01</div>
+              <div class="form-group"><label><span class="lang-badge">日</span>タイトル</label><input type="text" id="why1TitleJa" class="form-control"></div>
+              <div class="form-group"><label><span class="lang-badge">日</span>説明文</label><textarea id="why1TextJa" class="form-control" rows="2"></textarea></div>
+            </div>
+            <div class="section-item"><div class="section-item__label">理由 02</div>
+              <div class="form-group"><label><span class="lang-badge">日</span>タイトル</label><input type="text" id="why2TitleJa" class="form-control"></div>
+              <div class="form-group"><label><span class="lang-badge">日</span>説明文</label><textarea id="why2TextJa" class="form-control" rows="2"></textarea></div>
+            </div>
+            <div class="section-item"><div class="section-item__label">理由 03</div>
+              <div class="form-group"><label><span class="lang-badge">日</span>タイトル</label><input type="text" id="why3TitleJa" class="form-control"></div>
+              <div class="form-group"><label><span class="lang-badge">日</span>説明文</label><textarea id="why3TextJa" class="form-control" rows="2"></textarea></div>
+            </div>
+            <div class="section-item"><div class="section-item__label">理由 04</div>
+              <div class="form-group"><label><span class="lang-badge">日</span>タイトル</label><input type="text" id="why4TitleJa" class="form-control"></div>
+              <div class="form-group"><label><span class="lang-badge">日</span>説明文</label><textarea id="why4TextJa" class="form-control" rows="2"></textarea></div>
+            </div>
+          </div>
+
+          <div class="cms-actions">
+            <button class="btn btn--gold btn--sm" onclick="saveSection('why')">儲存選擇理由</button>
+            <span class="save-hint">儲存後需重新部署才會更新前台</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── TAB: 聯絡資訊 ─── -->
+      <div id="panel-contact" class="cms-panel">
+        <div class="cms-card">
+          <h3>聯絡資訊（顯示於聯絡我們頁面）</h3>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div class="form-group">
+              <label>台灣電話</label>
+              <input type="text" id="contactPhoneTw" class="form-control" placeholder="+886 (0)2 1234-5678">
+            </div>
+            <div class="form-group">
+              <label>日本電話</label>
+              <input type="text" id="contactPhoneJp" class="form-control" placeholder="+81 ...">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>電子信箱</label>
+            <input type="email" id="contactEmail" class="form-control" placeholder="info@onethirdtaiwan.com">
+          </div>
+
+          <div class="form-group">
+            <label>台灣辦公室地址</label>
+            <textarea id="contactAddressTw" class="form-control" rows="2" placeholder="台北市 ..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>服務時間</label>
+            <input type="text" id="contactHours" class="form-control" placeholder="週一 ～ 週五：09:00 – 18:00">
+          </div>
+
+          <h4>即時通訊</h4>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div class="form-group">
+              <label>LINE 官方帳號 ID</label>
+              <input type="text" id="contactLineId" class="form-control" placeholder="@onetthird">
+            </div>
+            <div class="form-group">
+              <label>WeChat ID</label>
+              <input type="text" id="contactWechat" class="form-control" placeholder="...">
+            </div>
+          </div>
+
+          <div class="cms-actions">
+            <button class="btn btn--gold btn--sm" onclick="saveSection('contact')">儲存聯絡資訊</button>
+            <span class="save-hint">儲存後需重新部署才會更新前台</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── TAB: 背景圖管理 ─── -->
+      <div id="panel-backgrounds" class="cms-panel">
+
+        <div style="background:rgba(184,151,90,0.08);border:1px solid rgba(184,151,90,0.25);padding:0.9rem 1.25rem;margin-bottom:1.5rem;font-size:0.84rem;color:var(--gray-600);">
+          💡 支援貼上外部圖片網址，或從電腦上傳圖片（上傳後需重新部署才會在前台顯示）。建議圖片寬度 1920px 以上，比例 16:9。
+        </div>
+
+        <!-- 首頁 -->
+        <div class="cms-card">
+          <h3>首頁</h3>
+
+          <h4>主視覺 Hero</h4>
+          <div class="form-group">
+            <div class="img-field">
+              <div class="img-preview" id="bgHomeHeroBox"><img id="bgHomeHeroPreview" alt="預覽"><span class="img-placeholder" id="bgHomeHeroPh">無圖片</span></div>
+              <div class="img-controls">
+                <input type="text" id="bgHomeHero" class="form-control" placeholder="/images/img_01.webp 或 https://...">
+                <label class="btn btn--outline-dark btn--sm img-upload-btn">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  上傳圖片
+                  <input type="file" accept="image/*" style="display:none" onchange="uploadImage(this,'bgHomeHero','bgHomeHeroPreview','bgHomeHeroPh')">
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <h4>CTA 號召區背景</h4>
+          <div class="form-group">
+            <div class="img-field">
+              <div class="img-preview" id="bgHomeCtaBox"><img id="bgHomeCtaPreview" alt="預覽"><span class="img-placeholder" id="bgHomeCtaPh">無圖片</span></div>
+              <div class="img-controls">
+                <input type="text" id="bgHomeCta" class="form-control" placeholder="https://...">
+                <label class="btn btn--outline-dark btn--sm img-upload-btn">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  上傳圖片
+                  <input type="file" accept="image/*" style="display:none" onchange="uploadImage(this,'bgHomeCta','bgHomeCtaPreview','bgHomeCtaPh')">
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="cms-actions">
+            <button class="btn btn--gold btn--sm" onclick="saveSection('bg-home')">儲存首頁背景</button>
+            <span class="save-hint">儲存後需重新部署才會更新前台</span>
+          </div>
+        </div>
+
+        <!-- 其他頁面 -->
+        <div class="cms-card">
+          <h3>其他頁面頁首 Banner</h3>
+          <p style="font-size:0.84rem;color:var(--gray-500);margin-bottom:1.5rem;">各頁面頂部 Banner 區塊，設定背景圖後 Banner 會以圖片為底色（自動加深色遮罩保持文字清晰）。留空則顯示預設深色背景。</p>
+
+          <h4>白馬村物件頁</h4>
+          <div class="form-group">
+            <div class="img-field">
+              <div class="img-preview" id="bgPropsBox"><img id="bgPropsPreview" alt="預覽"><span class="img-placeholder" id="bgPropsPh">使用預設深色</span></div>
+              <div class="img-controls">
+                <input type="text" id="bgProperties" class="form-control" placeholder="https://...">
+                <label class="btn btn--outline-dark btn--sm img-upload-btn">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  上傳圖片
+                  <input type="file" accept="image/*" style="display:none" onchange="uploadImage(this,'bgProperties','bgPropsPreview','bgPropsPh')">
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <h4>東京物件頁</h4>
+          <div class="form-group">
+            <div class="img-field">
+              <div class="img-preview" id="bgTokyoBox"><img id="bgTokyoPreview" alt="預覽"><span class="img-placeholder" id="bgTokyoPh">使用預設深色</span></div>
+              <div class="img-controls">
+                <input type="text" id="bgTokyo" class="form-control" placeholder="https://...">
+                <label class="btn btn--outline-dark btn--sm img-upload-btn">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  上傳圖片
+                  <input type="file" accept="image/*" style="display:none" onchange="uploadImage(this,'bgTokyo','bgTokyoPreview','bgTokyoPh')">
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <h4>杜拜物件頁</h4>
+          <div class="form-group">
+            <div class="img-field">
+              <div class="img-preview" id="bgDubaiBox"><img id="bgDubaiPreview" alt="預覽"><span class="img-placeholder" id="bgDubaiPh">使用預設深色</span></div>
+              <div class="img-controls">
+                <input type="text" id="bgDubai" class="form-control" placeholder="https://...">
+                <label class="btn btn--outline-dark btn--sm img-upload-btn">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  上傳圖片
+                  <input type="file" accept="image/*" style="display:none" onchange="uploadImage(this,'bgDubai','bgDubaiPreview','bgDubaiPh')">
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <h4>訂房頁</h4>
+          <div class="form-group">
+            <div class="img-field">
+              <div class="img-preview" id="bgBookingBox"><img id="bgBookingPreview" alt="預覽"><span class="img-placeholder" id="bgBookingPh">無圖片</span></div>
+              <div class="img-controls">
+                <input type="text" id="bgBooking" class="form-control" placeholder="https://...">
+                <label class="btn btn--outline-dark btn--sm img-upload-btn">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  上傳圖片
+                  <input type="file" accept="image/*" style="display:none" onchange="uploadImage(this,'bgBooking','bgBookingPreview','bgBookingPh')">
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <h4>C.M. Phoenix 頁</h4>
+          <div class="form-group">
+            <div class="img-field">
+              <div class="img-preview" id="bgPhoenixBox"><img id="bgPhoenixPreview" alt="預覽"><span class="img-placeholder" id="bgPhoenixPh">無圖片</span></div>
+              <div class="img-controls">
+                <input type="text" id="bgPhoenix" class="form-control" placeholder="https://...">
+                <label class="btn btn--outline-dark btn--sm img-upload-btn">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  上傳圖片
+                  <input type="file" accept="image/*" style="display:none" onchange="uploadImage(this,'bgPhoenix','bgPhoenixPreview','bgPhoenixPh')">
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <h4>聯絡我們頁</h4>
+          <div class="form-group">
+            <div class="img-field">
+              <div class="img-preview" id="bgContactBox"><img id="bgContactPreview" alt="預覽"><span class="img-placeholder" id="bgContactPh">使用預設深色</span></div>
+              <div class="img-controls">
+                <input type="text" id="bgContact" class="form-control" placeholder="https://...">
+                <label class="btn btn--outline-dark btn--sm img-upload-btn">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  上傳圖片
+                  <input type="file" accept="image/*" style="display:none" onchange="uploadImage(this,'bgContact','bgContactPreview','bgContactPh')">
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <h4>FAQ 頁</h4>
+          <div class="form-group">
+            <div class="img-field">
+              <div class="img-preview" id="bgFaqBox"><img id="bgFaqPreview" alt="預覽"><span class="img-placeholder" id="bgFaqPh">使用預設深色</span></div>
+              <div class="img-controls">
+                <input type="text" id="bgFaq" class="form-control" placeholder="https://...">
+                <label class="btn btn--outline-dark btn--sm img-upload-btn">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  上傳圖片
+                  <input type="file" accept="image/*" style="display:none" onchange="uploadImage(this,'bgFaq','bgFaqPreview','bgFaqPh')">
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="cms-actions">
+            <button class="btn btn--gold btn--sm" onclick="saveSection('bg-pages')">儲存各頁背景</button>
+            <span class="save-hint">儲存後需重新部署才會更新前台</span>
+          </div>
+        </div>
+
+      </div><!-- /panel-backgrounds -->
+
+    </div><!-- /admin-content -->
+  </div><!-- /admin-main -->
+</div><!-- /admin-layout -->
+
+<!-- Status toast -->
+<div class="status-bar" id="statusBar" style="display:none">
+  <div class="status-msg" id="statusMsg"></div>
+</div>
+
+<style>
+  .save-hint { font-size: 0.77rem; color: var(--gray-400); }
+  code { background: var(--gray-100); padding: 0.1em 0.3em; font-size: 0.85em; }
+</style>
+
+<script>
+fetch('/api/auth/check').then(r => r.json()).then(d => { if (!d.ok) location.href = '/admin/login.html'; }).catch(() => {});
+
+let _content = {};
+
+fetch('/api/content')
+  .then(r => r.json())
+  .then(c => { _content = c || {}; populateForms(); })
+  .catch(() => {});
+
+function populateForms() {
+  const h = _content.home || {};
+  const ct = _content.contact || {};
+
+  // Hero
+  v('heroImage', h.heroImage);
+  v('heroVideoUrl', h.heroVideoUrl);
+  v('heroTitle', h.heroTitle);       v('heroTitleEn', h.heroTitleEn);       v('heroTitleJa', h.heroTitleJa);
+  v('heroSubtitle', h.heroSubtitle); v('heroSubtitleEn', h.heroSubtitleEn); v('heroSubtitleJa', h.heroSubtitleJa);
+  setPreview('heroImage', 'heroImgPreview', 'heroImgPlaceholder');
+
+  // About
+  v('aboutImage', h.aboutImage);
+  v('aboutTitle', h.aboutTitle);   v('aboutTitleEn', h.aboutTitleEn);   v('aboutTitleJa', h.aboutTitleJa);
+  v('aboutText1', h.aboutText1);   v('aboutText1En', h.aboutText1En);   v('aboutText1Ja', h.aboutText1Ja);
+  v('aboutText2', h.aboutText2);   v('aboutText2En', h.aboutText2En);   v('aboutText2Ja', h.aboutText2Ja);
+  v('stat1Value', h.stat1Value); v('stat1Label', h.stat1Label);
+  v('stat2Value', h.stat2Value); v('stat2Label', h.stat2Label);
+  v('stat3Value', h.stat3Value); v('stat3Label', h.stat3Label);
+  setPreview('aboutImage', 'aboutImgPreview', 'aboutImgPlaceholder');
+
+  // Services (zh + en + ja)
+  ['svc1Title','svc1Text','svc2Title','svc2Text','svc3Title','svc3Text'].forEach(k => {
+    v(k, h[k]); v(k+'En', h[k+'En']); v(k+'Ja', h[k+'Ja']);
+  });
+
+  // Why (zh + en + ja)
+  ['why1Title','why1Text','why2Title','why2Text','why3Title','why3Text','why4Title','why4Text'].forEach(k => {
+    v(k, h[k]); v(k+'En', h[k+'En']); v(k+'Ja', h[k+'Ja']);
+  });
+
+  // Contact
+  v('contactPhoneTw', ct.phoneTw);
+  v('contactPhoneJp', ct.phoneJp);
+  v('contactEmail', ct.email);
+  v('contactAddressTw', ct.addressTw);
+  v('contactHours', ct.hours);
+  v('contactLineId', ct.lineId);
+  v('contactWechat', ct.wechat);
+
+  // Backgrounds
+  var bg = _content.backgrounds || {};
+  v('bgHomeHero', bg.homeHero);       setPreview('bgHomeHero', 'bgHomeHeroPreview', 'bgHomeHeroPh');
+  v('bgHomeCta',  bg.homeCta);        setPreview('bgHomeCta',  'bgHomeCtaPreview',  'bgHomeCtaPh');
+  v('bgProperties', bg.propertiesHero); setPreview('bgProperties', 'bgPropsPreview', 'bgPropsPh');
+  v('bgTokyo',    bg.tokyoHero);      setPreview('bgTokyo',    'bgTokyoPreview',    'bgTokyoPh');
+  v('bgDubai',    bg.dubaiHero);      setPreview('bgDubai',    'bgDubaiPreview',    'bgDubaiPh');
+  v('bgBooking',  bg.bookingHero);    setPreview('bgBooking',  'bgBookingPreview',  'bgBookingPh');
+  v('bgPhoenix',  bg.phoenixHero);    setPreview('bgPhoenix',  'bgPhoenixPreview',  'bgPhoenixPh');
+  v('bgContact',  bg.contactHero);    setPreview('bgContact',  'bgContactPreview',  'bgContactPh');
+  v('bgFaq',      bg.faqHero);        setPreview('bgFaq',      'bgFaqPreview',      'bgFaqPh');
+}
+
+function v(id, val) {
+  const el = document.getElementById(id);
+  if (el && val !== undefined && val !== null) el.value = val;
+}
+
+function setPreview(inputId, imgId, placeholderId) {
+  const url = document.getElementById(inputId)?.value?.trim();
+  const img = document.getElementById(imgId);
+  const ph  = document.getElementById(placeholderId);
+  if (!img) return;
+  if (url) {
+    img.src = url;
+    img.style.display = 'block';
+    if (ph) ph.style.display = 'none';
+  } else {
+    img.style.display = 'none';
+    if (ph) ph.style.display = '';
+  }
+}
+
+// Live preview when URL is typed
+document.getElementById('heroImage').addEventListener('input', () => setPreview('heroImage','heroImgPreview','heroImgPlaceholder'));
+document.getElementById('aboutImage').addEventListener('input', () => setPreview('aboutImage','aboutImgPreview','aboutImgPlaceholder'));
+
+var _bgPreviewMap = {
+  bgHomeHero:   ['bgHomeHeroPreview',  'bgHomeHeroPh'],
+  bgHomeCta:    ['bgHomeCtaPreview',   'bgHomeCtaPh'],
+  bgProperties: ['bgPropsPreview',     'bgPropsPh'],
+  bgTokyo:      ['bgTokyoPreview',     'bgTokyoPh'],
+  bgDubai:      ['bgDubaiPreview',     'bgDubaiPh'],
+  bgBooking:    ['bgBookingPreview',   'bgBookingPh'],
+  bgPhoenix:    ['bgPhoenixPreview',   'bgPhoenixPh'],
+  bgContact:    ['bgContactPreview',   'bgContactPh'],
+  bgFaq:        ['bgFaqPreview',       'bgFaqPh'],
+};
+Object.keys(_bgPreviewMap).forEach(function(id) {
+  var m = _bgPreviewMap[id];
+  var el = document.getElementById(id);
+  if (el) el.addEventListener('input', function() { setPreview(id, m[0], m[1]); });
+});
+
+// Tabs
+document.querySelectorAll('.cms-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tab = btn.dataset.tab;
+    document.querySelectorAll('.cms-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.cms-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + tab).classList.add('active');
+  });
+});
+
+// In-card language switchers
+document.querySelectorAll('.lang-switcher-cms__btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.target;
+    const lang   = btn.dataset.langCms;
+    // Update button states within the same switcher group
+    btn.closest('.lang-switcher-cms').querySelectorAll('.lang-switcher-cms__btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    // Show/hide field blocks
+    document.querySelectorAll('[id^="' + target + '-"]').forEach(block => {
+      block.classList.toggle('active', block.id === target + '-' + lang);
+    });
+  });
+});
+
+async function saveSection(section) {
+  const newContent = JSON.parse(JSON.stringify(_content));
+  newContent.home    = newContent.home    || {};
+  newContent.contact = newContent.contact || {};
+
+  if (section === 'hero') {
+    newContent.home.heroImage      = g('heroImage');
+    newContent.home.heroVideoUrl   = g('heroVideoUrl');
+    newContent.home.heroTitle      = g('heroTitle');      newContent.home.heroTitleEn      = g('heroTitleEn');      newContent.home.heroTitleJa      = g('heroTitleJa');
+    newContent.home.heroSubtitle   = g('heroSubtitle');   newContent.home.heroSubtitleEn   = g('heroSubtitleEn');   newContent.home.heroSubtitleJa   = g('heroSubtitleJa');
+  } else if (section === 'about') {
+    newContent.home.aboutImage = g('aboutImage');
+    newContent.home.aboutTitle = g('aboutTitle'); newContent.home.aboutTitleEn = g('aboutTitleEn'); newContent.home.aboutTitleJa = g('aboutTitleJa');
+    newContent.home.aboutText1 = g('aboutText1'); newContent.home.aboutText1En = g('aboutText1En'); newContent.home.aboutText1Ja = g('aboutText1Ja');
+    newContent.home.aboutText2 = g('aboutText2'); newContent.home.aboutText2En = g('aboutText2En'); newContent.home.aboutText2Ja = g('aboutText2Ja');
+    newContent.home.stat1Value = g('stat1Value'); newContent.home.stat1Label = g('stat1Label');
+    newContent.home.stat2Value = g('stat2Value'); newContent.home.stat2Label = g('stat2Label');
+    newContent.home.stat3Value = g('stat3Value'); newContent.home.stat3Label = g('stat3Label');
+  } else if (section === 'services') {
+    ['svc1Title','svc1Text','svc2Title','svc2Text','svc3Title','svc3Text'].forEach(k => {
+      newContent.home[k] = g(k); newContent.home[k+'En'] = g(k+'En'); newContent.home[k+'Ja'] = g(k+'Ja');
+    });
+  } else if (section === 'why') {
+    ['why1Title','why1Text','why2Title','why2Text','why3Title','why3Text','why4Title','why4Text'].forEach(k => {
+      newContent.home[k] = g(k); newContent.home[k+'En'] = g(k+'En'); newContent.home[k+'Ja'] = g(k+'Ja');
+    });
+  } else if (section === 'contact') {
+    newContent.contact = {
+      phoneTw:   g('contactPhoneTw'),
+      phoneJp:   g('contactPhoneJp'),
+      email:     g('contactEmail'),
+      addressTw: g('contactAddressTw'),
+      hours:     g('contactHours'),
+      lineId:    g('contactLineId'),
+      wechat:    g('contactWechat'),
+    };
+  } else if (section === 'bg-home') {
+    newContent.backgrounds = Object.assign({}, newContent.backgrounds || {});
+    newContent.backgrounds.homeHero = g('bgHomeHero');
+    newContent.backgrounds.homeCta  = g('bgHomeCta');
+  } else if (section === 'bg-pages') {
+    newContent.backgrounds = Object.assign({}, newContent.backgrounds || {});
+    newContent.backgrounds.propertiesHero = g('bgProperties');
+    newContent.backgrounds.tokyoHero      = g('bgTokyo');
+    newContent.backgrounds.dubaiHero      = g('bgDubai');
+    newContent.backgrounds.bookingHero    = g('bgBooking');
+    newContent.backgrounds.phoenixHero    = g('bgPhoenix');
+    newContent.backgrounds.contactHero    = g('bgContact');
+    newContent.backgrounds.faqHero        = g('bgFaq');
+  }
+
+  toast('儲存中…', 'info');
+
+  try {
+    const res = await fetch('/api/content', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newContent),
+    });
+    const data = await res.json();
+    if (res.ok) {
+      _content = newContent;
+      toast('✓ 儲存成功！請重新部署網站以更新前台。', 'success');
+    } else {
+      toast('✕ 失敗：' + (data.error || '未知錯誤'), 'error');
+    }
+  } catch (e) {
+    toast('✕ 網路錯誤：' + e.message, 'error');
+  }
+}
+
+function g(id) {
+  return document.getElementById(id)?.value?.trim() || '';
+}
+
+async function uploadImage(input, urlFieldId, imgId, phId) {
+  const file = input.files[0];
+  if (!file) return;
+
+  // Immediate local preview
+  const localUrl = URL.createObjectURL(file);
+  const img = document.getElementById(imgId);
+  const ph  = document.getElementById(phId);
+  if (img) { img.src = localUrl; img.style.display = 'block'; if (ph) ph.style.display = 'none'; }
+
+  toast('圖片上傳中…', 'info');
+
+  const base64 = await new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = e => resolve(e.target.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+
+  try {
+    const res = await fetch('/api/upload', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ filename: file.name, data: base64 }),
+    });
+    const data = await res.json();
+    if (res.ok) {
+      document.getElementById(urlFieldId).value = data.path;
+      toast('✓ 圖片已上傳至 GitHub。部署後即可在前台顯示。', 'success');
+    } else {
+      toast('✕ 上傳失敗：' + (data.error || ''), 'error');
+    }
+  } catch (e) {
+    toast('✕ 上傳錯誤：' + e.message, 'error');
+  }
+
+  input.value = '';
+}
+
+let _toastTimer;
+function toast(msg, type) {
+  const bar = document.getElementById('statusBar');
+  const el  = document.getElementById('statusMsg');
+  el.textContent = msg;
+  el.className = 'status-msg status-msg--' + type;
+  bar.style.display = 'block';
+  clearTimeout(_toastTimer);
+  if (type === 'success') _toastTimer = setTimeout(() => { bar.style.display = 'none'; }, 5000);
+}
+
+document.getElementById('logoutBtn').addEventListener('click', async (e) => {
+  e.preventDefault();
+  await fetch('/api/auth/logout', { method: 'POST' });
+  location.href = '/admin/login.html';
+});
+</script>
+</body>
+</html>

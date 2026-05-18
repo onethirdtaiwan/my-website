@@ -74,6 +74,14 @@
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
         新增物件
       </a>
+      <a href="/admin/site-content.html" class="sidebar__link">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        前台內容
+      </a>
+      <a href="/admin/account.html" class="sidebar__link">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        帳號設定
+      </a>
       <div class="sidebar__label">網站</div>
       <a href="/index.html" target="_blank" class="sidebar__link">
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -91,15 +99,25 @@
   <div class="admin-main">
     <header class="admin-header">
       <h1 class="admin-header__title">物件管理</h1>
-      <a href="/admin/property-form.html" class="btn btn--gold btn--sm">+ 新增物件</a>
+      <a href="/admin/property-form.html" class="btn btn--gold btn--sm" id="newPropBtn">+ 新增物件</a>
     </header>
 
     <div class="admin-content">
+
+      <!-- City filter tabs -->
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.25rem;">
+        <button class="btn btn--gold btn--sm city-tab" data-city="all">全部</button>
+        <button class="btn btn--outline-dark btn--sm city-tab" data-city="hakuba">白馬村</button>
+        <button class="btn btn--outline-dark btn--sm city-tab" data-city="tokyo">東京</button>
+        <button class="btn btn--outline-dark btn--sm city-tab" data-city="dubai">杜拜</button>
+      </div>
+
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
               <th>縮圖</th>
+              <th>城市</th>
               <th>物件名稱</th>
               <th>中文名</th>
               <th>狀態</th>
@@ -110,7 +128,7 @@
             </tr>
           </thead>
           <tbody id="tableBody">
-            <tr><td colspan="8" style="text-align:center;padding:3rem;color:var(--gray-400);">載入中…</td></tr>
+            <tr><td colspan="9" style="text-align:center;padding:3rem;color:var(--gray-400);">載入中…</td></tr>
           </tbody>
         </table>
       </div>
@@ -134,42 +152,61 @@
 fetch('/api/auth/me').then(r => r.json()).then(d => { if (!d.isAdmin) location.href = '/admin/login.html'; });
 
 let deleteTargetId = null;
+let _allProps = [];
+let _cityFilter = 'all';
+
+const CITY_LABELS = { hakuba: '白馬村', tokyo: '東京', dubai: '杜拜' };
+function getCityLabel(city) { return CITY_LABELS[city || 'hakuba'] || city || '白馬村'; }
+
+function renderTable() {
+  const props = _cityFilter === 'all' ? _allProps : _allProps.filter(p => (p.city || 'hakuba') === _cityFilter);
+  const newBtn = document.getElementById('newPropBtn');
+  if (newBtn) newBtn.href = _cityFilter === 'all' ? '/admin/property-form.html' : `/admin/property-form.html?city=${_cityFilter}`;
+  const tbody = document.getElementById('tableBody');
+  if (!props.length) {
+    tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;padding:3rem;color:var(--gray-400);">尚無物件，請點選「新增物件」。</td></tr>';
+    return;
+  }
+  tbody.innerHTML = props.map(p => `
+    <tr>
+      <td>
+        ${p.thumbnail
+          ? `<img src="${p.thumbnail}" class="thumb" alt="">`
+          : `<div class="thumb-placeholder"><svg width="16" height="16" fill="none" stroke="var(--gray-400)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>`}
+      </td>
+      <td><span class="badge" style="background:var(--surface);color:var(--gray-600);border:1px solid var(--gray-200);">${getCityLabel(p.city)}</span></td>
+      <td style="font-weight:500;">${p.name}</td>
+      <td style="color:var(--gray-600);">${p.nameZh}</td>
+      <td><span class="badge badge--${p.status}">${p.status === 'available' ? '可購入' : '即將推出'}</span></td>
+      <td style="color:var(--gray-600);">${p.type === 'villa' ? '別墅' : p.type === 'resort' ? '度假村' : '公寓'}</td>
+      <td style="color:var(--gold);font-family:var(--font-serif);">${p.priceDisplay}</td>
+      <td>${p.featured ? '<span class="badge badge--featured">精選</span>' : '<span style="color:var(--gray-400);font-size:0.8rem;">—</span>'}</td>
+      <td>
+        <div class="action-btns">
+          <a href="/property.html?id=${p.id}" target="_blank" class="btn btn--outline-dark btn--sm">預覽</a>
+          <a href="/admin/property-form.html?id=${p.id}" class="btn btn--outline-gold btn--sm">編輯</a>
+          <button class="btn btn--sm" style="border:1px solid #fca5a5;color:#ef4444;" onclick="confirmDelete('${p.id}','${p.nameZh}')">刪除</button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
 
 function loadProperties() {
   fetch('/api/properties').then(r => r.json()).then(props => {
-    const tbody = document.getElementById('tableBody');
-    if (!props.length) {
-      tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:3rem;color:var(--gray-400);">尚無物件，請點選「新增物件」。</td></tr>';
-      return;
-    }
-    tbody.innerHTML = props.map(p => `
-      <tr>
-        <td>
-          ${p.thumbnail
-            ? `<img src="${p.thumbnail}" class="thumb" alt="">`
-            : `<div class="thumb-placeholder"><svg width="16" height="16" fill="none" stroke="var(--gray-400)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>`}
-        </td>
-        <td style="font-weight:500;">${p.name}</td>
-        <td style="color:var(--gray-600);">${p.nameZh}</td>
-        <td>
-          <span class="badge badge--${p.status}">
-            ${p.status === 'available' ? '可購入' : '即將推出'}
-          </span>
-        </td>
-        <td style="color:var(--gray-600);">${p.type === 'villa' ? '別墅' : '度假村'}</td>
-        <td style="color:var(--gold);font-family:var(--font-serif);">${p.priceDisplay}</td>
-        <td>${p.featured ? '<span class="badge badge--featured">精選</span>' : '<span style="color:var(--gray-400);font-size:0.8rem;">—</span>'}</td>
-        <td>
-          <div class="action-btns">
-            <a href="/property.html?id=${p.id}" target="_blank" class="btn btn--outline-dark btn--sm" title="前台預覽">預覽</a>
-            <a href="/admin/property-form.html?id=${p.id}" class="btn btn--outline-gold btn--sm">編輯</a>
-            <button class="btn btn--sm" style="border:1px solid #fca5a5;color:#ef4444;" onclick="confirmDelete('${p.id}','${p.nameZh}')">刪除</button>
-          </div>
-        </td>
-      </tr>
-    `).join('');
+    _allProps = props;
+    renderTable();
   });
 }
+
+document.querySelectorAll('.city-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.city-tab').forEach(b => { b.classList.remove('btn--gold'); b.classList.add('btn--outline-dark'); });
+    btn.classList.add('btn--gold'); btn.classList.remove('btn--outline-dark');
+    _cityFilter = btn.dataset.city;
+    renderTable();
+  });
+});
 
 function confirmDelete(id, name) {
   deleteTargetId = id;
@@ -180,7 +217,7 @@ function confirmDelete(id, name) {
 document.getElementById('confirmDeleteBtn').addEventListener('click', async () => {
   if (!deleteTargetId) return;
   const res = await fetch(`/api/properties/${deleteTargetId}`, { method: 'DELETE' });
-  if (res.ok) { document.getElementById('deleteModal').classList.remove('open'); loadProperties(); }
+  if (res.ok) { document.getElementById('deleteModal').classList.remove('open'); _allProps = _allProps.filter(p => p.id !== deleteTargetId); deleteTargetId = null; renderTable(); }
   else { alert('刪除失敗，請重試。'); }
 });
 

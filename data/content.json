@@ -42,5 +42,16 @@
   },
   "company": {
     "footerDescription": "日本白馬村頂級度假地產代理（One Third Residence Taiwan），提供地產買賣、托租代管及度假訂房全方位服務。"
+  },
+  "backgrounds": {
+    "homeHero": "/images/img_01.webp",
+    "homeCta": "https://images.unsplash.com/photo-1544918498-9fbed00ca76e?w=1600&q=80",
+    "bookingHero": "https://images.unsplash.com/photo-1544918498-9fbed00ca76e?w=1600&q=80",
+    "phoenixHero": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80",
+    "propertiesHero": "",
+    "tokyoHero": "",
+    "dubaiHero": "",
+    "contactHero": "",
+    "faqHero": ""
   }
 }

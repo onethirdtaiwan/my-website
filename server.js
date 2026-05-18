@@ -1,6 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const bcrypt = require('bcryptjs');
+const crypto = require('crypto');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
@@ -30,15 +31,18 @@ function writeAdmin(data) {
   fs.writeFileSync(ADMIN_FILE, JSON.stringify(data, null, 2));
 }
 
-// Initialize admin password on first run
-(async () => {
-  const admin = readAdmin();
-  if (!admin.passwordHash) {
-    const hash = await bcrypt.hash('Wanshe@2026', 10);
-    writeAdmin({ ...admin, passwordHash: hash });
-    console.log('✓ Admin password initialized. Default: admin / Wanshe@2026');
-  }
-})();
+function verifyAdminPassword(input, hash) {
+  if (!hash) return false;
+  if (hash.startsWith('$2')) return bcrypt.compare(input, hash);
+  const [salt, expected] = hash.split('$');
+  return Promise.resolve(crypto.createHmac('sha256', salt).update(input).digest('hex') === expected);
+}
+
+function hashAdminPassword(password) {
+  const salt = crypto.randomBytes(16).toString('hex');
+  const hash = crypto.createHmac('sha256', salt).update(password).digest('hex');
+  return `${salt}$${hash}`;
+}
 
 // ── Multer (image upload) ────────────────────────────────────────
 const storage = multer.diskStorage({
@@ -99,9 +103,10 @@ app.post('/api/auth/login', async (req, res) => {
   if (username !== admin.username) {
     return res.status(401).json({ error: '帳號或密碼錯誤' });
   }
-  const valid = await bcrypt.compare(password, admin.passwordHash);
+  const valid = await verifyAdminPassword(password, admin.passwordHash);
   if (!valid) return res.status(401).json({ error: '帳號或密碼錯誤' });
   req.session.isAdmin = true;
+  req.session.username = admin.username;
   res.json({ success: true });
 });
 
@@ -111,7 +116,9 @@ app.post('/api/auth/logout', (req, res) => {
 });
 
 app.get('/api/auth/me', (req, res) => {
-  res.json({ isAdmin: !!(req.session && req.session.isAdmin) });
+  if (!(req.session && req.session.isAdmin)) return res.json({ isAdmin: false });
+  const admin = readAdmin();
+  res.json({ isAdmin: true, user: req.session.username || admin.username, username: admin.username });
 });
 
 app.post('/api/auth/change-password', requireAuth, async (req, res) => {
@@ -120,11 +127,28 @@ app.post('/api/auth/change-password', requireAuth, async (req, res) => {
     return res.status(400).json({ error: '新密碼至少需要 8 個字元' });
   }
   const admin = readAdmin();
-  const valid = await bcrypt.compare(currentPassword, admin.passwordHash);
+  const valid = await verifyAdminPassword(currentPassword, admin.passwordHash);
   if (!valid) return res.status(401).json({ error: '目前密碼錯誤' });
-  const hash = await bcrypt.hash(newPassword, 10);
-  writeAdmin({ ...admin, passwordHash: hash });
-  res.json({ success: true });
+  writeAdmin({ ...admin, passwordHash: hashAdminPassword(newPassword) });
+  res.json({ ok: true });
+});
+
+app.get('/api/auth/account', requireAuth, (req, res) => {
+  const admin = readAdmin();
+  res.json({ username: admin.username });
+});
+
+app.post('/api/auth/account', requireAuth, async (req, res) => {
+  const { newUsername, confirmPassword } = req.body;
+  if (!newUsername || !confirmPassword) return res.status(400).json({ error: '請填寫所有欄位' });
+  if (newUsername.length < 3) return res.status(400).json({ error: '帳號名稱至少需要 3 個字元' });
+  if (!/^[a-zA-Z0-9_\-]+$/.test(newUsername)) return res.status(400).json({ error: '帳號只能使用英文、數字、底線或連字號' });
+  const admin = readAdmin();
+  const valid = await verifyAdminPassword(confirmPassword, admin.passwordHash);
+  if (!valid) return res.status(401).json({ error: '密碼驗證失敗，請確認目前密碼' });
+  writeAdmin({ ...admin, username: newUsername });
+  req.session.username = newUsername;
+  res.json({ ok: true });
 });
 
 // ── Properties API ────────────────────────────────────────────────

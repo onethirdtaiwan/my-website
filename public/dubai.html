@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>杜拜物件 | One Third Residence Taiwan</title>
+  <meta name="description" content="杜拜頂級住宅投資，零稅收優勢、高租金回報、黃金簽證計畫，萬舍國際全程中文服務協助您佈局中東核心市場。">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav class="nav" id="mainNav">
+  <div class="nav__container">
+    <a href="/index.html" class="nav__logo">
+      <img src="/images/logo.png" alt="One Third Residence Taiwan" class="nav__logo-img">
+      <span class="nav__logo-fallback">
+        <span class="nav__logo-main">ONE THIRD</span>
+        <span class="nav__logo-sub">RESIDENCE TAIWAN</span>
+      </span>
+    </a>
+    <button class="nav__toggle" id="navToggle" aria-label="開啟選單" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__menu" id="navMenu">
+      <li><a href="/index.html" class="nav__link" data-i18n="nav.home" data-zh="首頁">首頁</a></li>
+      <li><a href="/properties.html" class="nav__link" data-i18n="nav.properties" data-zh="白馬村物件">白馬村物件</a></li>
+      <li><a href="/tokyo.html" class="nav__link" data-i18n="nav.tokyo" data-zh="東京物件">東京物件</a></li>
+      <li><a href="/dubai.html" class="nav__link nav__link--active" data-i18n="nav.dubai" data-zh="杜拜物件">杜拜物件</a></li>
+      <li><a href="/booking.html" class="nav__link" data-i18n="nav.booking" data-zh="訂房">訂房</a></li>
+      <li><a href="/phoenix.html" class="nav__link">C.M. Phoenix</a></li>
+      <li><a href="/contact.html" class="nav__link" data-i18n="nav.contact" data-zh="聯絡我們">聯絡我們</a></li>
+      <li><a href="/faq.html" class="nav__link">FAQ</a></li>
+      <li>
+      <div class="lang-switcher">
+        <button class="lang-btn" data-lang="zh">中</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ja">日</button>
+      </div>
+    </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero" id="dubaiPageHero">
+  <div class="container">
+    <span class="page-hero__eyebrow">Dubai · UAE</span>
+    <h1 class="page-hero__title" data-i18n="dubai.hero.title" data-zh="杜拜物件">杜拜物件</h1>
+    <p class="page-hero__subtitle" data-i18n="dubai.hero.subtitle" data-zh="零稅優勢 · 高租金回報 · 黃金居留簽證">零稅優勢 · 高租金回報 · 黃金居留簽證</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;margin-bottom:3rem;" class="fade-up">
+      <button class="btn btn--gold btn--sm filter-btn active" data-filter="all" data-i18n="props.filter.all" data-zh="全部物件">全部物件</button>
+      <button class="btn btn--outline-dark btn--sm filter-btn" data-filter="available" data-i18n="props.filter.avail" data-zh="可購入">可購入</button>
+      <button class="btn btn--outline-dark btn--sm filter-btn" data-filter="coming-soon" data-i18n="props.filter.soon" data-zh="即將推出">即將推出</button>
+      <button class="btn btn--outline-dark btn--sm filter-btn" data-filter="apartment" data-i18n="props.filter.apt" data-zh="公寓">公寓</button>
+      <button class="btn btn--outline-dark btn--sm filter-btn" data-filter="villa" data-i18n="props.filter.villa" data-zh="別墅">別墅</button>
+    </div>
+
+    <div class="properties-grid" id="propertiesGrid"></div>
+
+    <div id="noResults" class="hidden" style="text-align:center;padding:4rem;color:var(--gray-400);">
+      <p data-i18n="dubai.no-results" data-zh="目前此分類暫無物件，敬請期待。">目前此分類暫無物件，敬請期待。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Dubai Investment Data -->
+<section class="section section--dark">
+  <div class="container">
+
+    <div class="section__header fade-up">
+      <span class="section__eyebrow" data-i18n="dubai.inv.eyebrow" data-zh="杜拜投資數據">杜拜投資數據</span>
+      <h2 class="section__title" style="color:var(--white);" data-i18n="dubai.inv.title" data-zh="零稅天堂 · 高報酬中東核心">零稅天堂 · 高報酬中東核心</h2>
+      <div class="divider"></div>
+      <p class="section__subtitle" style="color:rgba(255,255,255,0.55);" data-i18n="dubai.inv.subtitle" data-zh="杜拜是全球成長最快的地產投資市場之一，以下數據反映其無與倫比的投資優勢">杜拜是全球成長最快的地產投資市場之一，以下數據反映其無與倫比的投資優勢</p>
+    </div>
+
+    <div class="hakuba-stats fade-up">
+      <div class="hakuba-stat">
+        <span class="hakuba-stat__num">0<em>%</em></span>
+        <span class="hakuba-stat__label" data-i18n="dubai.stat1.label" data-zh="個人所得稅 &amp; 資本利得稅">個人所得稅 &amp; 資本利得稅</span>
+      </div>
+      <div class="hakuba-stat">
+        <span class="hakuba-stat__num">6~10<em>%+</em></span>
+        <span class="hakuba-stat__label" data-i18n="dubai.stat2.label" data-zh="年均租金報酬率">年均租金報酬率</span>
+      </div>
+      <div class="hakuba-stat">
+        <span class="hakuba-stat__num" data-i18n-html="dubai.stat3.num" data-zh="1,700<em>萬+</em>">1,700<em>萬+</em></span>
+        <span class="hakuba-stat__label" data-i18n="dubai.stat3.label" data-zh="年入境旅遊人次">年入境旅遊人次</span>
+      </div>
+      <div class="hakuba-stat">
+        <span class="hakuba-stat__num" data-i18n-html="dubai.stat4.num" data-zh="10<em>年</em>">10<em>年</em></span>
+        <span class="hakuba-stat__label" data-i18n="dubai.stat4.label" data-zh="黃金居留簽證資格">黃金居留簽證資格</span>
+      </div>
+    </div>
+
+    <div class="hakuba-cards fade-up">
+
+      <div class="hakuba-card">
+        <div class="hakuba-card__icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M16 8h-6a2 2 0 000 4h4a2 2 0 010 4H8"/>
+            <line x1="12" y1="6" x2="12" y2="8"/>
+            <line x1="12" y1="16" x2="12" y2="18"/>
+          </svg>
+        </div>
+        <h3 class="hakuba-card__title" data-i18n="dubai.card1.title" data-zh="全球零稅優勢">全球零稅優勢</h3>
+        <ul class="hakuba-card__list" data-i18n-html="dubai.card1.list" data-zh="<li>杜拜（阿聯酋）無個人所得稅、無資本利得稅、無遺產稅</li><li>租金收益全額保留，資產增值不被課稅，最大化投資報酬</li><li>阿聯酋與多國簽有雙重課稅協定，有效降低整體稅務負擔</li><li>離岸架構持有物業更靈活，資產保全與傳承規劃最優化</li>">
+          <li>杜拜（阿聯酋）無個人所得稅、無資本利得稅、無遺產稅</li>
+          <li>租金收益全額保留，資產增值不被課稅，最大化投資報酬</li>
+          <li>阿聯酋與多國簽有雙重課稅協定，有效降低整體稅務負擔</li>
+          <li>離岸架構持有物業更靈活，資產保全與傳承規劃最優化</li>
+        </ul>
+      </div>
+
+      <div class="hakuba-card">
+        <div class="hakuba-card__icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+            <polyline points="17 6 23 6 23 12"/>
+          </svg>
+        </div>
+        <h3 class="hakuba-card__title" data-i18n="dubai.card2.title" data-zh="高租金報酬率">高租金報酬率</h3>
+        <ul class="hakuba-card__list" data-i18n-html="dubai.card2.list" data-zh="<li>Dubai Marina、Downtown Dubai 等核心地段年租金報酬可達 6–10%+</li><li>旅遊業蓬勃帶動短租市場，旺季 Airbnb 收益可達長租的 2–3 倍</li><li>2023 年杜拜房價漲幅達 20%+，資本增值與租金收益雙重驅動</li><li>離岸及在地企業設立需求旺盛，高端住宅長租市場穩定可靠</li>">
+          <li>Dubai Marina、Downtown Dubai 等核心地段年租金報酬可達 6–10%+</li>
+          <li>旅遊業蓬勃帶動短租市場，旺季 Airbnb 收益可達長租的 2–3 倍</li>
+          <li>2023 年杜拜房價漲幅達 20%+，資本增值與租金收益雙重驅動</li>
+          <li>離岸及在地企業設立需求旺盛，高端住宅長租市場穩定可靠</li>
+        </ul>
+      </div>
+
+      <div class="hakuba-card">
+        <div class="hakuba-card__icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+          </svg>
+        </div>
+        <h3 class="hakuba-card__title" data-i18n="dubai.card3.title" data-zh="黃金簽證計畫">黃金簽證計畫</h3>
+        <ul class="hakuba-card__list" data-i18n-html="dubai.card3.list" data-zh="<li>投資杜拜房產達 AED 200 萬（約 NTD 1,680 萬）可申請 10 年黃金居留簽證</li><li>黃金簽證可攜家帶眷，配偶與子女同步享有居留資格</li><li>無最低居住天數要求，適合作為海外資產配置與國際移動基地</li><li>萬舍國際提供全程中文服務，協助申辦簽證及後續行政事宜</li>">
+          <li>投資杜拜房產達 AED 200 萬（約 NTD 1,680 萬）可申請 10 年黃金居留簽證</li>
+          <li>黃金簽證可攜家帶眷，配偶與子女同步享有居留資格</li>
+          <li>無最低居住天數要求，適合作為海外資產配置與國際移動基地</li>
+          <li>萬舍國際提供全程中文服務，協助申辦簽證及後續行政事宜</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <p class="hakuba-source fade-up" data-i18n="dubai.source" data-zh="數據來源：杜拜土地局（DLD）、阿聯酋統計局、Property Monitor Dubai（2024）">數據來源：杜拜土地局（DLD）、阿聯酋統計局、Property Monitor Dubai（2024）</p>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:var(--surface);padding-block:4rem;">
+  <div class="container" style="text-align:center;">
+    <span class="section__eyebrow" data-i18n="dubai.cta.eyebrow" data-zh="有意向？">有意向？</span>
+    <h2 style="font-family:var(--font-serif);font-size:clamp(1.8rem,3vw,2.5rem);margin-bottom:1rem;" data-i18n="dubai.cta.title" data-zh="預約杜拜物件專屬說明會">預約杜拜物件專屬說明會</h2>
+    <div class="divider"></div>
+    <p style="color:var(--gray-600);max-width:500px;margin:1rem auto 2rem;" data-i18n="dubai.cta.text" data-zh="我們提供一對一的專屬諮詢，詳細說明杜拜物件規格、購置流程、黃金簽證申辦及投資回報分析。">我們提供一對一的專屬諮詢，詳細說明杜拜物件規格、購置流程、黃金簽證申辦及投資回報分析。</p>
+    <a href="/contact.html" class="btn btn--gold" data-i18n="btn.free" data-zh="預約免費諮詢">預約免費諮詢</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand-name">One Third Residence</div>
+        <div class="footer__brand-en">(TAIWAN) CO., LTD. &nbsp;·&nbsp; 萬舍國際有限公司</div>
+        <p class="footer__brand-text" data-i18n="footer.brand.text" data-zh="日本白馬村頂級度假地產代理（One Third Residence Taiwan），提供地產買賣、托租代管及度假訂房全方位服務。">日本白馬村頂級度假地產代理（One Third Residence Taiwan），提供地產買賣、托租代管及度假訂房全方位服務。</p>
+      </div>
+      <div>
+        <div class="footer__col-title" data-i18n="footer.col.properties" data-zh="物件地區">物件地區</div>
+        <ul class="footer__links">
+          <li><a href="/properties.html" class="footer__link" data-i18n="footer.link.hakuba" data-zh="白馬村物件">白馬村物件</a></li>
+          <li><a href="/tokyo.html" class="footer__link" data-i18n="footer.link.tokyo" data-zh="東京物件">東京物件</a></li>
+          <li><a href="/dubai.html" class="footer__link" data-i18n="footer.link.dubai" data-zh="杜拜物件">杜拜物件</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title" data-i18n="footer.col.about" data-zh="關於我們">關於我們</div>
+        <ul class="footer__links">
+          <li><a href="/index.html" class="footer__link" data-i18n="footer.link.about.us" data-zh="公司介紹">公司介紹</a></li>
+          <li><a href="/phoenix.html" class="footer__link">C.M. Phoenix</a></li>
+          <li><a href="/faq.html" class="footer__link" data-i18n="footer.link.faq" data-zh="常見問題">常見問題</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title" data-i18n="footer.col.contact" data-zh="聯絡資訊">聯絡資訊</div>
+        <ul class="footer__links">
+          <li><a href="/contact.html" class="footer__link" data-i18n="footer.link.contact" data-zh="聯絡我們">聯絡我們</a></li>
+          <li><a href="/booking.html" class="footer__link" data-i18n="footer.link.booking" data-zh="度假訂房">度假訂房</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 One Third Residence (Taiwan) Co., Ltd · All rights reserved</span>
+      <span>Powered by <span class="footer__gold">C.M. Phoenix Group</span></span>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/i18n.js"></script>
+<script src="/js/main.js"></script>
+<script>
+let _allProperties = [];
+
+function renderGrid(props) {
+  const grid = document.getElementById('propertiesGrid');
+  const noRes = document.getElementById('noResults');
+  if (!props.length) {
+    grid.innerHTML = '';
+    noRes.classList.remove('hidden');
+    return;
+  }
+  noRes.classList.add('hidden');
+  grid.innerHTML = props.map(p => `
+    <article class="property-card fade-up">
+      <a href="/property.html?id=${p.id}">
+        <div class="property-card__image">
+          ${p.thumbnail
+            ? `<img src="${p.thumbnail}" alt="${p.nameZh}" loading="lazy">`
+            : `<div class="property-card__placeholder">
+                <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+                <span>${p.status === 'coming-soon' ? (window.t('prop.status.img-soon') || '即將推出') : (window.t('prop.status.img-updating') || '圖片即將更新')}</span>
+               </div>`
+          }
+          ${p.highlight ? `<div class="property-card__badge">${p.highlight}</div>` : ''}
+          <div class="property-card__status property-card__status--${p.status}">${p.status === 'available' ? (window.t('prop.status.available') || '可購入') : (window.t('prop.status.coming-soon') || '即將推出')}</div>
+        </div>
+        <div class="property-card__body">
+          <div class="property-card__location">${p.location}</div>
+          <h3 class="property-card__name">${p.name}</h3>
+          <p class="property-card__name-zh">${p.nameZh}</p>
+          <div class="property-card__meta">
+            ${p.bedrooms ? `<span class="property-card__meta-item">${p.bedrooms} ${window.t('unit.beds') || '臥室'}</span>` : ''}
+            ${p.bathrooms ? `<span class="property-card__meta-item">${p.bathrooms} ${window.t('unit.baths') || '衛浴'}</span>` : ''}
+            ${p.area ? `<span class="property-card__meta-item">${p.area} m²</span>` : ''}
+          </div>
+          <div class="property-card__price">${p.priceDisplay}</div>
+        </div>
+      </a>
+    </article>
+  `).join('');
+  setTimeout(() => {
+    grid.querySelectorAll('.fade-up').forEach(el => {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+      }, { threshold: 0.05 });
+      io.observe(el);
+    });
+  }, 50);
+}
+
+let _activeFilter = 'all';
+
+async function loadProperties(filter) {
+  _activeFilter = filter || _activeFilter;
+  if (!_allProperties.length) {
+    const res = await fetch('/api/properties');
+    _allProperties = await res.json();
+  }
+  const cityProps = _allProperties.filter(p => (p.city || 'hakuba') === 'dubai');
+  const filtered = cityProps.filter(p => {
+    if (_activeFilter === 'all') return true;
+    if (_activeFilter === 'available') return p.status === 'available';
+    if (_activeFilter === 'coming-soon') return p.status === 'coming-soon';
+    if (_activeFilter === 'apartment') return p.type === 'apartment';
+    if (_activeFilter === 'villa') return p.type === 'villa';
+    return true;
+  });
+  renderGrid(filtered);
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => { b.classList.remove('btn--gold'); b.classList.add('btn--outline-dark'); });
+    btn.classList.add('btn--gold'); btn.classList.remove('btn--outline-dark');
+    loadProperties(btn.dataset.filter);
+  });
+});
+
+document.addEventListener('langchange', () => loadProperties());
+
+loadProperties('all');
+</script>
+<script>
+fetch('/api/content').then(function(r){return r.ok?r.json():null;}).then(function(c){
+  if(!c||!c.backgrounds) return;
+  var url = c.backgrounds.dubaiHero;
+  if(url) { var el=document.getElementById('dubaiPageHero'); if(el){el.classList.add('page-hero--bg');el.style.backgroundImage="url('"+url+"')";} }
+}).catch(function(){});
+</script>
+</body>
+</html>

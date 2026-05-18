@@ -26,32 +26,172 @@
     <ul class="nav__menu" id="navMenu">
       <li><a href="/index.html" class="nav__link" data-i18n="nav.home" data-zh="首頁">首頁</a></li>
       <li><a href="/properties.html" class="nav__link" data-i18n="nav.properties" data-zh="白馬村物件">白馬村物件</a></li>
+      <li><a href="/tokyo.html" class="nav__link" data-i18n="nav.tokyo" data-zh="東京物件">東京物件</a></li>
+      <li><a href="/dubai.html" class="nav__link" data-i18n="nav.dubai" data-zh="杜拜物件">杜拜物件</a></li>
       <li><a href="/booking.html" class="nav__link" data-i18n="nav.booking" data-zh="訂房">訂房</a></li>
       <li><a href="/phoenix.html" class="nav__link">C.M. Phoenix</a></li>
       <li><a href="/contact.html" class="nav__link" data-i18n="nav.contact" data-zh="聯絡我們">聯絡我們</a></li>
       <li><a href="/faq.html" class="nav__link">FAQ</a></li>
-      <li><button class="lang-btn" aria-label="Switch to English">EN</button></li>
+      <li>
+      <div class="lang-switcher">
+        <button class="lang-btn" data-lang="zh">中</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ja">日</button>
+      </div>
+    </li>
     </ul>
   </div>
 </nav>
 
-<!-- Hero -->
-<section class="hero">
-  <div class="hero__bg"></div>
-  <div class="hero__overlay"></div>
-  <video class="hero__video" id="heroVideo" autoplay muted loop playsinline></video>
-  <div class="hero__content">
-    <span class="hero__eyebrow" data-i18n="home.hero.eyebrow" data-zh="白馬村 · Hakuba Village · Nagano, Japan">白馬村 · Hakuba Village · Nagano, Japan</span>
-    <h1 class="hero__title" data-i18n-html="home.hero.title" data-zh="擁有一片<em>白馬粉雪</em><br>從床到雪坡，只需一步">
-      擁有一片<em>白馬粉雪</em><br>從床到雪坡，只需一步
-    </h1>
-    <p class="hero__subtitle" data-i18n="home.hero.subtitle" data-zh="日本頂級度假村地產買賣 · 托租代管全方位服務">日本頂級度假村地產買賣 · 托租代管全方位服務</p>
-    <div class="hero__actions">
-      <a href="/properties.html" class="btn btn--gold" data-i18n="btn.explore" data-zh="探索白馬物件">探索白馬物件</a>
-      <a href="/booking.html" class="btn btn--outline" data-i18n="btn.book" data-zh="預約度假體驗">預約度假體驗</a>
+<!-- Hero Carousel -->
+<section class="hero hero--carousel" id="heroCarousel">
+
+  <!-- Slide 0: Hakuba -->
+  <div class="hero-slide active" data-slide="0">
+    <div class="hero__bg" id="heroSlide0Bg" style="background-image:url('/images/img_01.webp')"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <span class="hero__eyebrow" data-i18n="home.hero.eyebrow" data-zh="白馬村 · Hakuba Village · Nagano, Japan">白馬村 · Hakuba Village · Nagano, Japan</span>
+      <h1 class="hero__title" data-i18n-html="home.hero.title" data-zh="擁有一片<em>白馬粉雪</em><br>從床到雪坡，只需一步">
+        擁有一片<em>白馬粉雪</em><br>從床到雪坡，只需一步
+      </h1>
+      <p class="hero__subtitle" data-i18n="home.hero.subtitle" data-zh="日本頂級度假村地產買賣 · 托租代管全方位服務">日本頂級度假村地產買賣 · 托租代管全方位服務</p>
+      <div class="hero__actions">
+        <a href="/properties.html" class="btn btn--gold" data-i18n="btn.explore" data-zh="探索白馬物件">探索白馬物件</a>
+        <a href="/booking.html" class="btn btn--outline" data-i18n="btn.book" data-zh="預約度假體驗">預約度假體驗</a>
+      </div>
     </div>
   </div>
+
+  <!-- Slide 1: Tokyo -->
+  <div class="hero-slide" data-slide="1">
+    <div class="hero__bg" id="heroSlide1Bg" style="background-image:url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1920&q=80')"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <span class="hero__eyebrow" data-i18n="home.hero2.eyebrow" data-zh="東京 · Tokyo · Japan">東京 · Tokyo · Japan</span>
+      <h1 class="hero__title" data-i18n-html="home.hero2.title" data-zh="首都核心<em>精品住宅</em><br>東瀛地產穩健增值">首都核心<em>精品住宅</em><br>東瀛地產穩健增值</h1>
+      <p class="hero__subtitle" data-i18n="home.hero2.subtitle" data-zh="東京都心精品住宅 · 穩健投資首選地段">東京都心精品住宅 · 穩健投資首選地段</p>
+      <div class="hero__actions">
+        <a href="/tokyo.html" class="btn btn--gold" data-i18n="home.hero2.btn1" data-zh="探索東京物件">探索東京物件</a>
+        <a href="/contact.html" class="btn btn--outline" data-i18n="btn.consult.now" data-zh="預約諮詢">預約諮詢</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 2: Dubai -->
+  <div class="hero-slide" data-slide="2">
+    <div class="hero__bg" id="heroSlide2Bg" style="background-image:url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&q=80')"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <span class="hero__eyebrow" data-i18n="home.hero3.eyebrow" data-zh="杜拜 · Dubai · UAE">杜拜 · Dubai · UAE</span>
+      <h1 class="hero__title" data-i18n-html="home.hero3.title" data-zh="零稅天堂<em>頂級地產</em><br>中東投資新機遇">零稅天堂<em>頂級地產</em><br>中東投資新機遇</h1>
+      <p class="hero__subtitle" data-i18n="home.hero3.subtitle" data-zh="杜拜豪華住宅 · 6–10% 高租金報酬">杜拜豪華住宅 · 6–10% 高租金報酬</p>
+      <div class="hero__actions">
+        <a href="/dubai.html" class="btn btn--gold" data-i18n="home.hero3.btn1" data-zh="探索杜拜物件">探索杜拜物件</a>
+        <a href="/contact.html" class="btn btn--outline" data-i18n="btn.consult.now" data-zh="預約諮詢">預約諮詢</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dot indicators -->
+  <div class="hero-dots" role="tablist" aria-label="輪播指示">
+    <button class="hero-dot active" data-slide="0" aria-label="白馬村" aria-selected="true"></button>
+    <button class="hero-dot" data-slide="1" aria-label="東京" aria-selected="false"></button>
+    <button class="hero-dot" data-slide="2" aria-label="杜拜" aria-selected="false"></button>
+  </div>
+
+  <!-- Arrows -->
+  <button class="hero-arrow hero-arrow--prev" aria-label="上一張">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="hero-arrow hero-arrow--next" aria-label="下一張">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+
   <div class="hero__scroll">Scroll</div>
+</section>
+
+<!-- Live Weather Widget -->
+<section class="wx-section" id="weatherSection">
+  <div class="container">
+    <div class="wx-header">
+      <span class="wx-header__title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <span data-i18n="wx.title" data-zh="即時氣象">即時氣象</span>
+      </span>
+      <span class="wx-header__updated" id="wxUpdated"></span>
+    </div>
+
+    <div class="wx-grid">
+      <!-- Hakuba Card -->
+      <div class="wx-card" id="wxHakuba">
+        <div class="wx-card__loc">
+          <span class="wx-card__loc-badge wx-card__loc-badge--snow">HAKUBA</span>
+          <span class="wx-card__loc-name" data-i18n="wx.hakuba" data-zh="白馬村・長野縣">白馬村・長野縣</span>
+        </div>
+        <div class="wx-card__main">
+          <div class="wx-card__icon" id="wxHakubaIcon">—</div>
+          <div class="wx-card__temp-block">
+            <span class="wx-card__temp" id="wxHakubaTemp">—</span>
+            <span class="wx-card__cond" id="wxHakubaCond">—</span>
+          </div>
+        </div>
+        <div class="wx-card__meta">
+          <div class="wx-card__meta-item">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-7.35 16.83"/><path d="M12 2a10 10 0 017.35 16.83"/><line x1="12" y1="2" x2="12" y2="22"/></svg>
+            <span id="wxHakubaFeels">—</span>
+          </div>
+          <div class="wx-card__meta-item">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+            <span id="wxHakubaHumid">—</span>
+          </div>
+          <div class="wx-card__meta-item">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9.59 4.59A2 2 0 1111 8H2m10.59 11.41A2 2 0 1014 16H2m15.73-8.27A2.5 2.5 0 1119.5 12H2"/></svg>
+            <span id="wxHakubaWind">—</span>
+          </div>
+          <div class="wx-card__meta-item wx-card__meta-item--snow">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 7l-5-5-5 5"/><path d="M17 17l-5 5-5-5"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M7 7l-5 5 5 5"/><path d="M17 7l5 5-5 5"/></svg>
+            <span id="wxHakubaSnow">—</span>
+          </div>
+        </div>
+        <div class="wx-forecast" id="wxHakubaForecast"></div>
+      </div>
+
+      <!-- Tokyo Card -->
+      <div class="wx-card" id="wxTokyo">
+        <div class="wx-card__loc">
+          <span class="wx-card__loc-badge wx-card__loc-badge--city">TOKYO</span>
+          <span class="wx-card__loc-name" data-i18n="wx.tokyo" data-zh="東京都心">東京都心</span>
+        </div>
+        <div class="wx-card__main">
+          <div class="wx-card__icon" id="wxTokyoIcon">—</div>
+          <div class="wx-card__temp-block">
+            <span class="wx-card__temp" id="wxTokyoTemp">—</span>
+            <span class="wx-card__cond" id="wxTokyoCond">—</span>
+          </div>
+        </div>
+        <div class="wx-card__meta">
+          <div class="wx-card__meta-item">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-7.35 16.83"/><path d="M12 2a10 10 0 017.35 16.83"/><line x1="12" y1="2" x2="12" y2="22"/></svg>
+            <span id="wxTokyoFeels">—</span>
+          </div>
+          <div class="wx-card__meta-item">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+            <span id="wxTokyoHumid">—</span>
+          </div>
+          <div class="wx-card__meta-item">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9.59 4.59A2 2 0 1111 8H2m10.59 11.41A2 2 0 1014 16H2m15.73-8.27A2.5 2.5 0 1119.5 12H2"/></svg>
+            <span id="wxTokyoWind">—</span>
+          </div>
+          <div class="wx-card__meta-item">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M8 19a4 4 0 010-8h.01M8 19a4 4 0 010-8h.01M8 11a4 4 0 00-4-4V6a2 2 0 014 0v1"/><line x1="16" y1="8" x2="16" y2="16"/><line x1="13" y1="11" x2="19" y2="11"/><line x1="13" y1="14" x2="19" y2="14"/></svg>
+            <span id="wxTokyoRain">—</span>
+          </div>
+        </div>
+        <div class="wx-forecast" id="wxTokyoForecast"></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Services -->
@@ -94,7 +234,7 @@
   <div class="container">
     <div class="about-grid">
       <div class="about__image fade-up">
-        <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=900&q=80" alt="白馬村景致" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1721370336185-d24b8152fd37?w=900&q=80" alt="白馬村景致" loading="lazy">
         <div class="about__image-accent"></div>
       </div>
       <div class="fade-up">
@@ -145,10 +285,10 @@
           <div class="property-card__image">
             <div class="property-card__placeholder">
               <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-              <span>圖片即將更新</span>
+              <span data-i18n="prop.status.img-updating" data-zh="圖片即將更新">圖片即將更新</span>
             </div>
             <div class="property-card__badge">Ski-in / Ski-out</div>
-            <div class="property-card__status property-card__status--available">可購入</div>
+            <div class="property-card__status property-card__status--available" data-i18n="prop.status.available" data-zh="可購入">可購入</div>
           </div>
           <div class="property-card__body">
             <div class="property-card__location">白馬五竜 · Hakuba Goryu</div>
@@ -157,15 +297,15 @@
             <div class="property-card__meta">
               <span class="property-card__meta-item">
                 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-                3 臥室
+                3 <span data-i18n="unit.beds" data-zh="臥室">臥室</span>
               </span>
               <span class="property-card__meta-item">
                 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 12V6a2 2 0 012-2h12a2 2 0 012 2v6M2 12h20M6 12v8M18 12v8"/></svg>
-                2 衛浴
+                2 <span data-i18n="unit.baths" data-zh="衛浴">衛浴</span>
               </span>
               <span class="property-card__meta-item">180 m²</span>
             </div>
-            <div class="property-card__price">詢價</div>
+            <div class="property-card__price" data-i18n="prop.price.poa" data-zh="詢價">詢價</div>
           </div>
         </a>
       </div>
@@ -174,10 +314,10 @@
           <div class="property-card__image">
             <div class="property-card__placeholder">
               <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-              <span>即將推出</span>
+              <span data-i18n="prop.status.img-soon" data-zh="即將推出">即將推出</span>
             </div>
             <div class="property-card__badge">私人溫泉</div>
-            <div class="property-card__status property-card__status--coming-soon">即將推出</div>
+            <div class="property-card__status property-card__status--coming-soon" data-i18n="prop.status.coming-soon" data-zh="即將推出">即將推出</div>
           </div>
           <div class="property-card__body">
             <div class="property-card__location">白馬五竜 · Hakuba Goryu</div>
@@ -186,11 +326,11 @@
             <div class="property-card__meta">
               <span class="property-card__meta-item">
                 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-                4 臥室
+                4 <span data-i18n="unit.beds" data-zh="臥室">臥室</span>
               </span>
               <span class="property-card__meta-item">210 m²</span>
             </div>
-            <div class="property-card__price">即將推出</div>
+            <div class="property-card__price" data-i18n="prop.status.coming-soon" data-zh="即將推出">即將推出</div>
           </div>
         </a>
       </div>
@@ -199,19 +339,19 @@
           <div class="property-card__image">
             <div class="property-card__placeholder">
               <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-              <span>即將推出</span>
+              <span data-i18n="prop.status.img-soon" data-zh="即將推出">即將推出</span>
             </div>
             <div class="property-card__badge">度假村項目</div>
-            <div class="property-card__status property-card__status--coming-soon">即將推出</div>
+            <div class="property-card__status property-card__status--coming-soon" data-i18n="prop.status.coming-soon" data-zh="即將推出">即將推出</div>
           </div>
           <div class="property-card__body">
             <div class="property-card__location">白馬村 · Hakuba Village</div>
             <h3 class="property-card__name">1/3rd Village</h3>
             <p class="property-card__name-zh">三分之一村</p>
             <div class="property-card__meta">
-              <span class="property-card__meta-item">多元戶型選擇</span>
+              <span class="property-card__meta-item" data-i18n="prop.meta.mixed-types" data-zh="多元戶型選擇">多元戶型選擇</span>
             </div>
-            <div class="property-card__price">即將推出</div>
+            <div class="property-card__price" data-i18n="prop.status.coming-soon" data-zh="即將推出">即將推出</div>
           </div>
         </a>
       </div>
@@ -256,7 +396,7 @@
 </section>
 
 <!-- CTA -->
-<section class="cta fade-up" style="background: url('https://images.unsplash.com/photo-1544918498-9fbed00ca76e?w=1600&q=80') center/cover; position:relative;">
+<section class="cta fade-up" id="ctaSection" style="background: url('https://images.unsplash.com/photo-1544918498-9fbed00ca76e?w=1600&q=80') center/cover; position:relative;">
   <div style="position:absolute;inset:0;background:rgba(17,14,10,0.75);"></div>
   <div class="container" style="position:relative;">
     <div style="text-align:center;max-width:600px;margin:auto;">
@@ -275,29 +415,29 @@
       <div>
         <div class="footer__brand-name">One Third Residence</div>
         <div class="footer__brand-en">(TAIWAN) CO., LTD. &nbsp;·&nbsp; 萬舍國際有限公司</div>
-        <p class="footer__brand-text">日本白馬村頂級度假地產代理（One Third Residence Taiwan），提供地產買賣、托租代管及度假訂房全方位服務。</p>
+        <p class="footer__brand-text" data-i18n="footer.brand.text" data-zh="日本白馬村頂級度假地產代理（One Third Residence Taiwan），提供地產買賣、托租代管及度假訂房全方位服務。">日本白馬村頂級度假地產代理（One Third Residence Taiwan），提供地產買賣、托租代管及度假訂房全方位服務。</p>
       </div>
       <div>
-        <div class="footer__col-title">服務項目</div>
+        <div class="footer__col-title" data-i18n="footer.col.services" data-zh="服務項目">服務項目</div>
         <ul class="footer__links">
-          <li><a href="/properties.html" class="footer__link">白馬村物件</a></li>
-          <li><a href="/booking.html" class="footer__link">度假訂房</a></li>
-          <li><a href="/contact.html" class="footer__link">托租代管諮詢</a></li>
+          <li><a href="/properties.html" class="footer__link" data-i18n="footer.link.properties" data-zh="白馬村物件">白馬村物件</a></li>
+          <li><a href="/booking.html" class="footer__link" data-i18n="footer.link.booking" data-zh="度假訂房">度假訂房</a></li>
+          <li><a href="/contact.html" class="footer__link" data-i18n="footer.link.rental.cta" data-zh="托租代管諮詢">托租代管諮詢</a></li>
         </ul>
       </div>
       <div>
-        <div class="footer__col-title">關於我們</div>
+        <div class="footer__col-title" data-i18n="footer.col.about" data-zh="關於我們">關於我們</div>
         <ul class="footer__links">
-          <li><a href="/index.html" class="footer__link">公司介紹</a></li>
+          <li><a href="/index.html" class="footer__link" data-i18n="footer.link.about.us" data-zh="公司介紹">公司介紹</a></li>
           <li><a href="/phoenix.html" class="footer__link">C.M. Phoenix</a></li>
-          <li><a href="/faq.html" class="footer__link">常見問題</a></li>
+          <li><a href="/faq.html" class="footer__link" data-i18n="footer.link.faq" data-zh="常見問題">常見問題</a></li>
         </ul>
       </div>
       <div>
-        <div class="footer__col-title">聯絡資訊</div>
+        <div class="footer__col-title" data-i18n="footer.col.contact" data-zh="聯絡資訊">聯絡資訊</div>
         <ul class="footer__links">
-          <li><a href="/contact.html" class="footer__link">聯絡我們</a></li>
-          <li><span class="footer__link">台灣 · 日本 雙據點</span></li>
+          <li><a href="/contact.html" class="footer__link" data-i18n="footer.link.contact" data-zh="聯絡我們">聯絡我們</a></li>
+          <li><span class="footer__link" data-i18n="footer.tw-jp" data-zh="台灣 · 日本 雙據點">台灣 · 日本 雙據點</span></li>
         </ul>
       </div>
     </div>
@@ -310,5 +450,319 @@
 
 <script src="/js/i18n.js"></script>
 <script src="/js/main.js"></script>
+
+<!-- Weather Widget Script -->
+<script>
+(function () {
+  function getLang() { return window.i18nCurrent || 'zh'; }
+  document.addEventListener('langchange', function () { loadWeather(); });
+
+  var WMO_ZH = {
+    0:'晴天',1:'大致晴朗',2:'局部多雲',3:'陰天',
+    45:'霧',48:'霧凇',
+    51:'毛毛細雨',53:'毛毛細雨',55:'濃毛毛雨',
+    61:'小雨',63:'中雨',65:'大雨',
+    71:'小雪',73:'中雪',75:'大雪',77:'雪粒',
+    80:'陣雨',81:'中陣雨',82:'大陣雨',
+    85:'陣雪',86:'大陣雪',
+    95:'雷雨',96:'雷雨夾冰雹',99:'強雷雨夾冰雹'
+  };
+  var WMO_EN = {
+    0:'Clear',1:'Mainly Clear',2:'Partly Cloudy',3:'Overcast',
+    45:'Fog',48:'Rime Fog',
+    51:'Light Drizzle',53:'Drizzle',55:'Heavy Drizzle',
+    61:'Light Rain',63:'Rain',65:'Heavy Rain',
+    71:'Light Snow',73:'Snow',75:'Heavy Snow',77:'Snow Grains',
+    80:'Showers',81:'Showers',82:'Heavy Showers',
+    85:'Snow Showers',86:'Heavy Snow Showers',
+    95:'Thunderstorm',96:'Thunderstorm',99:'Thunderstorm'
+  };
+  var WMO_JA = {
+    0:'快晴',1:'おおむね晴れ',2:'一部曇り',3:'曇り',
+    45:'霧',48:'霧氷',
+    51:'霧雨（弱）',53:'霧雨',55:'霧雨（強）',
+    61:'小雨',63:'雨',65:'大雨',
+    71:'小雪',73:'雪',75:'大雪',77:'霰',
+    80:'にわか雨',81:'にわか雨',82:'強いにわか雨',
+    85:'にわか雪',86:'強いにわか雪',
+    95:'雷雨',96:'雷雨（雹あり）',99:'強い雷雨（雹あり）'
+  };
+
+  // WMO code → SVG icon string
+  function wxIcon(code, size) {
+    size = size || 36;
+    var s = size;
+    var sw = (s * 1.5 / 36).toFixed(2);
+    function svg(d) { return '<svg width="'+s+'" height="'+s+'" fill="none" stroke="currentColor" stroke-width="'+sw+'" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">'+d+'</svg>'; }
+    if (code === 0 || code === 1) return svg('<circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>');
+    if (code === 2) return svg('<path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/><circle cx="6" cy="8" r="3.5" stroke="none" fill="currentColor" opacity=".35"/><circle cx="6" cy="8" r="3.5"/>');
+    if (code === 3) return svg('<path d="M17.5 19H9a7 7 0 110-14 7 7 0 017 7h1.5a3.5 3.5 0 010 7z"/>');
+    if (code === 45 || code === 48) return svg('<line x1="3" y1="10" x2="21" y2="10"/><line x1="3" y1="14" x2="21" y2="14"/><line x1="3" y1="6" x2="21" y2="6"/>');
+    if (code >= 51 && code <= 67) return svg('<path d="M20 16.2A4.5 4.5 0 0017.5 8h-1.8A7 7 0 104 14.9"/><line x1="8" y1="19" x2="8" y2="21"/><line x1="12" y1="17" x2="12" y2="19"/><line x1="16" y1="19" x2="16" y2="21"/>');
+    if (code >= 71 && code <= 77 || code === 85 || code === 86) return svg('<path d="M20 17.58A5 5 0 0018 8h-1.26A8 8 0 104 19.4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="8" y1="20" x2="8" y2="20"/><line x1="12" y1="18" x2="12" y2="18"/><line x1="12" y1="22" x2="12" y2="22"/><line x1="16" y1="16" x2="16" y2="16"/><line x1="16" y1="20" x2="16" y2="20"/>');
+    if (code === 80 || code === 81 || code === 82) return svg('<path d="M20 16.2A4.5 4.5 0 0017.5 8h-1.8A7 7 0 104 14.9"/><polyline points="9,19 9,21"/><polyline points="13,17 13,19"/><polyline points="17,19 17,21"/>');
+    if (code >= 95) return svg('<path d="M19 16.9A5 5 0 0018 7h-1.26a8 8 0 10-11.62 9"/><polyline points="13 11 9 17 15 17 11 23"/>');
+    return svg('<circle cx="12" cy="12" r="5"/>');
+  }
+
+  var DAYS_ZH = ['日','一','二','三','四','五','六'];
+  var DAYS_EN = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var DAYS_JA = ['日','月','火','水','木','金','土'];
+
+  function condText(code) {
+    var lang = getLang();
+    if (lang === 'en') return WMO_EN[code] || 'Unknown';
+    if (lang === 'ja') return WMO_JA[code] || '不明';
+    return WMO_ZH[code] || '未知';
+  }
+
+  function t3(zh, en, ja) {
+    var lang = getLang();
+    return lang === 'en' ? en : lang === 'ja' ? ja : zh;
+  }
+
+  function renderCard(loc, data, daily) {
+    var cur = data.current;
+    var code = cur.weather_code;
+    var isSnow = [71,73,75,77,85,86].indexOf(code) !== -1;
+
+    document.getElementById('wx'+loc+'Icon').innerHTML = wxIcon(code, 60);
+    document.getElementById('wx'+loc+'Temp').textContent = Math.round(cur.temperature_2m) + '°C';
+    document.getElementById('wx'+loc+'Cond').textContent = condText(code);
+    document.getElementById('wx'+loc+'Feels').textContent = t3('體感 ','Feels ','体感 ') + Math.round(cur.apparent_temperature) + '°C';
+    document.getElementById('wx'+loc+'Humid').textContent = cur.relative_humidity_2m + '%';
+    document.getElementById('wx'+loc+'Wind').textContent = Math.round(cur.wind_speed_10m) + ' km/h';
+
+    if (loc === 'Hakuba') {
+      var snowEl = document.getElementById('wxHakubaSnow');
+      var snowVal = cur.snowfall != null ? cur.snowfall : 0;
+      snowEl.textContent = t3('降雪 ','Snow ','降雪 ') + snowVal.toFixed(1) + ' cm';
+      var badge = document.querySelector('#wxHakuba .wx-card__loc-badge');
+      if (isSnow && badge) badge.classList.add('wx-card__loc-badge--snowing');
+    } else {
+      var rain = cur.precipitation != null ? cur.precipitation : 0;
+      document.getElementById('wxTokyoRain').textContent = t3('降雨 ','Rain ','降雨 ') + rain.toFixed(1) + ' mm';
+    }
+
+    // 5-day forecast
+    var fcEl = document.getElementById('wx'+loc+'Forecast');
+    if (daily && fcEl) {
+      var html = '';
+      var lang = getLang();
+      for (var i = 0; i < Math.min(5, daily.time.length); i++) {
+        var d = new Date(daily.time[i] + 'T00:00:00');
+        var dayName = lang === 'en' ? DAYS_EN[d.getDay()]
+                    : lang === 'ja' ? (DAYS_JA[d.getDay()] + '曜')
+                    : ('週' + DAYS_ZH[d.getDay()]);
+        html += '<div class="wx-fc-day">'
+          + '<span class="wx-fc-day__name">'+dayName+'</span>'
+          + '<span class="wx-fc-day__icon">'+wxIcon(daily.weather_code[i], 22)+'</span>'
+          + '<span class="wx-fc-day__hi">'+Math.round(daily.temperature_2m_max[i])+'°</span>'
+          + '<span class="wx-fc-day__lo">'+Math.round(daily.temperature_2m_min[i])+'°</span>'
+          + '</div>';
+      }
+      fcEl.innerHTML = html;
+    }
+  }
+
+  function fetchOne(lat, lon, loc) {
+    var fields = 'temperature_2m,apparent_temperature,weather_code,wind_speed_10m,relative_humidity_2m,precipitation';
+    if (loc === 'Hakuba') fields += ',snowfall';
+    var url = 'https://api.open-meteo.com/v1/forecast'
+      + '?latitude=' + lat + '&longitude=' + lon
+      + '&current=' + fields
+      + '&daily=temperature_2m_max,temperature_2m_min,weather_code'
+      + '&timezone=Asia%2FTokyo&forecast_days=5';
+    return fetch(url).then(function(r){ return r.json(); });
+  }
+
+  function loadWeather() {
+    var hakuba = fetchOne(36.6996, 137.8673, 'Hakuba');
+    var tokyo  = fetchOne(35.6762, 139.6503, 'Tokyo');
+    Promise.all([hakuba, tokyo]).then(function(results) {
+      renderCard('Hakuba', results[0], results[0].daily);
+      renderCard('Tokyo',  results[1], results[1].daily);
+      var now = new Date();
+      var hh = now.getHours().toString().padStart(2,'0');
+      var mm = now.getMinutes().toString().padStart(2,'0');
+      var updEl = document.getElementById('wxUpdated');
+      if (updEl) updEl.textContent = t3('更新於 ','Updated ','更新 ') + hh + ':' + mm + t3(' · 每 30 分鐘自動更新',' · auto-refresh every 30 min',' · 30分ごとに自動更新');
+    }).catch(function(){
+      var updEl = document.getElementById('wxUpdated');
+      if (updEl) updEl.textContent = t3('天氣資料載入失敗','Unable to load weather','天気情報を読み込めません');
+    });
+  }
+
+  loadWeather();
+  setInterval(loadWeather, 1800000); // 30 min
+})();
+</script>
+
+<script>
+(function () {
+  fetch('/api/content')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (c) {
+      if (!c || !c.home) return;
+      var h = c.home;
+
+      function setText(sel, val) {
+        if (!val) return;
+        var el = document.querySelector(sel);
+        if (!el) return;
+        el.textContent = val;
+        el._zhText = val;
+      }
+      function setHtml(sel, val) {
+        if (!val) return;
+        var el = document.querySelector(sel);
+        if (!el) return;
+        el.innerHTML = val;
+        el._zhHtml = val;
+      }
+
+      // Patch EN/JA dicts with any admin-overridden translations
+      if (window.i18nPatch) {
+        var patchMap = [
+          ['home.hero.title',   h.heroTitleEn,    h.heroTitleJa],
+          ['home.hero.subtitle',h.heroSubtitleEn, h.heroSubtitleJa],
+          ['home.about.title',  h.aboutTitleEn,   h.aboutTitleJa],
+          ['home.about.text1',  h.aboutText1En,   h.aboutText1Ja],
+          ['home.about.text2',  h.aboutText2En,   h.aboutText2Ja],
+          ['home.svc1.title',   h.svc1TitleEn,    h.svc1TitleJa],
+          ['home.svc1.text',    h.svc1TextEn,     h.svc1TextJa],
+          ['home.svc2.title',   h.svc2TitleEn,    h.svc2TitleJa],
+          ['home.svc2.text',    h.svc2TextEn,     h.svc2TextJa],
+          ['home.svc3.title',   h.svc3TitleEn,    h.svc3TitleJa],
+          ['home.svc3.text',    h.svc3TextEn,     h.svc3TextJa],
+          ['home.why1.title',   h.why1TitleEn,    h.why1TitleJa],
+          ['home.why1.text',    h.why1TextEn,     h.why1TextJa],
+          ['home.why2.title',   h.why2TitleEn,    h.why2TitleJa],
+          ['home.why2.text',    h.why2TextEn,     h.why2TextJa],
+          ['home.why3.title',   h.why3TitleEn,    h.why3TitleJa],
+          ['home.why3.text',    h.why3TextEn,     h.why3TextJa],
+          ['home.why4.title',   h.why4TitleEn,    h.why4TitleJa],
+          ['home.why4.text',    h.why4TextEn,     h.why4TextJa],
+        ];
+        patchMap.forEach(function(item) {
+          window.i18nPatch('en', item[0], item[1]);
+          window.i18nPatch('ja', item[0], item[2]);
+        });
+      }
+
+      if (h.heroImage) {
+        var s0bg = document.getElementById('heroSlide0Bg');
+        if (s0bg) s0bg.style.backgroundImage = "url('" + h.heroImage + "')";
+      }
+      setHtml('[data-i18n-html="home.hero.title"]', h.heroTitle);
+      setText('[data-i18n="home.hero.subtitle"]', h.heroSubtitle);
+
+      if (h.aboutImage) {
+        var aimg = document.querySelector('.about__image img');
+        if (aimg) aimg.src = h.aboutImage;
+      }
+      setHtml('[data-i18n-html="home.about.title"]', h.aboutTitle);
+      setText('[data-i18n="home.about.text1"]', h.aboutText1);
+      setText('[data-i18n="home.about.text2"]', h.aboutText2);
+
+      var sv = document.querySelectorAll('.about__stat-value');
+      if (sv[0] && h.stat1Value) sv[0].textContent = h.stat1Value;
+      if (sv[1] && h.stat2Value) sv[1].textContent = h.stat2Value;
+      if (sv[2] && h.stat3Value) sv[2].textContent = h.stat3Value;
+      setText('[data-i18n="home.about.stat1"]', h.stat1Label);
+      setText('[data-i18n="home.about.stat2"]', h.stat2Label);
+      setText('[data-i18n="home.about.stat3"]', h.stat3Label);
+
+      setText('[data-i18n="home.svc1.title"]', h.svc1Title);
+      setText('[data-i18n="home.svc1.text"]',  h.svc1Text);
+      setText('[data-i18n="home.svc2.title"]', h.svc2Title);
+      setText('[data-i18n="home.svc2.text"]',  h.svc2Text);
+      setText('[data-i18n="home.svc3.title"]', h.svc3Title);
+      setText('[data-i18n="home.svc3.text"]',  h.svc3Text);
+
+      setText('[data-i18n="home.why1.title"]', h.why1Title);
+      setText('[data-i18n="home.why1.text"]',  h.why1Text);
+      setText('[data-i18n="home.why2.title"]', h.why2Title);
+      setText('[data-i18n="home.why2.text"]',  h.why2Text);
+      setText('[data-i18n="home.why3.title"]', h.why3Title);
+      setText('[data-i18n="home.why3.text"]',  h.why3Text);
+      setText('[data-i18n="home.why4.title"]', h.why4Title);
+      setText('[data-i18n="home.why4.text"]',  h.why4Text);
+
+      setText('[data-i18n="home.cta.title"]', h.ctaTitle);
+      setText('[data-i18n="home.cta.text"]',  h.ctaText);
+
+      // Re-apply current language after all zh content has been written to DOM
+      if (window.applyLang && window.i18nCurrent !== 'zh') {
+        window.applyLang(window.i18nCurrent);
+      }
+
+      if (c.backgrounds) {
+        var bgs = c.backgrounds;
+        if (bgs.homeHero) {
+          var hs0 = document.getElementById('heroSlide0Bg');
+          if (hs0) hs0.style.backgroundImage = "url('" + bgs.homeHero + "')";
+        }
+        if (bgs.tokyoHero) {
+          var hs1 = document.getElementById('heroSlide1Bg');
+          if (hs1) hs1.style.backgroundImage = "url('" + bgs.tokyoHero + "')";
+        }
+        if (bgs.dubaiHero) {
+          var hs2 = document.getElementById('heroSlide2Bg');
+          if (hs2) hs2.style.backgroundImage = "url('" + bgs.dubaiHero + "')";
+        }
+        if (bgs.homeCta) {
+          var ctaEl = document.getElementById('ctaSection');
+          if (ctaEl) ctaEl.style.background = "url('" + bgs.homeCta + "') center/cover";
+        }
+      }
+    }).catch(function () {});
+})();
+</script>
+
+<script>
+(function () {
+  var slides = document.querySelectorAll('#heroCarousel .hero-slide');
+  var dots   = document.querySelectorAll('#heroCarousel .hero-dot');
+  var total  = slides.length;
+  var current = 0;
+  var timer;
+  var INTERVAL = 8000;
+
+  function goTo(idx) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    dots[current].setAttribute('aria-selected', 'false');
+    current = ((idx % total) + total) % total;
+
+    var incoming = slides[current];
+    var resetEls = incoming.querySelectorAll('.hero__bg, .hero__eyebrow, .hero__title, .hero__subtitle, .hero__actions');
+    resetEls.forEach(function (el) { el.style.animationName = 'none'; });
+    void incoming.offsetWidth;
+    resetEls.forEach(function (el) { el.style.animationName = ''; });
+
+    incoming.classList.add('active');
+    dots[current].classList.add('active');
+    dots[current].setAttribute('aria-selected', 'true');
+    resetTimer();
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(function () { goTo(current + 1); }, INTERVAL);
+  }
+
+  dots.forEach(function (dot) {
+    dot.addEventListener('click', function () { goTo(parseInt(dot.dataset.slide, 10)); });
+  });
+
+  var prev = document.querySelector('#heroCarousel .hero-arrow--prev');
+  var next = document.querySelector('#heroCarousel .hero-arrow--next');
+  if (prev) prev.addEventListener('click', function () { goTo(current - 1); });
+  if (next) next.addEventListener('click', function () { goTo(current + 1); });
+
+  resetTimer();
+})();
+</script>
 </body>
 </html>

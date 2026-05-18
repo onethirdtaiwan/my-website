@@ -24,16 +24,24 @@
     <ul class="nav__menu" id="navMenu">
       <li><a href="/index.html" class="nav__link" data-i18n="nav.home" data-zh="首頁">首頁</a></li>
       <li><a href="/properties.html" class="nav__link" data-i18n="nav.properties" data-zh="白馬村物件">白馬村物件</a></li>
+      <li><a href="/tokyo.html" class="nav__link" data-i18n="nav.tokyo" data-zh="東京物件">東京物件</a></li>
+      <li><a href="/dubai.html" class="nav__link" data-i18n="nav.dubai" data-zh="杜拜物件">杜拜物件</a></li>
       <li><a href="/booking.html" class="nav__link" data-i18n="nav.booking" data-zh="訂房">訂房</a></li>
       <li><a href="/phoenix.html" class="nav__link">C.M. Phoenix</a></li>
       <li><a href="/contact.html" class="nav__link" data-i18n="nav.contact" data-zh="聯絡我們">聯絡我們</a></li>
       <li><a href="/faq.html" class="nav__link">FAQ</a></li>
-      <li><button class="lang-btn" aria-label="Switch to English">EN</button></li>
+      <li>
+      <div class="lang-switcher">
+        <button class="lang-btn" data-lang="zh">中</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ja">日</button>
+      </div>
+    </li>
     </ul>
   </div>
 </nav>
 
-<div class="page-hero">
+<div class="page-hero" id="contactPageHero">
   <div class="container">
     <span class="page-hero__eyebrow" data-i18n="contact.hero.eyebrow" data-zh="Contact Us">Contact Us</span>
     <h1 class="page-hero__title" data-i18n="contact.hero.title" data-zh="聯絡我們">聯絡我們</h1>
@@ -50,7 +58,7 @@
         <span class="about__eyebrow" data-i18n="contact.info.eyebrow" data-zh="與我們聯繫">與我們聯繫</span>
         <h2 style="font-family:var(--font-serif);font-size:clamp(1.6rem,2.5vw,2.2rem);margin-bottom:0.75rem;" data-i18n-html="contact.info.title" data-zh="隨時歡迎<br>您的詢問">隨時歡迎<br>您的詢問</h2>
         <div class="divider divider--left"></div>
-        <p style="color:var(--gray-600);margin-top:1.25rem;line-height:1.8;margin-bottom:2.5rem;">無論您對日本置產有任何疑問，或想要了解白馬村的度假體驗，我們的專業團隊都將在第一時間為您解答。</p>
+        <p style="color:var(--gray-600);margin-top:1.25rem;line-height:1.8;margin-bottom:2.5rem;" data-i18n="contact.info.text" data-zh="無論您對日本置產有任何疑問，或想要了解白馬村的度假體驗，我們的專業團隊都將在第一時間為您解答。">無論您對日本置產有任何疑問，或想要了解白馬村的度假體驗，我們的專業團隊都將在第一時間為您解答。</p>
 
         <div class="contact-info__item">
           <div class="contact-info__icon">
@@ -59,10 +67,8 @@
           <div>
             <span class="contact-info__label" data-i18n="contact.label.phone" data-zh="聯絡電話">聯絡電話</span>
             <div class="contact-info__value">
-              <!-- ★ 請填入台灣電話，例如：+886 (0)2 1234-5678 -->
-              台灣：<span style="color:var(--gray-400);font-style:italic;">待填入</span><br>
-              <!-- ★ 請填入日本電話（如有） -->
-              日本：<span style="color:var(--gray-400);font-style:italic;">待填入</span>
+              <span data-i18n="contact.taiwan" data-zh="台灣：">台灣：</span><span id="ci-phone-tw" style="color:var(--gray-400);font-style:italic;">待填入</span><br>
+              <span data-i18n="contact.japan" data-zh="日本：">日本：</span><span id="ci-phone-jp" style="color:var(--gray-400);font-style:italic;">待填入</span>
             </div>
           </div>
         </div>
@@ -74,9 +80,8 @@
           <div>
             <span class="contact-info__label" data-i18n="contact.label.email" data-zh="電子信箱">電子信箱</span>
             <div class="contact-info__value">
-              <!-- ★ 請填入公司 Email，例如：info@onethirdtaiwan.com -->
-              <span style="color:var(--gray-400);font-style:italic;">待填入</span><br>
-              <span style="font-size:0.82rem;color:var(--gray-400);">通常於 1 個工作日內回覆</span>
+              <span id="ci-email" style="color:var(--gray-400);font-style:italic;">待填入</span><br>
+              <span style="font-size:0.82rem;color:var(--gray-400);" data-i18n="contact.reply" data-zh="通常於 1 個工作日內回覆">通常於 1 個工作日內回覆</span>
             </div>
           </div>
         </div>
@@ -88,9 +93,8 @@
           <div>
             <span class="contact-info__label" data-i18n="contact.label.location" data-zh="服務據點">服務據點</span>
             <div class="contact-info__value">
-              <!-- ★ 請填入台灣辦公室完整地址 -->
-              台灣：<span style="color:var(--gray-400);font-style:italic;">待填入</span><br>
-              日本：長野縣北安曇郡白馬村
+              <span data-i18n="contact.taiwan" data-zh="台灣：">台灣：</span><span id="ci-address-tw" style="color:var(--gray-400);font-style:italic;">待填入</span><br>
+              <span data-i18n="contact.japan.base" data-zh="日本：長野縣北安曇郡白馬村">日本：長野縣北安曇郡白馬村</span>
             </div>
           </div>
         </div>
@@ -101,7 +105,7 @@
           </div>
           <div>
             <span class="contact-info__label" data-i18n="contact.label.hours" data-zh="服務時間">服務時間</span>
-            <div class="contact-info__value">
+            <div class="contact-info__value" id="ci-hours" data-i18n-html="contact.hours.text" data-zh="週一 ～ 週五：09:00 – 18:00<br>週末及日本假日：預約制">
               週一 ～ 週五：09:00 – 18:00<br>
               週末及日本假日：預約制
             </div>
@@ -110,9 +114,8 @@
 
         <div style="margin-top:2.5rem;padding:1.5rem;background:var(--surface);border-left:2px solid var(--gold);">
           <div style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;">Line / WeChat</div>
-          <p style="font-size:0.88rem;color:var(--gray-600);">歡迎加入我們的 Line 官方帳號，即時掌握最新物件與優惠資訊。</p>
-          <!-- ★ 請填入 Line 官方帳號 ID -->
-          <p style="font-size:0.82rem;color:var(--gray-400);margin-top:0.4rem;">Line ID：<span style="font-style:italic;">待填入</span></p>
+          <p style="font-size:0.88rem;color:var(--gray-600);" data-i18n="contact.line.text" data-zh="歡迎加入我們的 Line 官方帳號，即時掌握最新物件與優惠資訊。">歡迎加入我們的 Line 官方帳號，即時掌握最新物件與優惠資訊。</p>
+          <p style="font-size:0.82rem;color:var(--gray-400);margin-top:0.4rem;">Line ID：<span id="ci-line-id" style="font-style:italic;">待填入</span></p>
         </div>
       </div>
 
@@ -170,27 +173,27 @@
       <div>
         <div class="footer__brand-name">One Third Residence</div>
         <div class="footer__brand-en">(TAIWAN) CO., LTD. &nbsp;·&nbsp; 萬舍國際有限公司</div>
-        <p class="footer__brand-text">日本白馬村頂級度假地產代理（One Third Residence Taiwan），提供地產買賣、托租代管及度假訂房全方位服務。</p>
+        <p class="footer__brand-text" data-i18n="footer.brand.text" data-zh="日本白馬村頂級度假地產代理（One Third Residence Taiwan），提供地產買賣、托租代管及度假訂房全方位服務。">日本白馬村頂級度假地產代理（One Third Residence Taiwan），提供地產買賣、托租代管及度假訂房全方位服務。</p>
       </div>
       <div>
-        <div class="footer__col-title">服務項目</div>
+        <div class="footer__col-title" data-i18n="footer.col.services" data-zh="服務項目">服務項目</div>
         <ul class="footer__links">
-          <li><a href="/properties.html" class="footer__link">白馬村物件</a></li>
-          <li><a href="/booking.html" class="footer__link">度假訂房</a></li>
+          <li><a href="/properties.html" class="footer__link" data-i18n="footer.link.properties" data-zh="白馬村物件">白馬村物件</a></li>
+          <li><a href="/booking.html" class="footer__link" data-i18n="footer.link.booking" data-zh="度假訂房">度假訂房</a></li>
         </ul>
       </div>
       <div>
-        <div class="footer__col-title">關於我們</div>
+        <div class="footer__col-title" data-i18n="footer.col.about" data-zh="關於我們">關於我們</div>
         <ul class="footer__links">
-          <li><a href="/index.html" class="footer__link">公司介紹</a></li>
+          <li><a href="/index.html" class="footer__link" data-i18n="footer.link.about.us" data-zh="公司介紹">公司介紹</a></li>
           <li><a href="/phoenix.html" class="footer__link">C.M. Phoenix</a></li>
-          <li><a href="/faq.html" class="footer__link">常見問題</a></li>
+          <li><a href="/faq.html" class="footer__link" data-i18n="footer.link.faq" data-zh="常見問題">常見問題</a></li>
         </ul>
       </div>
       <div>
-        <div class="footer__col-title">聯絡資訊</div>
+        <div class="footer__col-title" data-i18n="footer.col.contact" data-zh="聯絡資訊">聯絡資訊</div>
         <ul class="footer__links">
-          <li><a href="/contact.html" class="footer__link">聯絡我們</a></li>
+          <li><a href="/contact.html" class="footer__link" data-i18n="footer.link.contact" data-zh="聯絡我們">聯絡我們</a></li>
         </ul>
       </div>
     </div>
@@ -203,5 +206,40 @@
 
 <script src="/js/i18n.js"></script>
 <script src="/js/main.js"></script>
+<script>
+(function () {
+  fetch('/api/content')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (c) {
+      if (!c || !c.contact) return;
+      var ct = c.contact;
+      function fill(id, val, style) {
+        if (!val) return;
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.textContent = val;
+        el.style.color = '';
+        el.style.fontStyle = '';
+      }
+      fill('ci-phone-tw', ct.phoneTw);
+      fill('ci-phone-jp', ct.phoneJp);
+      fill('ci-email',    ct.email);
+      fill('ci-address-tw', ct.addressTw);
+      fill('ci-line-id', ct.lineId);
+      if (ct.hours) {
+        var h = document.getElementById('ci-hours');
+        if (h) {
+          h.setAttribute('data-zh', ct.hours.replace(/\n/g, '<br>'));
+          h.innerHTML = ct.hours.replace(/\n/g, '<br>');
+        }
+      }
+      if (window.applyLang && window.i18nCurrent !== 'zh') window.applyLang(window.i18nCurrent);
+      if (c.backgrounds && c.backgrounds.contactHero) {
+        var ph = document.getElementById('contactPageHero');
+        if (ph) { ph.classList.add('page-hero--bg'); ph.style.backgroundImage = "url('" + c.backgrounds.contactHero + "')"; }
+      }
+    }).catch(function () {});
+})();
+</script>
 </body>
 </html>
