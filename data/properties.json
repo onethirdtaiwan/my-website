@@ -1,5 +1,36 @@
 [
   {
+    "id": "hakuba-villa-1-3rd",
+    "city": "hakuba",
+    "name": "The 1/3rd HAKUBA Luxury Villa",
+    "nameZh": "白馬五龍 The 1/3rd HAKUBA 豪華別墅",
+    "status": "available",
+    "type": "villa",
+    "location": "白馬五龍 Toomi Slope · Ski-in/Ski-out",
+    "priceDisplay": "¥3億",
+    "area": 250,
+    "bedrooms": 4,
+    "bathrooms": 4,
+    "floors": 2,
+    "yearBuilt": 2025,
+    "descriptionZh": "坐落於白馬五龍滑雪場 Toomi Slope 雪道旁的頂級豪華別墅，2025年12月盛大開幕。真正實現 Ski-in/Ski-out——推開大門即是銀白雪道，無需等待、無需接駁。挑高6米中庭客廳、全景落地窗、開放式頂級廚房，盡攬北阿爾卑斯山壯麗雪景。4臥室（King/Double/Semi-double/Tatami）、4衛浴（含浴缸2套），提供24小時禮賓、私廚到府、車站接送、滑雪教學等全方位豪華服務。年租金收益率達8.8–10.5%，白馬村地價2025年漲幅高居全日本第一（+32.4%）。",
+    "descriptionEn": "Perched beside the Toomi Slope at Hakuba Goryu, The 1/3rd HAKUBA opened in December 2025 as Hakuba's first true ski-in/ski-out luxury villa. Step outside and you're on the snow — no buses, no queues. A 6-metre atrium living room, panoramic floor-to-ceiling windows, and a fully-equipped designer kitchen frame breathtaking views of the North Alps. 4 bedrooms (King, Double, Semi-double, Tatami), 4 bathrooms (2 with bathtubs). Full suite of services: 24-hr concierge, private chef, station transfers, ski instruction, and equipment assistance. Gross rental yield 8.8–10.5%. Hakuba land prices rose 32.4% in 2025 — No.1 in all of Japan.",
+    "features": ["Ski-in / Ski-out 直達雪道", "挑高6米中庭客廳", "4臥室 4衛浴", "全景落地窗山景", "開放式頂級廚房", "私廚到府服務", "24小時禮賓", "車站往返接送", "年收益率8.8–10.5%"],
+    "thumbnail": "/images/hakuba/villa-1-3rd-cover.jpg",
+    "images": [
+      "/images/hakuba/villa-1-3rd-cover.jpg",
+      "/images/hakuba/villa-1-3rd-skiinout.jpg",
+      "/images/hakuba/villa-1-3rd-atrium.jpg",
+      "/images/hakuba/villa-1-3rd-living.jpg",
+      "/images/hakuba/villa-1-3rd-living2.jpg",
+      "/images/hakuba/villa-1-3rd-interior.jpg"
+    ],
+    "highlight": "Ski-in/Ski-out · 年收益8.8–10.5%",
+    "featured": true,
+    "createdAt": "2026-05-22T00:00:00Z",
+    "updatedAt": "2026-05-22T00:00:00Z"
+  },
+  {
     "id": "slopefront-villa-1",
     "city": "hakuba",
     "name": "Slopefront Villa",
