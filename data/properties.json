@@ -15,7 +15,17 @@
     "yearBuilt": 2025,
     "descriptionZh": "坐落於白馬五龍滑雪場 Toomi Slope 雪道旁的頂級豪華別墅，2025年12月盛大開幕。真正實現 Ski-in/Ski-out——推開大門即是銀白雪道，無需等待、無需接駁。挑高6米中庭客廳、全景落地窗、開放式頂級廚房，盡攬北阿爾卑斯山壯麗雪景。4臥室（King/Double/Semi-double/Tatami）、4衛浴（含浴缸2套），提供24小時禮賓、私廚到府、車站接送、滑雪教學等全方位豪華服務。年租金收益率達8.8–10.5%，白馬村地價2025年漲幅高居全日本第一（+32.4%）。",
     "descriptionEn": "Perched beside the Toomi Slope at Hakuba Goryu, The 1/3rd HAKUBA opened in December 2025 as Hakuba's first true ski-in/ski-out luxury villa. Step outside and you're on the snow — no buses, no queues. A 6-metre atrium living room, panoramic floor-to-ceiling windows, and a fully-equipped designer kitchen frame breathtaking views of the North Alps. 4 bedrooms (King, Double, Semi-double, Tatami), 4 bathrooms (2 with bathtubs). Full suite of services: 24-hr concierge, private chef, station transfers, ski instruction, and equipment assistance. Gross rental yield 8.8–10.5%. Hakuba land prices rose 32.4% in 2025 — No.1 in all of Japan.",
-    "features": ["Ski-in / Ski-out 直達雪道", "挑高6米中庭客廳", "4臥室 4衛浴", "全景落地窗山景", "開放式頂級廚房", "私廚到府服務", "24小時禮賓", "車站往返接送", "年收益率8.8–10.5%"],
+    "features": [
+      "Ski-in / Ski-out 直達雪道",
+      "挑高6米中庭客廳",
+      "4臥室 4衛浴",
+      "全景落地窗山景",
+      "開放式頂級廚房",
+      "私廚到府服務",
+      "24小時禮賓",
+      "車站往返接送",
+      "年收益率8.8–10.5%"
+    ],
     "thumbnail": "/images/hakuba/villa-1-3rd-cover.jpg",
     "images": [
       "/images/hakuba/villa-1-3rd-cover.jpg",
@@ -46,7 +56,15 @@
     "yearBuilt": 2024,
     "descriptionZh": "白馬村最頂級的滑雪道直通別墅，從臥室一步踏上粉雪斜坡。開放式廚房、設計師家具、大面積山景窗景，提供無與倫比的白馬生活體驗。",
     "descriptionEn": "From bed to powder snow, mere steps away. The finest ski-in/ski-out villa in Hakuba Village, featuring an open-plan kitchen, designer furniture, and floor-to-ceiling mountain views.",
-    "features": ["Ski-in / Ski-out", "開放式廚房", "設計師家具", "山景景觀窗", "頂級寢具組", "車站接駁服務", "器材配送至門"],
+    "features": [
+      "Ski-in / Ski-out",
+      "開放式廚房",
+      "設計師家具",
+      "山景景觀窗",
+      "頂級寢具組",
+      "車站接駁服務",
+      "器材配送至門"
+    ],
     "thumbnail": "",
     "images": [],
     "highlight": "五竜 Toomi 滑雪道直通",
@@ -70,7 +88,14 @@
     "yearBuilt": 2025,
     "descriptionZh": "延續第一棟的卓越品質，Slopefront Villa 2 規格再升級，提供更寬敞的居住空間與私人溫泉設施，打造白馬最奢華的度假體驗。",
     "descriptionEn": "The next evolution of Slopefront Villa. Larger, more refined, and featuring a private onsen — the most luxurious ski-in/ski-out experience in Hakuba.",
-    "features": ["Ski-in / Ski-out", "私人溫泉", "開放式廚房", "設計師家具", "山景景觀窗", "4 臥室"],
+    "features": [
+      "Ski-in / Ski-out",
+      "私人溫泉",
+      "開放式廚房",
+      "設計師家具",
+      "山景景觀窗",
+      "4 臥室"
+    ],
     "thumbnail": "",
     "images": [],
     "highlight": "私人溫泉 · 即將推出",
@@ -94,7 +119,13 @@
     "yearBuilt": 2026,
     "descriptionZh": "白馬村首個頂級度假村型開發項目，提供多元化戶型選擇。結合精品飯店設施與私人住宅的靈活性，是投資與自用的絕佳選擇。",
     "descriptionEn": "Hakuba's first luxury resort-style development. A curated collection of residences combining the best of boutique hotel amenities with private ownership flexibility.",
-    "features": ["度假村公共設施", "多元戶型選擇", "餐廳與酒吧", "Ski-in / Ski-out", "專業管理服務"],
+    "features": [
+      "度假村公共設施",
+      "多元戶型選擇",
+      "餐廳與酒吧",
+      "Ski-in / Ski-out",
+      "專業管理服務"
+    ],
     "thumbnail": "",
     "images": [],
     "highlight": "大型度假村開發計畫",
@@ -108,19 +139,28 @@
     "name": "Etranger 18 Akihabara",
     "nameZh": "千代田外神田複合大樓",
     "status": "available",
-    "type": "building",
+    "type": "",
     "location": "東京都千代田區外神田三丁目 · 秋葉原",
     "priceDisplay": "詢價",
-    "area": 457.89,
+    "area": "457",
     "bedrooms": null,
     "bathrooms": null,
-    "floors": 9,
-    "yearBuilt": 2023,
+    "floors": "9",
+    "yearBuilt": "2023",
     "descriptionZh": "坐落於千代田區外神田，秋葉原商圈核心地帶。2023年竣工新築9層RC造複合大樓，延床面積457.89㎡，涵蓋店舖、事務所與住宅多元用途。鄰近JR秋葉原站、地鐵末廣町站，交通樞紐優勢突出。年總收益預估達4,700萬日圓，是千代田區稀缺的核心優質資產。",
     "descriptionEn": "Located in the heart of Akihabara, Chiyoda-ku. A 9-storey RC-construction mixed-use building completed in 2023, with a total floor area of 457.89㎡ comprising retail, office and residential units. Walking distance to JR Akihabara Station and Tokyo Metro Suehirocho Station. Estimated annual revenue of ¥47M. A rare core asset in one of Tokyo's most sought-after commercial districts.",
-    "features": ["秋葉原核心地段", "2023年新築RC造", "店舖・事務所・住宅複合", "年收益約¥4,700萬", "耐震基準符合", "稀缺9層複合大樓"],
+    "features": [
+      "秋葉原核心地段",
+      "2023年新築RC造",
+      "店舖・事務所・住宅複合",
+      "年收益約¥4,700萬",
+      "耐震基準符合",
+      "稀缺9層複合大樓"
+    ],
     "thumbnail": "/images/tokyo/akihabara-etranger.jpg",
-    "images": ["/images/tokyo/akihabara-etranger.jpg", "/images/tokyo/akihabara-rendering.jpg"],
+    "images": [
+      "/images/tokyo/akihabara-etranger.jpg"
+    ],
     "highlight": "秋葉原商圈核心 · 年收益¥4,700萬",
     "featured": true,
     "createdAt": "2026-05-18T00:00:00Z",
@@ -142,9 +182,18 @@
     "yearBuilt": 1982,
     "descriptionZh": "位於板橋區成增三丁目的12戶RC造公寓大樓，2024年3月完成外壁大規模修繕，建物狀態優異。步行5分鐘達東武東上線「成增」站，步行7分鐘達地鐵「成増」站，快速連結池袋、新宿、澀谷。目前12戶全數出租，月租收入¥1,021,000，表面投報率4.9%，即買即收租。",
     "descriptionEn": "A 12-unit RC-structure apartment building in Narimasu, Itabashi-ku. Fully renovated exterior in March 2024. A 5-minute walk to Tobu Tojo Line Narimasu Station and 7 minutes to Tokyo Metro Narimasu Station, with direct links to Ikebukuro, Shinjuku and Shibuya. All 12 units currently tenanted. Monthly rental income ¥1,021,000. Gross yield 4.9% — immediate cash flow from day one.",
-    "features": ["12戶全滿租", "4.9%表面利回", "2024年大規模修繕完工", "步行5分達成増站", "即買即收租", "板橋區優質住宅地段"],
+    "features": [
+      "12戶全滿租",
+      "4.9%表面利回",
+      "2024年大規模修繕完工",
+      "步行5分達成増站",
+      "即買即收租",
+      "板橋區優質住宅地段"
+    ],
     "thumbnail": "/images/tokyo/narimasu-heights.jpg",
-    "images": ["/images/tokyo/narimasu-heights.jpg"],
+    "images": [
+      "/images/tokyo/narimasu-heights.jpg"
+    ],
     "highlight": "12戶全滿租 · 4.9%年投報",
     "featured": true,
     "createdAt": "2026-05-18T00:00:00Z",
@@ -159,16 +208,25 @@
     "type": "building",
     "location": "東京都澀谷區富谷一丁目",
     "priceDisplay": "¥16.3億",
-    "area": 334.90,
+    "area": 334.9,
     "bedrooms": null,
     "bathrooms": null,
     "floors": 7,
     "yearBuilt": 2027,
     "descriptionZh": "坐落於澀谷區富谷地帶的7層RC造商辦大樓，預計2027年3月竣工。步行4分鐘達千代田線「代代木公園」站及小田急線「代代木八幡」站，鄰近代代木公園，受益於澀谷「百年一遇」再開發利多。延床面積334.90㎡，年收益預估¥55,456,495，表面利回3.4%。",
     "descriptionEn": "A 7-storey RC office/commercial building in Tomigaya, Shibuya-ku. Estimated completion: March 2027. A 4-minute walk to Chiyoda Line Yoyogi-koen Station and Odakyu Line Yoyogi-Hachimangu Station. Adjacent to Yoyogi Park and positioned to benefit from Shibuya's landmark redevelopment. Total floor area 334.90㎡. Estimated annual revenue ¥55.5M, gross yield 3.4%.",
-    "features": ["澀谷百年一遇再開發受惠", "代代木公園徒步4分", "RC造7層", "高淨值住宅地段", "年收益¥5,500萬預估", "2027年竣工預定"],
+    "features": [
+      "澀谷百年一遇再開發受惠",
+      "代代木公園徒步4分",
+      "RC造7層",
+      "高淨值住宅地段",
+      "年收益¥5,500萬預估",
+      "2027年竣工預定"
+    ],
     "thumbnail": "/images/tokyo/shibuya-tomigaya.jpg",
-    "images": ["/images/tokyo/shibuya-tomigaya.jpg"],
+    "images": [
+      "/images/tokyo/shibuya-tomigaya.jpg"
+    ],
     "highlight": "澀谷再開發核心受益 · 2027預定竣工",
     "featured": true,
     "createdAt": "2026-05-18T00:00:00Z",
@@ -190,9 +248,18 @@
     "yearBuilt": 2026,
     "descriptionZh": "2026年1月竣工的全新一棟收益住宅大樓，坐落於東京都江東區清澄白河。清澄白河近年以藝廊、精品咖啡與設計師品牌聚集聞名，深受年輕專業人士與國際人才青睞，租賃需求強勁。新築高規格設施，低維護成本，是追求穩定都市租金收益的優質投資標的。",
     "descriptionEn": "Newly completed in January 2026, Pratique Kiyosumiteien is a full-building income residential property in Kiyosumi-Shirakawa, Koto-ku. Known for its galleries, specialty cafés and design culture, the area draws young professionals and international residents. Premium new-build specifications with minimal maintenance costs — an ideal choice for stable urban rental income.",
-    "features": ["2026年新築", "一棟收益住宅", "清澄白河文創圈", "低維護成本", "強勁租賃需求", "都市型投資物件"],
+    "features": [
+      "2026年新築",
+      "一棟收益住宅",
+      "清澄白河文創圈",
+      "低維護成本",
+      "強勁租賃需求",
+      "都市型投資物件"
+    ],
     "thumbnail": "/images/tokyo/kiyosumi-pratique.jpg",
-    "images": ["/images/tokyo/kiyosumi-pratique.jpg"],
+    "images": [
+      "/images/tokyo/kiyosumi-pratique.jpg"
+    ],
     "highlight": "2026年新築 · 清澄白河文創地帶",
     "featured": false,
     "createdAt": "2026-05-18T00:00:00Z",
@@ -214,9 +281,18 @@
     "yearBuilt": 2026,
     "descriptionZh": "坐落於台東區上野五丁目的全新7層RC造複合大樓，預計2026年竣工。步行4分鐘可達東京地鐵銀座線・日比谷線「上野」站，交通極為便利。上野地區為東京東部核心商圈，觀光、零售、辦公需求旺盛。延床面積279.69㎡、地坪70.26㎡（21.25坪），新築高規格建設，是台東區稀缺的優質複合收益資產。",
     "descriptionEn": "A brand-new 7-storey RC mixed-use building in Ueno 5-chome, Taito-ku, scheduled for completion in 2026. A 4-minute walk to Tokyo Metro Ginza and Hibiya Lines at Ueno Station. Ueno is a major commercial and tourism hub in eastern Tokyo with strong retail, office and residential demand. Total floor area 279.69㎡, land area 70.26㎡ (21.25 tsubo). A rare new-build asset in a high-demand Taito-ku location.",
-    "features": ["2026年新築RC造", "上野站徒步4分", "銀座線・日比谷線直結", "台東區核心地段", "7層複合大樓", "稀缺新築收益物件"],
+    "features": [
+      "2026年新築RC造",
+      "上野站徒步4分",
+      "銀座線・日比谷線直結",
+      "台東區核心地段",
+      "7層複合大樓",
+      "稀缺新築收益物件"
+    ],
     "thumbnail": "/images/tokyo/ueno-5chome.jpg",
-    "images": ["/images/tokyo/ueno-5chome.jpg"],
+    "images": [
+      "/images/tokyo/ueno-5chome.jpg"
+    ],
     "highlight": "上野站4分 · 2026年新築RC造",
     "featured": true,
     "createdAt": "2026-05-18T00:00:00Z",
@@ -238,7 +314,13 @@
     "yearBuilt": 2024,
     "descriptionZh": "坐落於杜拜碼頭的頂級住宅，全景海灣景觀，現代化設施齊全。杜拜零稅收環境加上穩健的租金收益，是中東地產投資的首選標的。萬舍國際全程中文服務。",
     "descriptionEn": "Premium residence in Dubai Marina with panoramic bay views and state-of-the-art facilities. Dubai's zero-tax environment with strong rental yields makes this the top Middle East real estate choice.",
-    "features": ["零稅收環境", "全景海灣景觀", "Dubai Marina 核心", "穩健租金收益", "全程中文服務"],
+    "features": [
+      "零稅收環境",
+      "全景海灣景觀",
+      "Dubai Marina 核心",
+      "穩健租金收益",
+      "全程中文服務"
+    ],
     "thumbnail": "",
     "images": [],
     "highlight": "即將推出",
