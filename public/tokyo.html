@@ -231,7 +231,7 @@ function renderGrid(props) {
                </div>`
           }
           ${p.highlight ? `<div class="property-card__badge">${p.highlight}</div>` : ''}
-          <div class="property-card__status property-card__status--${p.status}">${p.status === 'available' ? (window.t('prop.status.available') || '可購入') : (window.t('prop.status.coming-soon') || '即將推出')}</div>
+          <div class="property-card__status property-card__status--${p.status}">${p.status === 'available' ? (window.t('prop.status.available') || '可購入') : p.status === 'sold' ? (window.t('prop.status.sold') || '已售出') : (window.t('prop.status.coming-soon') || '即將推出')}</div>
         </div>
         <div class="property-card__body">
           <div class="property-card__location">${p.location}</div>

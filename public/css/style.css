@@ -396,6 +396,7 @@ p  { line-height: 1.75; }
 }
 .property-card__status--available { background: rgba(255,255,255,0.9); color: var(--charcoal); }
 .property-card__status--coming-soon { background: rgba(28,28,28,0.75); color: var(--white); }
+.property-card__status--sold { background: rgba(160,40,40,0.85); color: var(--white); }
 
 .property-card__body { padding: 1.5rem; border: 1px solid var(--gray-200); border-top: none; }
 .property-card__location { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
