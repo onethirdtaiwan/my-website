@@ -53,5 +53,10 @@
     "dubaiHero": "",
     "contactHero": "",
     "faqHero": ""
+  },
+  "i18nOverrides": {
+    "zh": {},
+    "en": {},
+    "ja": {}
   }
 }
