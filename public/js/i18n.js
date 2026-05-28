@@ -49,7 +49,7 @@
     'home.hero.subtitle':  'Premium Japanese Resort Property · Full-Service Property Management',
 
     'home.svc.eyebrow':    'Our Services',
-    'home.svc.title':      'From Investment to Vacation,<br>We Have You Covered',
+    'home.svc.title':      'From Investment to Escape — Complete Care, Every Step',
     'home.svc.subtitle':   'One Third Residence Taiwan offers a one-stop solution for Hakuba resort properties — transparent, stress-free, and tailored for you.',
     'home.svc1.title':     'Property Sales & Brokerage',
     'home.svc1.text':      "We represent C.M. Phoenix's premier Hakuba listings, providing complete property information, legal consultation, and full purchase assistance.",
@@ -472,7 +472,7 @@
     'home.hero.subtitle':  '日本最高峰のリゾート不動産 · 総合管理サービス',
 
     'home.svc.eyebrow':    'サービス内容',
-    'home.svc.title':      '投資から滞在まで、<br>すべてお任せください',
+    'home.svc.title':      '投資から滞在まで、誠心誠意お支えします',
     'home.svc.subtitle':   'ワンサードリゾートは、白馬村の不動産に特化したワンストップソリューションを提供します。',
     'home.svc1.title':     '不動産売買仲介',
     'home.svc1.text':      'C.M. Phoenixが手がける白馬村の厳選物件を代理販売。物件情報の提供から法律相談、購入手続きまで全面サポートします。',
