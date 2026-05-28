@@ -283,8 +283,8 @@
     'faq.a10': "<p>Recommended route:</p><p><strong>Taoyuan Airport → Nagoya / Tokyo Narita / Tokyo Haneda</strong> → Shinkansen or limited express to Nagano Station → Bus or shuttle to Hakuba Village (approx. 50 min).</p><p>The drive from Nagano Station takes about 50–60 minutes. Station transfer can be arranged during your stay.</p>",
     'faq.q11': 'What taxes must I pay as a Japanese property owner?',
     'faq.a11': "<p>Annual taxes include:</p><p>• <strong>Fixed Asset Tax</strong>: Approx. 1.4% of assessed value.</p><p>• <strong>City Planning Tax</strong>: Approx. 0.3% in applicable areas (confirm for Hakuba).</p><p>• <strong>Rental Income Tax</strong>: Non-resident rate approx. 20.42%.</p><p>• <strong>Taiwan Income Tax</strong>: Overseas income must be declared per Taiwanese tax law.</p><p>Tax situations vary — we recommend consulting a specialist and can refer you to qualified tax professionals.</p>",
-    'faq.q12': 'What are the Minpaku (short-term rental) regulations in Japan?',
-    'faq.a12': "<p>Japan's Minpaku New Law (2018) permits licensed short-term rentals, capped at 180 nights per year (some municipalities impose stricter limits).</p><p>Hakuba Village has relatively favourable Minpaku regulations. All C.M. Phoenix properties are properly licensed, and our management service ensures full regulatory compliance.</p>",
+    'faq.q12': 'What are the short-term rental regulations in Japan — and how does C.M. Phoenix operate year-round?',
+    'faq.a12': "<p>Japan's 2018 Home-Sharing Act (Minpaku Shinpō) limits standard short-term rental operators to a maximum of <strong>180 nights per year</strong>, with some municipalities imposing even stricter caps.</p><p>However, C.M. Phoenix Group has obtained a formal <strong>Hotel Business Licence (旅館業法許可)</strong> for its Hakuba properties — a fundamentally different category from general minpaku registration. Properties operating under this licence are <strong>not subject to the 180-night restriction</strong> and may legally operate <strong>365 days a year</strong>.</p><p>This means owners who entrust their property to our management enjoy maximum rental availability, greater income potential, and full regulatory compliance.</p>",
     'faq.q13': 'What taxes are due when I sell the property?',
     'faq.a13': "<p>Upon selling Japanese real estate:</p><p>• <strong>Capital Gains Tax (譲渡所得税)</strong>: Under 5 years (short-term) approx. 39.63%; over 5 years (long-term) approx. 20.315%.</p><p>• <strong>Taiwan Income Tax</strong>: Overseas capital gains must be declared per Taiwanese tax law.</p><p>We recommend engaging a Japanese tax accountant (税理士) for detailed calculation.</p>",
 
@@ -706,8 +706,8 @@
     'faq.a10': '<p>おすすめのルート：</p><p><strong>桃園空港 → 名古屋/東京成田/東京羽田</strong> → 新幹線または特急で長野駅 → バスまたはシャトルで白馬村（約50分）。</p><p>長野駅からの所要時間は約50〜60分。滞在中の駅送迎手配も可能です。</p>',
     'faq.q11': '不動産オーナーとして払う税金は？',
     'faq.a11': '<p>年次税には以下が含まれます：</p><p>• <strong>固定資産税</strong>：評価額の約1.4%。</p><p>• <strong>都市計画税</strong>：対象地域で約0.3%（白馬村については確認要）。</p><p>• <strong>賃貸収入税</strong>：非居住者向け約20.42%。</p><p>• <strong>台湾所得税</strong>：台湾の税法に従い海外所得の申告が必要です。</p><p>税務状況は個人により異なりますので、専門家にご相談ください。</p>',
-    'faq.q12': '日本の民泊規制について',
-    'faq.a12': '<p>日本の住宅宿泊事業法（2018年）により、年間180泊を上限とした民泊が認められています（一部自治体はより厳しい制限を設けています）。</p><p>白馬村の民泊規制は比較的緩やかです。C.M. Phoenixの全物件は適切にライセンスを取得しており、管理サービスで完全な法令遵守を確保しています。</p>',
+    'faq.q12': '日本の短期貸出規制と、C.M. Phoenixが通年営業できる理由',
+    'faq.a12': '<p>2018年施行の住宅宿泊事業法（民泊新法）により、一般的な民泊登録では年間最大<strong>180泊</strong>までしか営業できず、自治体によってはさらに厳しい制限が設けられています。</p><p>しかし、C.M. Phoenixグループは白馬村の施設において、<strong>旅館業法に基づく正式なホテル営業許可</strong>を取得しており、一般の民泊とは異なるカテゴリーに属します。旅館業許可を保有する施設は180泊の制限を受けず、<strong>年間365日を通じて合法的に営業</strong>することが可能です。</p><p>オーナー様が物件を弊社に委託していただくことで、最大限の貸出日数を確保し、収益最大化と法令遵守を両立しています。</p>',
     'faq.q13': '売却時にかかる税金は？',
     'faq.a13': '<p>日本の不動産を売却する際：</p><p>• <strong>譲渡所得税</strong>：5年以内（短期）は約39.63%、5年超（長期）は約20.315%。</p><p>• <strong>台湾所得税</strong>：台湾の税法に従い海外譲渡益の申告が必要です。</p><p>詳細な計算は日本の税理士にご相談することをお勧めします。</p>',
 
