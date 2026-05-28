@@ -221,6 +221,13 @@
 <script>
 let _allProperties = [];
 
+function getHighlight(p) {
+  const lang = window.i18nCurrent || 'zh';
+  if (lang === 'en' && p.highlightEn) return p.highlightEn;
+  if (lang === 'ja' && p.highlightJa) return p.highlightJa;
+  return p.highlight || '';
+}
+
 function statusLabel(p) {
   const t = window.t;
   return p.status === 'available' ? (t('prop.status.available') || '可購入') : p.status === 'sold' ? (t('prop.status.sold') || '已售出') : (t('prop.status.coming-soon') || '即將推出');
@@ -248,7 +255,7 @@ function renderGrid(props) {
                 <span>${p.status === 'coming-soon' ? (t('prop.status.img-soon') || '即將推出') : (t('prop.status.img-updating') || '圖片即將更新')}</span>
                </div>`
           }
-          ${p.highlight ? `<div class="property-card__badge">${p.highlight}</div>` : ''}
+          ${getHighlight(p) ? `<div class="property-card__badge">${getHighlight(p)}</div>` : ''}
           <div class="property-card__status property-card__status--${p.status}">${statusLabel(p)}</div>
         </div>
         <div class="property-card__body">

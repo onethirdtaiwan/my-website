@@ -162,6 +162,8 @@
       "/images/tokyo/akihabara-etranger.jpg"
     ],
     "highlight": "秋葉原商圈核心 · 年收益¥4,700萬",
+    "highlightEn": "Prime Akihabara Location · ¥47M Annual Revenue",
+    "highlightJa": "秋葉原中心部 · 年間収益¥4,700万",
     "featured": true,
     "createdAt": "2026-05-18T00:00:00Z",
     "updatedAt": "2026-05-18T00:00:00Z"
@@ -195,6 +197,8 @@
       "/images/tokyo/narimasu-heights.jpg"
     ],
     "highlight": "12戶全滿租 · 4.9%年投報",
+    "highlightEn": "12 Units, Fully Tenanted · 4.9% Gross Yield",
+    "highlightJa": "12戸満室稼働 · 表面利回4.9%",
     "featured": true,
     "createdAt": "2026-05-18T00:00:00Z",
     "updatedAt": "2026-05-18T00:00:00Z"
@@ -228,6 +232,8 @@
       "/images/tokyo/shibuya-tomigaya.jpg"
     ],
     "highlight": "澀谷再開發核心受益 · 2027預定竣工",
+    "highlightEn": "Shibuya Redevelopment Beneficiary · Completion 2027",
+    "highlightJa": "渋谷再開発の恩恵 · 2027年竣工予定",
     "featured": true,
     "createdAt": "2026-05-18T00:00:00Z",
     "updatedAt": "2026-05-18T00:00:00Z"
@@ -261,6 +267,8 @@
       "/images/tokyo/kiyosumi-pratique.jpg"
     ],
     "highlight": "2026年新築 · 清澄白河文創地帶",
+    "highlightEn": "New Build 2026 · Kiyosumi Arts District",
+    "highlightJa": "2026年新築 · 清澄白河アート地区",
     "featured": false,
     "createdAt": "2026-05-18T00:00:00Z",
     "updatedAt": "2026-05-18T00:00:00Z"
@@ -294,6 +302,8 @@
       "/images/tokyo/ueno-5chome.jpg"
     ],
     "highlight": "上野站4分 · 2026年新築RC造",
+    "highlightEn": "4 Min to Ueno Station · New Build RC 2026",
+    "highlightJa": "上野駅4分 · 2026年新築RC造",
     "featured": true,
     "createdAt": "2026-05-18T00:00:00Z",
     "updatedAt": "2026-05-18T00:00:00Z"
