@@ -146,6 +146,7 @@
         <button class="cms-tab" data-tab="why">選擇理由</button>
         <button class="cms-tab" data-tab="contact">聯絡資訊</button>
         <button class="cms-tab" data-tab="backgrounds">背景圖管理</button>
+        <button class="cms-tab" data-tab="founder">創辦人介紹</button>
         <button class="cms-tab" data-tab="faq">常見問題 FAQ</button>
         <button class="cms-tab" data-tab="tokyo-inv">東京投資說明</button>
         <button class="cms-tab" data-tab="dubai-inv">杜拜投資說明</button>
@@ -674,6 +675,95 @@
 
       </div><!-- /panel-backgrounds -->
 
+      <!-- ─── TAB: 創辦人介紹 ─── -->
+      <div id="panel-founder" class="cms-panel">
+        <div class="cms-card">
+          <h3>創辦人照片</h3>
+          <div class="form-group">
+            <div class="img-field">
+              <div class="img-preview" id="founderImgBox">
+                <img id="founderImgPreview" alt="創辦人照片">
+                <span class="img-placeholder" id="founderImgPh">無照片</span>
+              </div>
+              <div class="img-controls">
+                <input type="text" id="founderPhoto" class="form-control" placeholder="/images/founder-su.jpg 或 https://...">
+                <label class="btn btn--outline-dark btn--sm img-upload-btn">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  上傳照片
+                  <input type="file" accept="image/*" style="display:none" onchange="uploadImage(this,'founderPhoto','founderImgPreview','founderImgPh')">
+                </label>
+                <p style="font-size:0.75rem;color:var(--gray-400);">建議使用直式照片（3:4 比例），JPG 或 PNG 格式。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cms-card">
+          <h3>基本資訊</h3>
+          <div class="form-group">
+            <label>姓名（固定顯示中文）</label>
+            <input type="text" id="founderName" class="form-control" placeholder="蘇乾聞">
+          </div>
+
+          <div class="lang-switcher-cms">
+            <button class="lang-switcher-cms__btn active" data-lang-cms="zh" data-target="founderRole">中文</button>
+            <button class="lang-switcher-cms__btn" data-lang-cms="en" data-target="founderRole">English</button>
+            <button class="lang-switcher-cms__btn" data-lang-cms="ja" data-target="founderRole">日本語</button>
+          </div>
+          <div class="lang-fields-cms active" id="founderRole-zh">
+            <div class="form-group"><label><span class="lang-badge">中</span>職稱</label><input type="text" id="founderRole" class="form-control" placeholder="創辦人 · 代表取締役社長"></div>
+          </div>
+          <div class="lang-fields-cms" id="founderRole-en">
+            <div class="form-group"><label><span class="lang-badge">EN</span>Title</label><input type="text" id="founderRoleEn" class="form-control" placeholder="Founder & Representative Director"></div>
+          </div>
+          <div class="lang-fields-cms" id="founderRole-ja">
+            <div class="form-group"><label><span class="lang-badge">日</span>肩書き</label><input type="text" id="founderRoleJa" class="form-control" placeholder="創業者・代表取締役社長"></div>
+          </div>
+          <div class="cms-actions" style="border-top:none;padding-top:0;margin-top:0;">
+            <button class="i18n-translate-btn" onclick="founderAutoTranslate('role')">✨ 從中文自動翻譯職稱</button>
+          </div>
+        </div>
+
+        <div class="cms-card">
+          <h3>介紹文字</h3>
+          <div class="lang-switcher-cms">
+            <button class="lang-switcher-cms__btn active" data-lang-cms="zh" data-target="founderBio">中文</button>
+            <button class="lang-switcher-cms__btn" data-lang-cms="en" data-target="founderBio">English</button>
+            <button class="lang-switcher-cms__btn" data-lang-cms="ja" data-target="founderBio">日本語</button>
+          </div>
+
+          <div class="lang-fields-cms active" id="founderBio-zh">
+            <div class="form-group"><label><span class="lang-badge">中</span>段落一</label><textarea id="founderP1" class="form-control" rows="3"></textarea></div>
+            <div class="form-group"><label><span class="lang-badge">中</span>段落二</label><textarea id="founderP2" class="form-control" rows="3"></textarea></div>
+            <div class="form-group"><label><span class="lang-badge">中</span>段落三</label><textarea id="founderP3" class="form-control" rows="4"></textarea></div>
+            <div class="form-group"><label><span class="lang-badge">中</span>段落四</label><textarea id="founderP4" class="form-control" rows="3"></textarea></div>
+          </div>
+
+          <div class="lang-fields-cms" id="founderBio-en">
+            <div class="form-group"><label><span class="lang-badge">EN</span>Paragraph 1</label><textarea id="founderP1En" class="form-control" rows="3"></textarea></div>
+            <div class="form-group"><label><span class="lang-badge">EN</span>Paragraph 2</label><textarea id="founderP2En" class="form-control" rows="3"></textarea></div>
+            <div class="form-group"><label><span class="lang-badge">EN</span>Paragraph 3</label><textarea id="founderP3En" class="form-control" rows="4"></textarea></div>
+            <div class="form-group"><label><span class="lang-badge">EN</span>Paragraph 4</label><textarea id="founderP4En" class="form-control" rows="3"></textarea></div>
+          </div>
+
+          <div class="lang-fields-cms" id="founderBio-ja">
+            <div class="form-group"><label><span class="lang-badge">日</span>段落 1</label><textarea id="founderP1Ja" class="form-control" rows="3"></textarea></div>
+            <div class="form-group"><label><span class="lang-badge">日</span>段落 2</label><textarea id="founderP2Ja" class="form-control" rows="3"></textarea></div>
+            <div class="form-group"><label><span class="lang-badge">日</span>段落 3</label><textarea id="founderP3Ja" class="form-control" rows="4"></textarea></div>
+            <div class="form-group"><label><span class="lang-badge">日</span>段落 4</label><textarea id="founderP4Ja" class="form-control" rows="3"></textarea></div>
+          </div>
+
+          <div class="cms-actions">
+            <button class="i18n-translate-btn" onclick="founderAutoTranslate('bio')">✨ 從中文自動翻譯所有段落</button>
+          </div>
+        </div>
+
+        <div class="cms-actions" style="background:var(--white);border:1px solid var(--gray-200);padding:1.5rem 2rem;">
+          <button class="btn btn--gold btn--sm" onclick="saveSection('founder')">儲存創辦人介紹</button>
+          <span class="save-hint">儲存後即時更新前台</span>
+        </div>
+      </div>
+
       <!-- ─── TAB: 常見問題 FAQ ─── -->
       <div id="panel-faq" class="cms-panel">
         <div style="background:rgba(184,151,90,0.08);border:1px solid rgba(184,151,90,0.25);padding:0.9rem 1.25rem;margin-bottom:1.5rem;font-size:0.84rem;color:var(--gray-600);">
@@ -959,6 +1049,24 @@ async function saveSection(section) {
       lineId:    g('contactLineId'),
       wechat:    g('contactWechat'),
     };
+  } else if (section === 'founder') {
+    newContent.founder = {
+      photo:   g('founderPhoto'),
+      name:    g('founderName'),
+      role:    g('founderRole'),   roleEn: g('founderRoleEn'), roleJa: g('founderRoleJa'),
+      p1:      g('founderP1'),     p1En:   g('founderP1En'),   p1Ja:   g('founderP1Ja'),
+      p2:      g('founderP2'),     p2En:   g('founderP2En'),   p2Ja:   g('founderP2Ja'),
+      p3:      g('founderP3'),     p3En:   g('founderP3En'),   p3Ja:   g('founderP3Ja'),
+      p4:      g('founderP4'),     p4En:   g('founderP4En'),   p4Ja:   g('founderP4Ja'),
+    };
+    toast('儲存中…', 'info');
+    try {
+      const res = await fetch('/api/content', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(newContent) });
+      const data = await res.json();
+      if (res.ok) { _content = newContent; toast('✓ 儲存成功！前台即時更新。', 'success'); }
+      else toast('✕ 失敗：' + (data.error||'未知錯誤'), 'error');
+    } catch(e) { toast('✕ 網路錯誤：' + e.message, 'error'); }
+    return;
   } else if (section === 'bg-home') {
     newContent.backgrounds = Object.assign({}, newContent.backgrounds || {});
     newContent.backgrounds.homeHero = g('bgHomeHero');
@@ -1304,7 +1412,55 @@ populateForms = function() {
   _origPopulateForms();
   buildI18nPanels();
   populateI18nFields();
+  populateFounderForm();
 };
+
+/* ── Founder form ── */
+function populateFounderForm() {
+  const f = _content.founder || {};
+  v('founderPhoto', f.photo);
+  v('founderName',  f.name);
+  v('founderRole',  f.role);   v('founderRoleEn', f.roleEn); v('founderRoleJa', f.roleJa);
+  v('founderP1',    f.p1);     v('founderP1En',   f.p1En);   v('founderP1Ja',   f.p1Ja);
+  v('founderP2',    f.p2);     v('founderP2En',   f.p2En);   v('founderP2Ja',   f.p2Ja);
+  v('founderP3',    f.p3);     v('founderP3En',   f.p3En);   v('founderP3Ja',   f.p3Ja);
+  v('founderP4',    f.p4);     v('founderP4En',   f.p4En);   v('founderP4Ja',   f.p4Ja);
+  setPreview('founderPhoto', 'founderImgPreview', 'founderImgPh');
+}
+
+// Live preview for founder photo URL
+document.addEventListener('DOMContentLoaded', function() {
+  const fp = document.getElementById('founderPhoto');
+  if (fp) fp.addEventListener('input', () => setPreview('founderPhoto','founderImgPreview','founderImgPh'));
+});
+
+async function founderAutoTranslate(mode) {
+  const pairs = mode === 'role'
+    ? [['founderRole','founderRoleEn','founderRoleJa']]
+    : [
+        ['founderP1','founderP1En','founderP1Ja'],
+        ['founderP2','founderP2En','founderP2Ja'],
+        ['founderP3','founderP3En','founderP3Ja'],
+        ['founderP4','founderP4En','founderP4Ja'],
+      ];
+
+  toast('翻譯中…', 'info');
+  try {
+    for (const [zhId, enId, jaId] of pairs) {
+      const zhText = g(zhId);
+      if (!zhText) continue;
+      const [enRes, jaRes] = await Promise.all([
+        fetch('/api/translate', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({text:zhText,to:'en'}) }).then(r=>r.json()),
+        fetch('/api/translate', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({text:zhText,to:'ja'}) }).then(r=>r.json()),
+      ]);
+      v(enId, enRes.translation || '');
+      v(jaId, jaRes.translation || '');
+    }
+    toast('✓ 翻譯完成，請確認後儲存。', 'success');
+  } catch(e) {
+    toast('✕ 翻譯失敗：' + e.message, 'error');
+  }
+}
 </script>
 </body>
 </html>
