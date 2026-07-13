@@ -701,8 +701,12 @@
         <div class="cms-card">
           <h3>基本資訊</h3>
           <div class="form-group">
-            <label>姓名（固定顯示中文）</label>
+            <label>中文姓名</label>
             <input type="text" id="founderName" class="form-control" placeholder="蘇乾聞">
+          </div>
+          <div class="form-group">
+            <label>英文名字（顯示於中文名下方）</label>
+            <input type="text" id="founderNameEn" class="form-control" placeholder="Calvin Su">
           </div>
 
           <div class="lang-switcher-cms">
@@ -1053,6 +1057,7 @@ async function saveSection(section) {
     newContent.founder = {
       photo:   g('founderPhoto'),
       name:    g('founderName'),
+      nameEn:  g('founderNameEn'),
       role:    g('founderRole'),   roleEn: g('founderRoleEn'), roleJa: g('founderRoleJa'),
       p1:      g('founderP1'),     p1En:   g('founderP1En'),   p1Ja:   g('founderP1Ja'),
       p2:      g('founderP2'),     p2En:   g('founderP2En'),   p2Ja:   g('founderP2Ja'),
@@ -1419,7 +1424,8 @@ populateForms = function() {
 function populateFounderForm() {
   const f = _content.founder || {};
   v('founderPhoto', f.photo);
-  v('founderName',  f.name);
+  v('founderName',   f.name);
+  v('founderNameEn', f.nameEn);
   v('founderRole',  f.role);   v('founderRoleEn', f.roleEn); v('founderRoleJa', f.roleJa);
   v('founderP1',    f.p1);     v('founderP1En',   f.p1En);   v('founderP1Ja',   f.p1Ja);
   v('founderP2',    f.p2);     v('founderP2En',   f.p2En);   v('founderP2Ja',   f.p2Ja);
